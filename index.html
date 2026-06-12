@@ -495,6 +495,42 @@
       border-radius: 16px;
     }
     .contact-cta p { margin-bottom: 1.5rem; color: rgba(255,255,255,0.7); }
+    .partner-content {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .partner-text { flex: 1; }
+    .partner-text > p { color: rgba(255,255,255,0.7); font-size: 1.05rem; line-height: 1.7; margin-bottom: 1.5rem; }
+    .partner-list { list-style: none; }
+    .partner-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.5rem 0;
+      color: rgba(255,255,255,0.8);
+      font-size: 0.95rem;
+    }
+    .partner-list li svg { width: 18px; height: 18px; color: #f9a826; flex-shrink: 0; }
+    .partner-visual {
+      flex-shrink: 0;
+      width: 240px;
+      height: 240px;
+      background: rgba(249,168,38,0.05);
+      border: 1px solid rgba(249,168,38,0.15);
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      text-align: center;
+    }
+    .partner-visual svg { width: 64px; height: 64px; color: #f9a826; opacity: 0.7; }
+    .partner-visual span { font-size: 0.9rem; color: rgba(255,255,255,0.5); max-width: 140px; }
+    @media (max-width: 768px) { .partner-content { flex-direction: column; text-align: center; } .partner-list li { justify-content: center; } }
     footer {
       text-align: center;
       padding: 2rem;
@@ -558,6 +594,7 @@
     <button class="mobile-menu-btn" onclick="document.querySelector('nav ul').classList.toggle('open')"><span class="hamburger"></span></button>
     <ul>
       <li><a href="#flota">Flota</a></li>
+      <li><a href="#partner">Partner</a></li>
       <li><a href="#nosotros">Nosotros</a></li>
       <li><a href="#como-funciona">Cómo funciona</a></li>
       <li><a href="#requisitos">Requisitos</a></li>
@@ -738,6 +775,44 @@
             </ul>
             <div class="price">$30 <small>/ día</small></div>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="partner" style="background: rgba(255,255,255,0.02);">
+    <div class="section-inner">
+      <p class="section-tag">Partner</p>
+      <h2 class="section-title">¿Tienes un vehículo? <span class="gold">Únelo a nuestra flota</span></h2>
+      <p class="section-sub">Genera ingresos adicionales rentando tu auto con nosotros</p>
+      <div class="partner-content">
+        <div class="partner-text">
+          <p>Si tienes un vehículo en buen estado y quieres generar ingresos adicionales, podemos incluirlo en nuestra flota de renta. Nosotros nos encargamos de la gestión, el mantenimiento y los clientes, mientras tú recibes una ganancia por cada renta.</p>
+          <ul class="partner-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Tú eliges cuándo y por cuánto tiempo participas
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Recibes un pago semanal por las rentas de tu auto
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Nosotros gestionamos todo: clientes, lavado y logística
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Tu vehículo debe ser 2015 o más reciente, en buen estado
+            </li>
+          </ul>
+          <a href="https://wa.me/50364450461" class="btn btn-wa" target="_blank" style="margin-top:1.5rem;">
+            Quiero ser partner
+          </a>
+        </div>
+        <div class="partner-visual">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a1 1 0 0 0-.8-.4H5.24a2 2 0 0 0-1.8 1.1l-.8 1.63A6 6 0 0 0 2 12.42V16h2"/><circle cx="6.5" cy="16.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/></svg>
+          <span>+ Ingresos · Sin preocupaciones</span>
         </div>
       </div>
     </div>
