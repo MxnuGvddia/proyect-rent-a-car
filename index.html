@@ -894,38 +894,14 @@
         mesh.rotation.y += mesh.userData.speedY;
         mesh.rotation.z += mesh.userData.speedZ;
         const ud = mesh.userData;
-        const floatY = ud.baseY + Math.sin(t * ud.floatSpeed + ud.floatOffset) * ud.floatAmp;
         const targetX = ud.baseX;
+        const targetY = ud.baseY + Math.sin(t * ud.floatSpeed + ud.floatOffset) * ud.floatAmp;
         const targetZ = ud.baseZ;
-        let targetY = floatY;
+        mesh.position.x += (targetX - mesh.position.x) * 0.04;
+        mesh.position.y += (targetY - mesh.position.y) * 0.04;
+        mesh.position.z += (targetZ - mesh.position.z) * 0.04;
         const pulse = 1 + Math.sin(t * 0.5 + ud.floatOffset) * 0.05;
-        let targetScale = ud.baseScale * pulse;
-
-        if (mouse3D) {
-          const dx = mesh.position.x - mouse3D.x;
-          const dy = mesh.position.y - mouse3D.y;
-          const dz = mesh.position.z - mouse3D.z;
-          const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
-          const repelRadius = 2.5;
-          if (dist < repelRadius && dist > 0.01) {
-            const force = (repelRadius - dist) / repelRadius * 0.5;
-            const repelX = dx / dist * force;
-            const repelY = dy / dist * force;
-            const repelZ = dz / dist * force;
-            const targetFrom = new THREE.Vector3(targetX, targetY, targetZ).add(new THREE.Vector3(repelX, repelY, repelZ));
-            mesh.position.lerp(targetFrom, 0.15);
-            targetScale *= 1 + force * 1.5;
-          } else {
-            mesh.position.x += (targetX - mesh.position.x) * 0.04;
-            mesh.position.y += (targetY - mesh.position.y) * 0.04;
-            mesh.position.z += (targetZ - mesh.position.z) * 0.04;
-          }
-        } else {
-          mesh.position.x += (targetX - mesh.position.x) * 0.04;
-          mesh.position.y += (targetY - mesh.position.y) * 0.04;
-          mesh.position.z += (targetZ - mesh.position.z) * 0.04;
-        }
-
+        const targetScale = ud.baseScale * pulse;
         mesh.scale.x += (targetScale - mesh.scale.x) * 0.08;
         mesh.scale.y += (targetScale - mesh.scale.y) * 0.08;
         mesh.scale.z += (targetScale - mesh.scale.z) * 0.08;
