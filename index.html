@@ -39,8 +39,8 @@
       text-decoration: none;
     }
     nav .logo img { height: 32px; border-radius: 6px; }
-    nav .logo span { color: #f9a826; }
-    nav .logo small { font-size: 0.7em; color: #ccc; font-weight: 700; line-height: 1; align-self: flex-end; }
+    nav .logo span.gold { color: #f9a826; }
+    nav .logo span.white { color: #fff; }
     nav ul {
       display: flex;
       gap: 1.5rem;
@@ -480,7 +480,7 @@
 
   <nav>
     <a href="#" class="logo">
-      <img src="logo.png" alt="Rumbo Rent"> <span>Rumbo</span> <small>Rent A Car</small>
+      <img src="logo.png" alt="Rumbo Rent"> <span class="gold">Rumbo</span> <span class="white">Rent A Car</span>
     </a>
     <button class="mobile-menu-btn" onclick="document.querySelector('nav ul').classList.toggle('open')"><span class="hamburger"></span></button>
     <ul>
