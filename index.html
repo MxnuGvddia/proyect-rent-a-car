@@ -1,65 +1,148 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rumbo Rent - Alquiler de Vehículos en El Salvador</title>
-  <meta name="description" content="Rumbo Rent - Alquiler de camionetas y sedanes desde $29/día en El Salvador. Los mejores precios, los mejores carros.">
+  <meta name="description" content="Rumbo Rent - Alquiler de camionetas y sedanes desde $29/día en El Salvador. Seguro gratis, sin cargos ocultos, entrega en aeropuerto.">
+  <meta name="keywords" content="Renta de autos El Salvador, alquiler de vehiculos El Salvador, Rumbo Rent, renta de carros">
   <link rel="icon" href="logo.png">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      color: #1a1a2e;
+      background: #000;
+      color: #fff;
       line-height: 1.6;
     }
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8rem 2rem;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: all 0.3s;
+    }
+    nav .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #fff;
+      text-decoration: none;
+    }
+    nav .logo img { height: 32px; border-radius: 6px; }
+    nav .logo span { color: #f9a826; }
+    nav ul {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+    nav ul li a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover { color: #f9a826; }
+    .nav-wa {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #25D366;
+      color: #fff;
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .nav-wa:hover { background: #1da851; }
     .hero {
       min-height: 100vh;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem;
-      background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
-      color: white;
+      padding: 6rem 2rem 4rem;
+      background: radial-gradient(circle 600px at 50% 200px, #1a1a2e, #000 80%);
       position: relative;
       overflow: hidden;
     }
     .hero::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.03)" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,208C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
-      background-size: cover;
+      top: -50%; right: -20%;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(249,168,38,0.08), transparent 70%);
       pointer-events: none;
     }
-    .hero-logo {
-      max-width: 200px;
-      margin-bottom: 2rem;
-      border-radius: 20px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    .hero-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      width: 100%;
     }
+    .hero-text { position: relative; z-index: 2; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(249,168,38,0.1);
+      border: 1px solid rgba(249,168,38,0.2);
+      padding: 0.35rem 1rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      color: #f9a826;
+      margin-bottom: 1.5rem;
+    }
+    .hero-badge svg { width: 16px; height: 16px; fill: #f9a826; }
     .hero h1 {
-      font-size: 3.5rem;
+      font-size: 3.2rem;
       font-weight: 800;
-      margin-bottom: 0.5rem;
-      letter-spacing: -1px;
-    }
-    .hero h1 span { color: #f9a826; }
-    .hero p {
-      font-size: 1.3rem;
-      opacity: 0.9;
+      line-height: 1.1;
       margin-bottom: 1rem;
     }
-    .hero .price {
-      font-size: 2rem;
-      font-weight: 700;
-      background: rgba(249, 168, 38, 0.15);
-      padding: 0.5rem 2rem;
-      border-radius: 50px;
-      border: 1px solid rgba(249, 168, 38, 0.3);
-      margin: 1rem 0 2rem;
+    .hero h1 .gold {
+      background: linear-gradient(135deg, #f9a826, #e88500);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 1.5rem;
+    }
+    .hero-bullets {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+    .hero-bullets li {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.3rem 0;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.85);
+    }
+    .hero-bullets li svg { width: 18px; height: 18px; fill: #25D366; flex-shrink: 0; }
+    .hero-image {
+      position: relative;
+      z-index: 2;
+    }
+    .hero-image img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
     }
     .btn {
       display: inline-flex;
@@ -69,211 +152,551 @@
       border-radius: 50px;
       text-decoration: none;
       font-weight: 600;
-      font-size: 1.1rem;
-      transition: all 0.3s ease;
+      font-size: 1.05rem;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
     }
-    .btn-primary {
-      background: #25D366;
-      color: white;
-    }
-    .btn-primary:hover {
-      background: #1da851;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
-    }
-    .btn-secondary {
-      background: transparent;
-      color: white;
-      border: 2px solid white;
-    }
-    .btn-secondary:hover {
-      background: white;
-      color: #302b63;
-    }
-    .hero-buttons {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .section {
-      padding: 5rem 2rem;
+    .btn-wa { background: #25D366; color: #fff; }
+    .btn-wa:hover { background: #1da851; transform: translateY(-2px); box-shadow: 0 10px 30px rgba(37,211,102,0.3); }
+    .btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.3); }
+    .btn-outline:hover { border-color: #f9a826; color: #f9a826; }
+    section { padding: 5rem 2rem; }
+    .section-inner {
       max-width: 1200px;
       margin: 0 auto;
+    }
+    .section-tag {
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      color: #f9a826;
+      margin-bottom: 0.5rem;
     }
     .section-title {
       text-align: center;
       font-size: 2.5rem;
-      margin-bottom: 3rem;
       font-weight: 700;
+      margin-bottom: 0.5rem;
     }
-    .section-title span { color: #f9a826; }
-    .gallery {
+    .section-title .gold {
+      background: linear-gradient(135deg, #f9a826, #e88500);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .section-sub {
+      text-align: center;
+      color: rgba(255,255,255,0.6);
+      font-size: 1.05rem;
+      margin-bottom: 3rem;
+    }
+    .fleet-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 1.5rem;
     }
-    .gallery img {
+    .car-card {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #111;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .car-card:hover { transform: translateY(-4px); border-color: rgba(249,168,38,0.3); }
+    .car-card img {
       width: 100%;
-      height: 280px;
+      height: 220px;
       object-fit: cover;
-      border-radius: 16px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      display: block;
     }
-    .gallery img:hover {
-      transform: scale(1.02);
-      box-shadow: 0 8px 40px rgba(0,0,0,0.2);
+    .car-card-body {
+      padding: 1.2rem;
     }
-    .features {
+    .car-card-body h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+    .car-card-body .price {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #f9a826;
+    }
+    .car-card-body .price small {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.5);
+    }
+    .steps-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 2rem;
+      counter-reset: step;
     }
-    .feature-card {
-      background: #f8f9fa;
+    .step-card {
+      text-align: center;
       padding: 2rem;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
       border-radius: 16px;
-      text-align: center;
-      transition: transform 0.3s ease;
+      position: relative;
+      counter-increment: step;
     }
-    .feature-card:hover { transform: translateY(-5px); }
-    .feature-card .icon {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-    .feature-card h3 { margin-bottom: 0.5rem; color: #302b63; }
-    .contact-section {
-      background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
-      color: white;
-      text-align: center;
-      padding: 5rem 2rem;
-    }
-    .contact-section h2 { font-size: 2.5rem; margin-bottom: 1rem; }
-    .contact-section h2 span { color: #f9a826; }
-    .contact-section p { font-size: 1.2rem; opacity: 0.9; margin-bottom: 2rem; }
-    .contact-info {
-      display: flex;
-      justify-content: center;
-      gap: 3rem;
-      flex-wrap: wrap;
-      margin-bottom: 2rem;
-    }
-    .contact-item {
+    .step-card::before {
+      content: counter(step);
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #f9a826, #e88500);
+      border-radius: 50%;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      font-size: 1.1rem;
-    }
-    .contact-item a {
-      color: #f9a826;
-      text-decoration: none;
-    }
-    .contact-item a:hover { text-decoration: underline; }
-    .social-links {
-      display: flex;
       justify-content: center;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+    .step-card .icon { font-size: 2.5rem; margin-bottom: 0.5rem; margin-top: 0.5rem; }
+    .step-card h3 { margin-bottom: 0.5rem; font-size: 1.1rem; }
+    .step-card p { color: rgba(255,255,255,0.6); font-size: 0.95rem; }
+    .req-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    .req-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: border-color 0.3s;
+    }
+    .req-card:hover { border-color: rgba(255,255,255,0.15); }
+    .req-card h3 {
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+    .req-card ul {
+      list-style: none;
+    }
+    .req-card ul li {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.4rem 0;
+      color: rgba(255,255,255,0.8);
+    }
+    .req-card ul li svg { width: 18px; height: 18px; fill: #25D366; flex-shrink: 0; }
+    .trust-badges {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .trust-item {
+      text-align: center;
+      padding: 2rem;
+      background: rgba(255,255,255,0.03);
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .trust-item .num {
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #f9a826, #e88500);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .trust-item p { color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-top: 0.3rem; }
+    .faq-list {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 1.2rem 0;
+    }
+    .faq-q {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+    .faq-q::after {
+      content: '+';
+      font-size: 1.3rem;
+      color: #f9a826;
+      transition: transform 0.3s;
+    }
+    .faq-item.open .faq-q::after { transform: rotate(45deg); }
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.95rem;
+    }
+    .faq-item.open .faq-a {
+      max-height: 200px;
+      padding-top: 0.8rem;
+    }
+    #contacto {
+      background: radial-gradient(circle 400px at 50% 0%, rgba(249,168,38,0.06), transparent 70%);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .contact-info-list {
+      display: flex;
+      flex-direction: column;
       gap: 1.5rem;
-      margin-top: 2rem;
     }
-    .social-links a {
-      color: white;
-      font-size: 1.5rem;
-      text-decoration: none;
-      opacity: 0.8;
-      transition: opacity 0.3s;
+    .contact-method {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
     }
-    .social-links a:hover { opacity: 1; }
+    .contact-method .icon {
+      width: 48px; height: 48px;
+      background: rgba(249,168,38,0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .contact-method .label { font-size: 0.85rem; color: rgba(255,255,255,0.5); }
+    .contact-method .value a { color: #f9a826; text-decoration: none; font-weight: 600; }
+    .contact-method .value a:hover { text-decoration: underline; }
+    .contact-cta {
+      text-align: center;
+      padding: 2rem;
+      background: rgba(37,211,102,0.05);
+      border: 1px solid rgba(37,211,102,0.15);
+      border-radius: 16px;
+    }
+    .contact-cta p { margin-bottom: 1.5rem; color: rgba(255,255,255,0.7); }
     footer {
       text-align: center;
       padding: 2rem;
-      background: #0f0c29;
-      color: rgba(255,255,255,0.6);
-      font-size: 0.9rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      color: rgba(255,255,255,0.4);
+      font-size: 0.85rem;
     }
+    footer a { color: #f9a826; text-decoration: none; }
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    .hamburger { width: 24px; height: 2px; background: #fff; display: block; position: relative; }
+    .hamburger::before, .hamburger::after {
+      content: '';
+      position: absolute;
+      width: 24px; height: 2px;
+      background: #fff;
+      left: 0;
+      transition: 0.3s;
+    }
+    .hamburger::before { top: -7px; }
+    .hamburger::after { top: 7px; }
     @media (max-width: 768px) {
+      nav ul { display: none; }
+      .mobile-menu-btn { display: block; }
+      nav ul.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0; right: 0;
+        background: rgba(0,0,0,0.95);
+        padding: 1rem 2rem;
+        gap: 1rem;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+      }
+      .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-bullets { display: inline-block; text-align: left; }
       .hero h1 { font-size: 2.2rem; }
-      .hero .price { font-size: 1.5rem; }
+      .hero-image { display: none; }
       .section-title { font-size: 1.8rem; }
-      .gallery { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+      .steps-grid { grid-template-columns: 1fr; }
+      .req-grid { grid-template-columns: 1fr; }
+      .trust-badges { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .fleet-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <section class="hero">
-    <img src="logo.png" alt="Rumbo Rent Logo" class="hero-logo">
-    <h1>Rumbo <span>Rent</span></h1>
-    <p>Alquiler de vehículos en <strong>El Salvador</strong></p>
-    <div class="price">Desde <strong>$29</strong> / día</div>
-    <div class="hero-buttons">
-      <a href="https://wa.me/50364450461" class="btn btn-primary" target="_blank">
-        WhatsApp
-      </a>
-      <a href="https://www.instagram.com/rumborent_" class="btn btn-secondary" target="_blank">
-        Instagram
-      </a>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2 class="section-title">Nuestros <span>Vehículos</span></h2>
-    <div class="gallery">
-      <img src="(1) Instagram_files/722036686_1548455313533589_8898268873966992010_n.jpg" alt="Vehículo Rumbo Rent">
-      <img src="(1) Instagram_files/723510244_1329278392673062_8522470620363068872_n.jpg" alt="Vehículo Rumbo Rent">
-      <img src="(1) Instagram_files/721415534_18112228111730329_1805440092267787467_n.jpg" alt="Vehículo Rumbo Rent">
-      <img src="(1) Instagram_files/721842363_18112230604730329_7852601891406353232_n.jpg" alt="Vehículo Rumbo Rent">
-      <img src="(1) Instagram_files/722203998_18112231642730329_3186039725698412010_n.jpg" alt="Vehículo Rumbo Rent">
-      <img src="(1) Instagram_files/723014803_18112229476730329_4232437437141705147_n.jpg" alt="Vehículo Rumbo Rent">
-      <img src="(1) Instagram_files/722098087_18112230214730329_6111665247518311160_n.jpg" alt="Vehículo Rumbo Rent">
-      <img src="(1) Instagram_files/719216297_18111896722730329_8406812831370900599_n.jpg" alt="Vehículo Rumbo Rent">
-    </div>
-  </section>
-
-  <section class="section">
-    <h2 class="section-title">¿Por qué Rumbo <span>Rent</span>?</h2>
-    <div class="features">
-      <div class="feature-card">
-        <div class="icon">💰</div>
-        <h3>Mejores Precios</h3>
-        <p>Desde $29 al día — la mejor relación calidad-precio en El Salvador.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon">🚗</div>
-        <h3>Variedad de Vehículos</h3>
-        <p>Camionetas y sedanes modernos, revisados y listos para rodar.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon">⭐</div>
-        <h3>Calidad Garantizada</h3>
-        <p>Vehículos en excelente estado para que viajes seguro y cómodo.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="contact-section">
-    <h2>Contácta <span>nos</span></h2>
-    <p>Reserva ya tu vehículo al mejor precio</p>
-    <div class="contact-info">
-      <div class="contact-item">
-        WhatsApp: <a href="https://wa.me/50364450461" target="_blank">+503 6445 0461</a>
-      </div>
-      <div class="contact-item">
-        Instagram: <a href="https://www.instagram.com/rumborent_" target="_blank">@rumborent_</a>
-      </div>
-    </div>
-    <a href="https://wa.me/50364450461" class="btn btn-primary" target="_blank">
-      Escribir al WhatsApp
+  <nav>
+    <a href="#" class="logo">
+      <img src="logo.png" alt="Rumbo Rent"> Rumbo <span>Rent</span>
     </a>
-    <div class="social-links">
-      <a href="https://www.instagram.com/rumborent_" target="_blank" title="Instagram">Instagram</a>
-      <a href="https://wa.me/50364450461" target="_blank" title="WhatsApp">WhatsApp</a>
+    <button class="mobile-menu-btn" onclick="document.querySelector('nav ul').classList.toggle('open')"><span class="hamburger"></span></button>
+    <ul>
+      <li><a href="#flota">Flota</a></li>
+      <li><a href="#como-funciona">Cómo funciona</a></li>
+      <li><a href="#requisitos">Requisitos</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="https://wa.me/50364450461" class="nav-wa" target="_blank">
+      WhatsApp
+    </a>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          +20 clientes confían en nosotros
+        </div>
+        <h1>Renta un carro en <span class="gold">El Salvador</span> en <span class="gold">pocos minutos</span></h1>
+        <p class="hero-sub">Descubre la forma más rápida, segura y sin complicaciones de alquilar tu vehículo en El Salvador.</p>
+        <ul class="hero-bullets">
+          <li>
+            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+            Seguro incluido
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+            Sin cargos ocultos
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+            Entrega en aeropuerto
+          </li>
+        </ul>
+        <a href="https://wa.me/50364450461" class="btn btn-wa" target="_blank">
+          Cotizar por WhatsApp
+        </a>
+      </div>
+      <div class="hero-image">
+        <img src="(1) Instagram_files/721415534_18112228111730329_1805440092267787467_n.jpg" alt="Vehículo Rumbo Rent">
+      </div>
+    </div>
+  </section>
+
+  <section id="flota">
+    <div class="section-inner">
+      <p class="section-tag">Nuestra Flota</p>
+      <h2 class="section-title">Vehículos <span class="gold">disponibles</span></h2>
+      <p class="section-sub">Elige el auto perfecto para tu viaje</p>
+      <div class="fleet-grid">
+        <div class="car-card">
+          <img src="(1) Instagram_files/722036686_1548455313533589_8898268873966992010_n.jpg" alt="Sedán">
+          <div class="car-card-body">
+            <h3>Sedán</h3>
+            <p style="color:rgba(255,255,255,0.5);font-size:0.85rem;margin-bottom:0.5rem;">Económico y cómodo</p>
+            <div class="price">$29 <small>/ día</small></div>
+          </div>
+        </div>
+        <div class="car-card">
+          <img src="(1) Instagram_files/723510244_1329278392673062_8522470620363068872_n.jpg" alt="Camioneta">
+          <div class="car-card-body">
+            <h3>Camioneta</h3>
+            <p style="color:rgba(255,255,255,0.5);font-size:0.85rem;margin-bottom:0.5rem;">Espacio y potencia</p>
+            <div class="price">$39 <small>/ día</small></div>
+          </div>
+        </div>
+        <div class="car-card">
+          <img src="(1) Instagram_files/721842363_18112230604730329_7852601891406353232_n.jpg" alt="SUV">
+          <div class="car-card-body">
+            <h3>SUV</h3>
+            <p style="color:rgba(255,255,255,0.5);font-size:0.85rem;margin-bottom:0.5rem;">Para toda la familia</p>
+            <div class="price">$49 <small>/ día</small></div>
+          </div>
+        </div>
+        <div class="car-card">
+          <img src="(1) Instagram_files/722203998_18112231642730329_3186039725698412010_n.jpg" alt="Pickup">
+          <div class="car-card-body">
+            <h3>Pickup</h3>
+            <p style="color:rgba(255,255,255,0.5);font-size:0.85rem;margin-bottom:0.5rem;">Carga y trabajo</p>
+            <div class="price">$55 <small>/ día</small></div>
+          </div>
+        </div>
+        <div class="car-card">
+          <img src="(1) Instagram_files/723014803_18112229476730329_4232437437141705147_n.jpg" alt="Camioneta 4x4">
+          <div class="car-card-body">
+            <h3>Camioneta 4x4</h3>
+            <p style="color:rgba(255,255,255,0.5);font-size:0.85rem;margin-bottom:0.5rem;">Aventura todo terreno</p>
+            <div class="price">$65 <small>/ día</small></div>
+          </div>
+        </div>
+        <div class="car-card">
+          <img src="(1) Instagram_files/722098087_18112230214730329_6111665247518311160_n.jpg" alt="Camioneta">
+          <div class="car-card-body">
+            <h3>Camioneta</h3>
+            <p style="color:rgba(255,255,255,0.5);font-size:0.85rem;margin-bottom:0.5rem;">Estilo y confort</p>
+            <div class="price">$45 <small>/ día</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="como-funciona" style="background: rgba(255,255,255,0.02);">
+    <div class="section-inner">
+      <p class="section-tag">Cómo funciona</p>
+      <h2 class="section-title">Pasos para <span class="gold">rentar</span></h2>
+      <p class="section-sub">En solo 3 pasos tienes tu vehículo listo</p>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="icon">🔍</div>
+          <h3>Elige tu vehículo</h3>
+          <p>Revisa nuestra flota y selecciona el auto que más te guste.</p>
+        </div>
+        <div class="step-card">
+          <div class="icon">💬</div>
+          <h3>Reserva por WhatsApp</h3>
+          <p>Escríbenos y te confirmamos la disponibilidad al instante.</p>
+        </div>
+        <div class="step-card">
+          <div class="icon">🚗</div>
+          <h3>Disfruta tu viaje</h3>
+          <p>Recibe el auto donde prefieras y disfruta tu recorrido.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="requisitos">
+    <div class="section-inner">
+      <p class="section-tag">Requisitos</p>
+      <h2 class="section-title">¿Qué necesitas para <span class="gold">rentar</span>?</h2>
+      <p class="section-sub">Documentos requeridos según tu perfil</p>
+      <div class="req-grid">
+        <div class="req-card">
+          <h3>Personas Internacionales</h3>
+          <ul>
+            <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Licencia de conducir vigente</li>
+            <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Pasaporte vigente</li>
+            <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Tarjeta de crédito</li>
+          </ul>
+        </div>
+        <div class="req-card">
+          <h3>Personas de El Salvador</h3>
+          <ul>
+            <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Licencia de conducir vigente</li>
+            <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> DUI vigente</li>
+            <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Comprobante de domicilio</li>
+          </ul>
+        </div>
+      </div>
+      <div class="trust-badges">
+        <div class="trust-item">
+          <div class="num">+20</div>
+          <p>Clientes satisfechos</p>
+        </div>
+        <div class="trust-item">
+          <div class="num">$29</div>
+          <p>Desde por día</p>
+        </div>
+        <div class="trust-item">
+          <div class="num">24/7</div>
+          <p>Soporte y atención</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" style="background: rgba(255,255,255,0.02);">
+    <div class="section-inner">
+      <p class="section-tag">FAQ</p>
+      <h2 class="section-title">Preguntas <span class="gold">frecuentes</span></h2>
+      <p class="section-sub">Resuelve tus dudas sobre alquilar con Rumbo Rent</p>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">¿Hacen entregas en el aeropuerto?</div>
+          <div class="faq-a">Sí, entregamos el vehículo en el Aeropuerto Internacional de El Salvador sin costo adicional.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">¿Cuál es el depósito requerido?</div>
+          <div class="faq-a">Solicitamos un depósito de $200 USD en efectivo o tarjeta de crédito, reembolsable al devolver el vehículo.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">¿Hay mínimo de días de alquiler?</div>
+          <div class="faq-a">El mínimo de alquiler es de 2 días. Para reservas de 7+ días aplican descuentos especiales.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">¿Qué formas de pago aceptan?</div>
+          <div class="faq-a">Aceptamos efectivo, transferencia bancaria y tarjetas de crédito/débito.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">¿El seguro está incluido?</div>
+          <div class="faq-a">Sí, todos nuestros vehículos cuentan con seguro incluido sin cargos ocultos.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="section-inner">
+      <p class="section-tag">Contacto</p>
+      <h2 class="section-title">Contácta <span class="gold">nos</span></h2>
+      <p class="section-sub">Estamos listos para ayudarte</p>
+      <div class="contact-grid">
+        <div class="contact-info-list">
+          <div class="contact-method">
+            <div class="icon">📞</div>
+            <div>
+              <div class="label">Llámanos</div>
+              <div class="value"><a href="tel:+50364450461">+503 6445 0461</a></div>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="icon">💬</div>
+            <div>
+              <div class="label">Chatea con nosotros</div>
+              <div class="value"><a href="https://wa.me/50364450461" target="_blank">WhatsApp</a></div>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="icon">📷</div>
+            <div>
+              <div class="label">Síguenos</div>
+              <div class="value"><a href="https://www.instagram.com/rumborent_" target="_blank">@rumborent_</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-cta">
+          <p>Reserva tu vehículo ahora y recibe atención personalizada al instante.</p>
+          <a href="https://wa.me/50364450461" class="btn btn-wa" target="_blank">
+            Cotizar por WhatsApp
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
   <footer>
-    &copy; 2026 Rumbo Rent — El Salvador. Todos los derechos reservados.
+    &copy; 2026 Rumbo Rent — El Salvador. Alquiler de vehículos. <a href="https://www.instagram.com/rumborent_" target="_blank">@rumborent_</a>
   </footer>
 
+  <script>
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => q.parentElement.classList.toggle('open'));
+    });
+  </script>
 </body>
 </html>
