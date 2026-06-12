@@ -762,11 +762,11 @@
       const isWire = i % 4 === 0;
       const mat = new THREE.MeshStandardMaterial({
         color: i % 3 === 0 ? gold : i % 3 === 1 ? amber : white,
-        metalness: 0.6,
-        roughness: 0.15,
+        metalness: 0.3,
+        roughness: 0.1,
         wireframe: isWire,
         transparent: true,
-        opacity: isWire ? 0.25 : 0.5 + Math.random() * 0.3,
+        opacity: isWire ? 0.4 : 0.8 + Math.random() * 0.2,
       });
       const mesh = new THREE.Mesh(geo, mat);
       const size = 0.25 + Math.random() * 0.5;
@@ -793,9 +793,9 @@
     }
 
     const lineMat = new THREE.LineBasicMaterial({
-      color: gold,
+      color: 0xffcc44,
       transparent: true,
-      opacity: 0.15,
+      opacity: 0.35,
     });
     const linePairs = [];
     for (let i = 0; i < shapePositions.length; i++) {
@@ -834,25 +834,25 @@
     particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
     particleGeo.setAttribute('size', new THREE.BufferAttribute(pSizes, 1));
     const particleMat = new THREE.PointsMaterial({
-      color: gold,
-      size: 0.035,
+      color: 0xffdd66,
+      size: 0.04,
       transparent: true,
-      opacity: 0.7,
+      opacity: 0.9,
       blending: THREE.AdditiveBlending,
       sizeAttenuation: true,
     });
     const particles = new THREE.Points(particleGeo, particleMat);
     scene.add(particles);
 
-    const ambientLight = new THREE.AmbientLight(0x444477, 0.8);
+    const ambientLight = new THREE.AmbientLight(0x5555aa, 1.2);
     scene.add(ambientLight);
-    const dirLight = new THREE.DirectionalLight(gold, 2.0);
+    const dirLight = new THREE.DirectionalLight(0xffcc44, 3.0);
     dirLight.position.set(3, 4, 5);
     scene.add(dirLight);
-    const dirLight2 = new THREE.DirectionalLight(amber, 1.0);
+    const dirLight2 = new THREE.DirectionalLight(amber, 1.5);
     dirLight2.position.set(-4, -1, 3);
     scene.add(dirLight2);
-    const pointLight = new THREE.PointLight(gold, 2, 20);
+    const pointLight = new THREE.PointLight(0xffdd66, 3, 25);
     pointLight.position.set(0, 0, 4);
     scene.add(pointLight);
 
@@ -911,7 +911,7 @@
 
       const mDist = Math.sqrt(mouseX * mouseX + mouseY * mouseY);
       const mStrength = Math.max(0, 1 - mDist) * 0.5;
-      lineMat.opacity = 0.15 + mStrength * 0.25;
+      lineMat.opacity = 0.35 + mStrength * 0.4;
 
       particles.rotation.y = t * 0.012 + mouseX * 0.05;
       particles.rotation.x = Math.sin(t * 0.008) * 0.08 + mouseY * 0.03;
