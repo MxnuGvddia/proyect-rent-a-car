@@ -858,7 +858,8 @@
 
     let mouseX = 0, mouseY = 0;
     let targetRotX = 0, targetRotY = 0;
-    let mouse3D = new THREE.Vector2();
+    let mouse3D = new THREE.Vector3();
+    const raycaster = new THREE.Raycaster();
 
     document.querySelector('.hero').addEventListener('mousemove', (e) => {
       const rect = renderer.domElement.getBoundingClientRect();
@@ -866,8 +867,9 @@
       mouseY = -((e.clientY - rect.top) / rect.height) * 2 + 1;
       targetRotX = mouseY * 0.4;
       targetRotY = mouseX * 0.4;
-      mouse3D.x = (e.clientX / window.innerWidth) * 2 - 1;
-      mouse3D.y = -(e.clientY / window.innerHeight) * 2 + 1;
+      raycaster.setFromCamera(new THREE.Vector2(mouseX, mouseY), camera);
+      const planeZ = new THREE.Plane(new THREE.Vector3(0, 0, 1), 2);
+      raycaster.ray.intersectPlane(planeZ, mouse3D);
     });
 
     document.querySelector('.hero').addEventListener('touchmove', (e) => {
@@ -891,7 +893,23 @@
         mesh.rotation.z += mesh.userData.speedZ;
         mesh.position.y = mesh.userData.baseY + Math.sin(t * mesh.userData.floatSpeed + mesh.userData.floatOffset) * mesh.userData.floatAmp;
         const pulse = 1 + Math.sin(t * 0.5 + mesh.userData.floatOffset) * 0.05;
-        const scale = mesh.userData.baseScale * pulse;
+        let scale = mesh.userData.baseScale * pulse;
+
+        if (mouse3D) {
+          const dx = mesh.position.x - mouse3D.x;
+          const dy = mesh.position.y - mouse3D.y;
+          const dz = mesh.position.z - mouse3D.z;
+          const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+          const repelRadius = 2.5;
+          if (dist < repelRadius && dist > 0.01) {
+            const force = (repelRadius - dist) / repelRadius * 0.5;
+            mesh.position.x += dx / dist * force;
+            mesh.position.y += dy / dist * force;
+            mesh.position.z += dz / dist * force;
+            scale *= 1 + force * 1.5;
+          }
+        }
+
         mesh.scale.set(scale, scale, scale);
       });
 
