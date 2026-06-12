@@ -232,6 +232,16 @@
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .fleet-category {
+      text-align: center;
+      color: #f9a826;
+      font-size: 1.1rem;
+      margin: 2.5rem 0 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
     .car-card {
       position: relative;
@@ -638,7 +648,7 @@
       <h2 class="section-title">Vehículos <span class="gold">disponibles</span></h2>
       <p class="section-sub">SUVs desde $40/día · Sedanes desde $30/día</p>
 
-      <h3 style="color:#f9a826;font-size:1.1rem;margin:2rem 0 1rem;text-transform:uppercase;letter-spacing:1px;">SUVs y familiares</h3>
+      <h3 class="fleet-category">SUVs y familiares</h3>
       <div class="fleet-grid">
         <div class="car-card">
           <div class="placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a1 1 0 0 0-.8-.4H5.24a2 2 0 0 0-1.8 1.1l-.8 1.63A6 6 0 0 0 2 12.42V16h2"/><circle cx="6.5" cy="16.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/></svg></div>
@@ -670,7 +680,7 @@
         </div>
       </div>
 
-      <h3 style="color:#f9a826;font-size:1.1rem;margin:2.5rem 0 1rem;text-transform:uppercase;letter-spacing:1px;">Sedanes</h3>
+      <h3 class="fleet-category">Sedanes</h3>
       <div class="fleet-grid">
         <div class="car-card">
           <div class="placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a1 1 0 0 0-.8-.4H5.24a2 2 0 0 0-1.8 1.1l-.8 1.63A6 6 0 0 0 2 12.42V16h2"/><circle cx="6.5" cy="16.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/></svg></div>
