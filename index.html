@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rumbo Rent - Alquiler de Vehículos en El Salvador</title>
+  <meta name="description" content="Rumbo Rent - Alquiler de camionetas y sedanes desde $29/día en El Salvador. Los mejores precios, los mejores carros.">
+  <link rel="icon" href="logo.png">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #1a1a2e;
+      line-height: 1.6;
+    }
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.03)" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,208C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+      background-size: cover;
+      pointer-events: none;
+    }
+    .hero-logo {
+      max-width: 200px;
+      margin-bottom: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      letter-spacing: -1px;
+    }
+    .hero h1 span { color: #f9a826; }
+    .hero p {
+      font-size: 1.3rem;
+      opacity: 0.9;
+      margin-bottom: 1rem;
+    }
+    .hero .price {
+      font-size: 2rem;
+      font-weight: 700;
+      background: rgba(249, 168, 38, 0.15);
+      padding: 0.5rem 2rem;
+      border-radius: 50px;
+      border: 1px solid rgba(249, 168, 38, 0.3);
+      margin: 1rem 0 2rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+    .btn-primary {
+      background: #25D366;
+      color: white;
+    }
+    .btn-primary:hover {
+      background: #1da851;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+    .btn-secondary:hover {
+      background: white;
+      color: #302b63;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      font-weight: 700;
+    }
+    .section-title span { color: #f9a826; }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .gallery img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 16px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .gallery img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.2);
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    .feature-card {
+      background: #f8f9fa;
+      padding: 2rem;
+      border-radius: 16px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .feature-card:hover { transform: translateY(-5px); }
+    .feature-card .icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .feature-card h3 { margin-bottom: 0.5rem; color: #302b63; }
+    .contact-section {
+      background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+      color: white;
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+    .contact-section h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+    .contact-section h2 span { color: #f9a826; }
+    .contact-section p { font-size: 1.2rem; opacity: 0.9; margin-bottom: 2rem; }
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.1rem;
+    }
+    .contact-item a {
+      color: #f9a826;
+      text-decoration: none;
+    }
+    .contact-item a:hover { text-decoration: underline; }
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .social-links a {
+      color: white;
+      font-size: 1.5rem;
+      text-decoration: none;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+    .social-links a:hover { opacity: 1; }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #0f0c29;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.9rem;
+    }
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.2rem; }
+      .hero .price { font-size: 1.5rem; }
+      .section-title { font-size: 1.8rem; }
+      .gallery { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <img src="logo.png" alt="Rumbo Rent Logo" class="hero-logo">
+    <h1>Rumbo <span>Rent</span></h1>
+    <p>Alquiler de vehículos en <strong>El Salvador</strong></p>
+    <div class="price">Desde <strong>$29</strong> / día</div>
+    <div class="hero-buttons">
+      <a href="https://wa.me/50364450461" class="btn btn-primary" target="_blank">
+        WhatsApp
+      </a>
+      <a href="https://www.instagram.com/rumborent_" class="btn btn-secondary" target="_blank">
+        Instagram
+      </a>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Nuestros <span>Vehículos</span></h2>
+    <div class="gallery">
+      <img src="(1) Instagram_files/722036686_1548455313533589_8898268873966992010_n.jpg" alt="Vehículo Rumbo Rent">
+      <img src="(1) Instagram_files/723510244_1329278392673062_8522470620363068872_n.jpg" alt="Vehículo Rumbo Rent">
+      <img src="(1) Instagram_files/721415534_18112228111730329_1805440092267787467_n.jpg" alt="Vehículo Rumbo Rent">
+      <img src="(1) Instagram_files/721842363_18112230604730329_7852601891406353232_n.jpg" alt="Vehículo Rumbo Rent">
+      <img src="(1) Instagram_files/722203998_18112231642730329_3186039725698412010_n.jpg" alt="Vehículo Rumbo Rent">
+      <img src="(1) Instagram_files/723014803_18112229476730329_4232437437141705147_n.jpg" alt="Vehículo Rumbo Rent">
+      <img src="(1) Instagram_files/722098087_18112230214730329_6111665247518311160_n.jpg" alt="Vehículo Rumbo Rent">
+      <img src="(1) Instagram_files/719216297_18111896722730329_8406812831370900599_n.jpg" alt="Vehículo Rumbo Rent">
+      <img src="(1) Instagram_files/588954591_18249497854293521_456681661300535826_n.jpg" alt="Vehículo Rumbo Rent">
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">¿Por qué Rumbo <span>Rent</span>?</h2>
+    <div class="features">
+      <div class="feature-card">
+        <div class="icon">💰</div>
+        <h3>Mejores Precios</h3>
+        <p>Desde $29 al día — la mejor relación calidad-precio en El Salvador.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🚗</div>
+        <h3>Variedad de Vehículos</h3>
+        <p>Camionetas y sedanes modernos, revisados y listos para rodar.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">⭐</div>
+        <h3>Calidad Garantizada</h3>
+        <p>Vehículos en excelente estado para que viajes seguro y cómodo.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <h2>Contácta <span>nos</span></h2>
+    <p>Reserva ya tu vehículo al mejor precio</p>
+    <div class="contact-info">
+      <div class="contact-item">
+        WhatsApp: <a href="https://wa.me/50364450461" target="_blank">+503 6445 0461</a>
+      </div>
+      <div class="contact-item">
+        Instagram: <a href="https://www.instagram.com/rumborent_" target="_blank">@rumborent_</a>
+      </div>
+    </div>
+    <a href="https://wa.me/50364450461" class="btn btn-primary" target="_blank">
+      Escribir al WhatsApp
+    </a>
+    <div class="social-links">
+      <a href="https://www.instagram.com/rumborent_" target="_blank" title="Instagram">Instagram</a>
+      <a href="https://wa.me/50364450461" target="_blank" title="WhatsApp">WhatsApp</a>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2026 Rumbo Rent — El Salvador. Todos los derechos reservados.
+  </footer>
+
+</body>
+</html>
