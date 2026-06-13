@@ -107,7 +107,7 @@
     .page.active .section-title,
     .page.active .section-sub { display: none; }
     .hero {
-      min-height: 85vh;
+      min-height: 50vh;
       display: flex;
       align-items: center;
       position: relative;
@@ -1142,7 +1142,7 @@
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ canvas: canvas2, alpha: true, antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 3));
 
     const gold = 0xf9a826;
     const amber = 0xe88500;
