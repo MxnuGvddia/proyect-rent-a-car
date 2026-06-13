@@ -1676,6 +1676,10 @@
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
     });
+
+    document.querySelector('nav ul').addEventListener('click', function(e) {
+      if (e.target.tagName === 'A') this.classList.remove('open');
+    });
   </script>
 </body>
 </html>
