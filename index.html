@@ -11,10 +11,24 @@
     function showPage(id) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.querySelectorAll('.hero .wrap').forEach(w => w.classList.remove('active'));
+      const extras = document.querySelectorAll('.hero-badge, .hero-extras, .hero-micro, .hero-blocks, .hero-deck, .hero-page-title ~ .btn');
       if (id === 'hero') {
         document.querySelector('.hero .wrap').classList.add('active');
+        document.getElementById('hero-page-title').innerHTML = 'Alquila el carro <br class="mobile-break"><span class="dim">perfecto.</span><br>Al mejor <span class="hit">precio.</span>';
+        extras.forEach(e => e.style.display = '');
       } else {
         document.getElementById(id).classList.add('active');
+        const titles = {
+          flota: 'Vehículos <span class="gold">disponibles</span>',
+          'como-funciona': 'Pasos para <span class="gold">rentar</span>',
+          requisitos: '¿Qué necesitas para <span class="gold">rentar</span>?',
+          partner: '¿Tienes un vehículo? <span class="gold">Únelo a nuestra flota</span>',
+          nosotros: 'Un nuevo <span class="gold">rumbo</span> comienza hoy',
+          faq: 'Preguntas <span class="gold">frecuentes</span>',
+          contacto: '<span class="gold">Contáctanos</span>'
+        };
+        document.getElementById('hero-page-title').innerHTML = titles[id] || '';
+        extras.forEach(e => e.style.display = 'none');
       }
     }
     </script>
@@ -113,6 +127,13 @@
       padding: 8rem 2rem 4rem;
       text-align: center;
     }
+    .hero-page-title {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .hero-page-title .gold { color: #f9a826; }
     .hero h1 {
       font-size: 3.5rem;
       font-weight: 800;
@@ -640,11 +661,7 @@
         <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         +20 clientes confían en nosotros
       </div>
-      <img src="logo.png" alt="Rumbo Rent" style="width:160px;height:160px;border-radius:24px;margin:0 auto 1.5rem;display:block;box-shadow:0 20px 60px rgba(0,0,0,0.5);">
-      <h1>
-        Alquila el carro <br class="mobile-break"><span class="dim">perfecto.</span><br>
-        Al mejor <span class="hit">precio.</span>
-      </h1>
+      <div id="hero-page-title" class="hero-page-title">Alquila el carro <br class="mobile-break"><span class="dim">perfecto.</span><br>Al mejor <span class="hit">precio.</span></div>
       <p class="hero-deck">Renta de vehículos en <b>El Salvador</b> desde <b>$30/día</b> con seguro incluido y sin cargos ocultos.</p>
       <div class="hero-blocks">
         <div class="hero-block">
