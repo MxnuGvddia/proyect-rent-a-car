@@ -10,6 +10,7 @@
   <script>
     function showPage(id) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.querySelector('.hero').classList.toggle('hero--page', id !== 'hero');
       const extras = document.querySelectorAll('.hero-badge, .hero-extras, .hero-micro, .hero-blocks, .hero-deck, .hero-page-title ~ .btn, .wrap > img');
       if (id === 'hero') {
         document.getElementById('hero-page-title').innerHTML = 'Alquila el carro <br class="mobile-break"><span class="dim">perfecto.</span><br>Al mejor <span class="hit">precio.</span>';
@@ -104,6 +105,7 @@
       overflow: hidden;
       background: #000;
     }
+    .hero--page { min-height: 40vh; }
     #hero-canvas {
       position: absolute;
       top: 0; left: 0;
