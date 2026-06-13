@@ -24,15 +24,16 @@
            extras.forEach(e => { e.style.display = ''; });
          } else {
            document.getElementById(id).classList.add('active');
-           const titles = {
-             flota: 'page-title-flota',
-             'como-reservar': 'page-title-como-reservar',
-             requisitos: 'page-title-requisitos',
-             partner: 'page-title-partner',
-             nosotros: 'page-title-nosotros',
-             faq: 'page-title-faq',
-             contacto: 'page-title-contacto',
-           };
+            const titles = {
+              flota: 'page-title-flota',
+              'como-reservar': 'page-title-como-reservar',
+              requisitos: 'page-title-requisitos',
+              partner: 'page-title-partner',
+              nosotros: 'page-title-nosotros',
+              faq: 'page-title-faq',
+              contacto: 'page-title-contacto',
+              redes: 'page-title-redes',
+            };
            titleEl.innerHTML = langData[currentLang][titles[id]] || '';
            extras.forEach(e => { e.style.display = 'none'; });
          }
@@ -55,8 +56,7 @@
       es: {
         'nav-inicio': 'Inicio', 'nav-flota': 'Flota',         'nav-como': '¿Cómo reservar?',
         'nav-requisitos': 'Requisitos', 'nav-partner': 'Únete a la flota',
-        'nav-nosotros': 'Nosotros', 'nav-faq': 'FAQ', 'nav-contacto': 'Contacto',
-        'nav-whatsapp': 'WhatsApp', 'nav-instagram': 'Instagram',
+        'nav-nosotros': 'Nosotros', 'nav-faq': 'FAQ', 'nav-contacto': 'Contacto', 'nav-redes': 'Redes Sociales',
         'hero-badge': '+20 clientes confían en nosotros',
         'hero-page-title': 'Alquila el carro <br class="mobile-break"><span class="dim">perfecto.</span><br>Al mejor <span class="hit">precio.</span>',
         'hero-deck': 'Renta de vehículos en <b>El Salvador</b> desde <b>$30/día</b> con seguro incluido y sin cargos ocultos.',
@@ -90,6 +90,8 @@
         'section-tag-nosotros': 'Quiénes somos',
         'section-tag-faq': 'FAQ', 'section-sub-faq': 'Resuelve tus dudas sobre alquilar con Rumbo Rent',
         'section-tag-contacto': 'Contacto', 'section-sub-contacto': 'Estamos listos para ayudarte',
+        'page-title-redes': '<span class="gold">Redes Sociales</span>',
+        'section-tag-redes': 'Síguenos', 'section-sub-redes': 'Encuéntranos en nuestras redes sociales',
         'about-intro': 'Somos una empresa salvadoreña creada por jóvenes emprendedores con la visión de ofrecer un servicio de renta de vehículos <strong>confiable, transparente</strong> y pensado para cada viajero.',
         'about-item-1': 'Vehículos cómodos y seguros',
         'about-item-2': 'Entrega en aeropuerto',
@@ -178,8 +180,7 @@
       en: {
         'nav-inicio': 'Home', 'nav-flota': 'Fleet',         'nav-como': 'How to Book',
         'nav-requisitos': 'Requirements', 'nav-partner': 'Join the Fleet',
-        'nav-nosotros': 'About Us', 'nav-faq': 'FAQ', 'nav-contacto': 'Contact',
-        'nav-whatsapp': 'WhatsApp', 'nav-instagram': 'Instagram',
+        'nav-nosotros': 'About Us', 'nav-faq': 'FAQ', 'nav-contacto': 'Contact', 'nav-redes': 'Social Media',
         'hero-badge': '+20 customers trust us',
         'hero-page-title': 'Rent the <br class="mobile-break"><span class="dim">perfect</span><br>car. At the best <span class="hit">price.</span>',
         'hero-deck': 'Car rental in <b>El Salvador</b> from <b>$30/day</b> with insurance included and no hidden fees.',
@@ -213,6 +214,8 @@
         'section-tag-nosotros': 'About Us',
         'section-tag-faq': 'FAQ', 'section-sub-faq': 'Answers about renting with Rumbo Rent',
         'section-tag-contacto': 'Contact', 'section-sub-contacto': 'We are ready to help you',
+        'page-title-redes': '<span class="gold">Social Media</span>',
+        'section-tag-redes': 'Follow Us', 'section-sub-redes': 'Find us on our social networks',
         'about-intro': 'We are a Salvadoran company created by young entrepreneurs with the vision of offering a <strong>reliable, transparent</strong> car rental service designed for every traveler.',
         'about-item-1': 'Comfortable and safe vehicles',
         'about-item-2': 'Airport delivery',
@@ -976,6 +979,9 @@
       font-size: 0.85rem;
     }
     footer a { color: #f9a826; text-decoration: none; }
+    footer .footer-social { display: inline-flex; align-items: center; gap: 0.75rem; margin-left: 0.75rem; }
+    footer .footer-social a { color: rgba(255,255,255,0.4); }
+    footer .footer-social a:hover { color: #f9a826; }
     .mobile-menu-btn {
       display: none;
       background: none;
@@ -1049,8 +1055,7 @@
       <li><a href="#" onclick="showPage('nosotros');return false;" data-i18n="nav-nosotros">Nosotros</a></li>
       <li><a href="#" onclick="showPage('faq');return false;" data-i18n="nav-faq">FAQ</a></li>
       <li><a href="#" onclick="showPage('contacto');return false;" data-i18n="nav-contacto">Contacto</a></li>
-      <li><a href="https://wa.me/50364450461" target="_blank" class="nav-social" style="color:#fff;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg> <span data-i18n="nav-whatsapp">WhatsApp</span></a></li>
-      <li><a href="https://www.instagram.com/rumborent_" target="_blank" class="nav-social" style="color:#fff;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg> <span data-i18n="nav-instagram">Instagram</span></a></li>
+      <li><a href="#" onclick="showPage('redes');return false;" data-i18n="nav-redes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> <span data-i18n="nav-redes">Redes Sociales</span></a></li>
       <li class="lang-switch">
         <div class="lang-toggle">
           <a href="#" class="lang-opt lang-es active" onclick="setLang('es');return false;">ES</a>
@@ -1088,7 +1093,7 @@
       <div class="hero-extras" data-i18n="hero-extras">
         Incluye: <b>sedanes</b>, <b>camionetas</b>, <b>SUVs</b> y <b>pickups</b> — todas las opciones para tu viaje.
       </div>
-      <a href="https://wa.me/50364450461" class="btn btn-gold" target="_blank" data-i18n="hero-cta">
+      <a href="https://wa.me/50375922093" class="btn btn-gold" target="_blank" data-i18n="hero-cta">
         Cotizar por WhatsApp
       </a>
       <span class="hero-micro" data-i18n="hero-micro">Reserva por WhatsApp y te respondemos al instante. <b>Sin papeleo complicado</b>, entrega rápida en todo El Salvador.</span>
@@ -1363,7 +1368,7 @@
               </li>
             </ul>
           </div>
-          <a href="https://wa.me/50364450461" class="btn btn-gold" target="_blank" style="margin-top:1.5rem;" data-i18n="partner-btn">
+          <a href="https://wa.me/50375922093" class="btn btn-gold" target="_blank" style="margin-top:1.5rem;" data-i18n="partner-btn">
             Quiero ser partner
           </a>
         </div>
@@ -1416,14 +1421,14 @@
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
             <div>
               <div class="label" data-i18n="contact-call">Llámanos</div>
-              <div class="value"><a href="tel:+50364450461">+503 6445 0461</a></div>
+              <div class="value"><a href="tel:+50375922093">+503 7592 2093</a></div>
             </div>
           </div>
           <div class="contact-method">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
             <div>
               <div class="label" data-i18n="contact-chat">Chatea con nosotros</div>
-              <div class="value"><a href="https://wa.me/50364450461" target="_blank">WhatsApp</a></div>
+              <div class="value"><a href="https://wa.me/50375922093" target="_blank">WhatsApp</a></div>
             </div>
           </div>
           <div class="contact-method">
@@ -1436,7 +1441,7 @@
         </div>
         <div class="contact-cta">
           <p data-i18n="contact-cta-text">Reserva tu vehículo ahora y recibe atención personalizada al instante.</p>
-          <a href="https://wa.me/50364450461" class="btn btn-gold" target="_blank" data-i18n="contact-wa-btn">
+          <a href="https://wa.me/50375922093" class="btn btn-gold" target="_blank" data-i18n="contact-wa-btn">
             Cotizar por WhatsApp
           </a>
         </div>
@@ -1444,8 +1449,54 @@
     </div>
   </section>
 
+  <section id="redes" class="page">
+    <div class="section-inner">
+      <p class="section-tag" data-i18n="section-tag-redes">Síguenos</p>
+      <h2 class="section-title" data-i18n="page-title-redes"><span class="gold">Redes Sociales</span></h2>
+      <p class="section-sub" data-i18n="section-sub-redes">Encuéntranos en nuestras redes sociales</p>
+      <div class="contact-grid">
+        <div class="contact-info-list">
+          <div class="contact-method">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+            <div>
+              <div class="label">Instagram</div>
+              <div class="value"><a href="https://www.instagram.com/rumborent_" target="_blank">@rumborent_</a></div>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
+            <div>
+              <div class="label">TikTok</div>
+              <div class="value"><a href="https://www.tiktok.com/@rumborent_?_r=1&_t=ZS-97BcyY4IlWS" target="_blank">@rumborent_</a></div>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></div>
+            <div>
+              <div class="label">Facebook</div>
+              <div class="value"><a href="https://www.facebook.com/share/1NrtjHBn3V/" target="_blank">Rumbo Rent</a></div>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+            <div>
+              <div class="label">WhatsApp</div>
+              <div class="value"><a href="https://wa.me/50375922093" target="_blank">+503 7592 2093</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <footer>
-    <span data-i18n="footer-text">&copy; 2026 Rumbo Rent — El Salvador. Alquiler de vehículos.</span> <a href="https://www.instagram.com/rumborent_" target="_blank">@rumborent_</a>
+    <span data-i18n="footer-text">&copy; 2026 Rumbo Rent — El Salvador. Alquiler de vehículos.</span>
+    <span class="footer-social">
+      <a href="https://www.instagram.com/rumborent_" target="_blank" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+      <a href="https://www.tiktok.com/@rumborent_?_r=1&_t=ZS-97BcyY4IlWS" target="_blank" title="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></a>
+      <a href="https://www.facebook.com/share/1NrtjHBn3V/" target="_blank" title="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      <a href="https://wa.me/50375922093" target="_blank" title="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
+    </span>
   </footer>
 
   <script>
