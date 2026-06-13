@@ -1041,7 +1041,8 @@
     ];
 
     const shapePositions = [];
-    for (let i = 0; i < 35; i++) {
+    const MIN_DIST_SQ = 1.44;
+    for (let i = 0; i < 25; i++) {
       const geo = geometries[i % geometries.length];
       const isWire = i % 4 === 0;
       const mat = new THREE.MeshStandardMaterial({
@@ -1053,12 +1054,18 @@
         opacity: isWire ? 0.15 : 0.25 + Math.random() * 0.2,
       });
       const mesh = new THREE.Mesh(geo, mat);
-      const size = 0.2 + Math.random() * 1.1;
+      const size = 0.3 + Math.random() * 0.8;
       mesh.scale.set(size, size, size);
-      const px = (Math.random() - 0.5) * 14;
-      const py = (Math.random() - 0.5) * 8;
-      const pz = (Math.random() - 0.5) * 10 - 3;
-      mesh.position.set(px, py, pz);
+      let px, py, pz, attempts = 0;
+      do {
+        px = (Math.random() - 0.5) * 14;
+        py = (Math.random() - 0.5) * 8;
+        pz = (Math.random() - 0.5) * 10 - 3;
+        attempts++;
+      } while (attempts < 50 && shapes.some(s => {
+        const dx = s.position.x - px, dy = s.position.y - py, dz = s.position.z - pz;
+        return dx * dx + dy * dy + dz * dz < MIN_DIST_SQ;
+      }));
       mesh.rotation.x = Math.random() * Math.PI;
       mesh.rotation.y = Math.random() * Math.PI;
       mesh.userData = {
