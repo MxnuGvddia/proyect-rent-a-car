@@ -11,7 +11,7 @@
     function showPage(id) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.querySelector('.hero').classList.toggle('hero--page', id !== 'hero');
-      const extras = document.querySelectorAll('.hero-badge, .hero-extras, .hero-micro, .hero-blocks, .hero-deck, .hero-page-title ~ .btn, .wrap > img');
+      const extras = document.querySelectorAll('.hero-badge, .hero-extras, .hero-micro, .hero-blocks, .hero-deck, .hero-page-title ~ .btn, .wrap > img, .page-previews');
       if (id === 'hero') {
         document.getElementById('hero-page-title').innerHTML = 'Alquila el carro <br class="mobile-break"><span class="dim">perfecto.</span><br>Al mejor <span class="hit">precio.</span>';
         extras.forEach(e => e.style.display = '');
@@ -208,6 +208,55 @@
       line-height: 1.5;
     }
     .hero-micro b { color: rgba(255,255,255,0.5); }
+    .page-previews {
+      margin-top: 4rem;
+      text-align: center;
+    }
+    .previews-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+    }
+    .previews-title .gold { color: #f9a826; }
+    .previews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .preview-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 1.2rem;
+      text-align: center;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .preview-card:hover {
+      border-color: rgba(249,168,38,0.3);
+      background: rgba(249,168,38,0.05);
+    }
+    .preview-card h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+    .preview-card p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.4;
+      margin-bottom: 1rem;
+    }
+    .preview-btn {
+      display: inline-block;
+      font-size: 0.85rem;
+      color: #f9a826;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    .preview-btn:hover { color: #fff; }
     .hero-badge {
       display: inline-flex;
       align-items: center;
@@ -641,6 +690,7 @@
       .trust-badges { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; }
       .fleet-grid { grid-template-columns: 1fr; }
+      .previews-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -697,6 +747,41 @@
         Cotizar por WhatsApp
       </a>
       <span class="hero-micro">Reserva por WhatsApp y te respondemos al instante. <b>Sin papeleo complicado</b>, entrega rápida en todo El Salvador.</span>
+      <div class="page-previews">
+        <h3 class="previews-title">Explora <span class="gold">Rumbo Rent</span></h3>
+        <div class="previews-grid">
+          <div class="preview-card">
+            <h4>Vehículos</h4>
+            <p>SUVs desde $40/día y sedanes desde $30/día. Jeep, Kia, Mitsubishi.</p>
+            <a href="#" onclick="showPage('flota');return false;" class="preview-btn">Ver flota</a>
+          </div>
+          <div class="preview-card">
+            <h4>Cómo funciona</h4>
+            <p>Elige, reserva por WhatsApp y disfruta. Así de fácil.</p>
+            <a href="#" onclick="showPage('como-funciona');return false;" class="preview-btn">Ver pasos</a>
+          </div>
+          <div class="preview-card">
+            <h4>Requisitos</h4>
+            <p>Licencia, DUI o pasaporte. Sin depósito obligatorio.</p>
+            <a href="#" onclick="showPage('requisitos');return false;" class="preview-btn">Ver requisitos</a>
+          </div>
+          <div class="preview-card">
+            <h4>Únete a la flota</h4>
+            <p>¿Tienes un vehículo 2015+? Genera ingresos con tu auto.</p>
+            <a href="#" onclick="showPage('partner');return false;" class="preview-btn">Más info</a>
+          </div>
+          <div class="preview-card">
+            <h4>Nosotros</h4>
+            <p>Jóvenes emprendedores salvadoreños, servicio transparente.</p>
+            <a href="#" onclick="showPage('nosotros');return false;" class="preview-btn">Conócenos</a>
+          </div>
+          <div class="preview-card">
+            <h4>FAQ</h4>
+            <p>Resuelve tus dudas sobre alquiler, seguro y pagos.</p>
+            <a href="#" onclick="showPage('faq');return false;" class="preview-btn">Ver FAQ</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
