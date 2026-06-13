@@ -410,7 +410,8 @@
     }
     .nav-wa:hover { background: #1da851; }
     .page { display: none; }
-    .page.active { display: block; padding-top: 5rem; position: relative; z-index: 1; background: rgba(0,0,0,0.6); backdrop-filter: blur(2px); }
+    .page.active { display: block; padding-top: 5rem; position: relative; z-index: 1; background: rgba(0,0,0,0.6); backdrop-filter: blur(2px); animation: pageIn 0.55s ease forwards; }
+    @keyframes pageIn { 0% { opacity: 0; transform: translateY(28px) scale(0.97); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
     .page.active .section-tag,
     .page.active .section-title,
     .page.active .section-sub { display: none; }
@@ -421,6 +422,7 @@
       position: relative;
       overflow: hidden;
       background: #000;
+      transition: min-height 0.5s ease;
     }
     .hero--page { min-height: 40vh; }
     #hero-canvas {
