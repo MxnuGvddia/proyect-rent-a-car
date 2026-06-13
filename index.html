@@ -355,13 +355,20 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      font-weight: 700;
-      font-size: 1.2rem;
+      font-weight: 400;
+      font-size: 1.3rem;
+      font-family: 'Rubik Puddles', cursive;
       color: #fff;
       text-decoration: none;
+      letter-spacing: 0.5px;
     }
     nav .logo img { height: 32px; border-radius: 6px; }
-    nav .logo span.gold { color: #f9a826; }
+    nav .logo span.gold {
+      background: linear-gradient(135deg, #f9a826, #e88500);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
     nav .logo span.white { color: #fff; }
     nav ul {
       display: flex;
@@ -1058,6 +1065,9 @@
       .previews-grid { grid-template-columns: 1fr; }
     }
   </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik+Puddles&display=swap" rel="stylesheet">
 </head>
 <body>
 
