@@ -28,6 +28,7 @@
       line-height: 1.6;
     }
     nav {
+      position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
       display: flex;
@@ -80,7 +81,7 @@
     }
     .nav-wa:hover { background: #1da851; }
     .page { display: none; }
-    .page.active { display: block; padding-top: 5rem; position: relative; z-index: 1; background: rgba(0,0,0,0.6); backdrop-filter: blur(2px); }
+    .page.active { display: block; padding-top: 5rem; }
     .hero {
       min-height: 100vh;
       display: flex;
@@ -92,15 +93,14 @@
     .hero .wrap { display: none; }
     .hero .wrap.active { display: block; }
     #hero-canvas {
-      position: fixed;
+      position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      z-index: -1;
+      z-index: 1;
     }
     .hero-overlay {
-      position: fixed;
+      position: absolute;
       inset: 0;
-      z-index: -1;
       background: radial-gradient(ellipse 800px 500px at 50% 30%, rgba(249,168,38,0.04), transparent 60%);
       z-index: 1;
       pointer-events: none;
@@ -614,9 +614,6 @@
 </head>
 <body>
 
-  <canvas id="hero-canvas"></canvas>
-  <div class="hero-overlay"></div>
-
   <nav>
     <a href="#" class="logo" onclick="showPage('hero');return false;">
       <span class="gold">Rumbo</span> <span class="white">Rent A Car</span>
@@ -636,6 +633,8 @@
   </nav>
 
   <section class="hero" id="top">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-overlay"></div>
     <div class="wrap active">
       <div class="hero-badge">
         <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
