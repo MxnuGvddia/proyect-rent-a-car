@@ -989,9 +989,7 @@
     .hamburger::before { top: -7px; }
     .hamburger::after { top: 7px; }
     @media (max-width: 768px) {
-      nav ul { display: none; }
-      .mobile-menu-btn { display: block; }
-      nav ul.open {
+      nav ul {
         display: flex;
         flex-direction: column;
         position: absolute;
@@ -1001,6 +999,18 @@
         padding: 1rem 2rem;
         gap: 1rem;
         border-bottom: 1px solid rgba(255,255,255,0.05);
+        opacity: 0;
+        transform: translateY(-10px);
+        pointer-events: none;
+        visibility: hidden;
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+      }
+      .mobile-menu-btn { display: block; }
+      nav ul.open {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+        visibility: visible;
       }
       .hero .wrap { padding: 7rem 1.5rem 3rem; }
       .hero h1 { font-size: 2.2rem; }
