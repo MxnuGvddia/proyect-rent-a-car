@@ -29,7 +29,16 @@
         document.getElementById('hero-page-title').innerHTML = titles[id] || '';
         extras.forEach(e => e.style.display = 'none');
       }
+      if (window.location.hash !== '#' + id) history.pushState(null, '', '#' + id);
     }
+    window.addEventListener('hashchange', function() {
+      const id = location.hash.slice(1) || 'hero';
+      showPage(id);
+    });
+    window.addEventListener('DOMContentLoaded', function() {
+      const id = location.hash.slice(1) || 'hero';
+      showPage(id);
+    });
     </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <style>
