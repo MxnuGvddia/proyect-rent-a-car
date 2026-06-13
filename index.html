@@ -10,10 +10,8 @@
   <script>
     function showPage(id) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.querySelectorAll('.hero .wrap').forEach(w => w.classList.remove('active'));
       const extras = document.querySelectorAll('.hero-badge, .hero-extras, .hero-micro, .hero-blocks, .hero-deck, .hero-page-title ~ .btn');
       if (id === 'hero') {
-        document.querySelector('.hero .wrap').classList.add('active');
         document.getElementById('hero-page-title').innerHTML = 'Alquila el carro <br class="mobile-break"><span class="dim">perfecto.</span><br>Al mejor <span class="hit">precio.</span>';
         extras.forEach(e => e.style.display = '');
       } else {
@@ -95,6 +93,9 @@
     .nav-wa:hover { background: #1da851; }
     .page { display: none; }
     .page.active { display: block; padding-top: 5rem; position: relative; z-index: 1; background: rgba(0,0,0,0.6); backdrop-filter: blur(2px); }
+    .page.active .section-tag,
+    .page.active .section-title,
+    .page.active .section-sub { display: none; }
     .hero {
       min-height: 100vh;
       display: flex;
@@ -103,8 +104,6 @@
       overflow: hidden;
       background: #000;
     }
-    .hero .wrap { display: none; }
-    .hero .wrap.active { display: block; }
     #hero-canvas {
       position: absolute;
       top: 0; left: 0;
@@ -1088,14 +1087,21 @@
     const lineMat = new THREE.LineBasicMaterial({
       color: gold,
       transparent: true,
-      opacity: 0.06,
+      opacity: 0.04,
     });
     const linePairs = [];
     for (let i = 0; i < shapePositions.length; i++) {
-      for (let j = i + 1; j < shapePositions.length; j++) {
+      const dists = [];
+      for (let j = 0; j < shapePositions.length; j++) {
+        if (i === j) continue;
         const dist = shapePositions[i].distanceTo(shapePositions[j]);
-        if (dist < 5) {
-          linePairs.push([i, j, dist]);
+        if (dist < 6) dists.push({ j, dist });
+      }
+      dists.sort((a, b) => a.dist - b.dist);
+      for (let k = 0; k < Math.min(2, dists.length); k++) {
+        const j = dists[k].j;
+        if (!linePairs.some(p => (p[0] === i && p[1] === j) || (p[0] === j && p[1] === i))) {
+          linePairs.push([i, j, dists[k].dist]);
         }
       }
     }
