@@ -26,7 +26,7 @@
            document.getElementById(id).classList.add('active');
            const titles = {
              flota: 'page-title-flota',
-             'como-funciona': 'page-title-como-funciona',
+             'como-reservar': 'page-title-como-reservar',
              requisitos: 'page-title-requisitos',
              partner: 'page-title-partner',
              nosotros: 'page-title-nosotros',
@@ -53,7 +53,7 @@
   <script>
     const langData = {
       es: {
-        'nav-inicio': 'Inicio', 'nav-flota': 'Flota', 'nav-como': 'Cómo funciona',
+        'nav-inicio': 'Inicio', 'nav-flota': 'Flota',         'nav-como': '¿Cómo reservar?',
         'nav-requisitos': 'Requisitos', 'nav-partner': 'Únete a la flota',
         'nav-nosotros': 'Nosotros', 'nav-faq': 'FAQ', 'nav-contacto': 'Contacto',
         'nav-whatsapp': 'WhatsApp', 'nav-instagram': 'Instagram',
@@ -77,14 +77,14 @@
         'preview-nosotros': 'Nosotros', 'preview-nosotros-desc': 'Jóvenes emprendedores salvadoreños, servicio transparente.', 'preview-nosotros-btn': 'Conócenos',
         'preview-faq': 'FAQ', 'preview-faq-desc': 'Resuelve tus dudas sobre alquiler, seguro y pagos.', 'preview-faq-btn': 'Ver FAQ',
         'page-title-flota': 'Vehículos <span class="gold">disponibles</span>',
-        'page-title-como-funciona': 'Pasos para <span class="gold">rentar</span>',
+        'page-title-como-reservar': 'Pasos para <span class="gold">rentar</span>',
         'page-title-requisitos': '¿Qué necesitas para <span class="gold">rentar</span>?',
         'page-title-partner': '¿Tienes un vehículo? <span class="gold">Únelo a nuestra flota</span>',
         'page-title-nosotros': 'Un nuevo <span class="gold">rumbo</span> comienza hoy',
         'page-title-faq': 'Preguntas <span class="gold">frecuentes</span>',
         'page-title-contacto': '<span class="gold">Contáctanos</span>',
         'section-tag-flota': 'Nuestra Flota', 'section-sub-flota': 'SUVs desde $40/día · Sedanes desde $30/día',
-        'section-tag-como-funciona': 'Cómo funciona', 'section-sub-como-funciona': 'En solo 3 pasos tienes tu vehículo listo',
+        'section-tag-como-reservar': 'Cómo funciona', 'section-sub-como-reservar': 'En solo 3 pasos tienes tu vehículo listo',
         'section-tag-requisitos': 'Requisitos', 'section-sub-requisitos': 'Documentos requeridos según tu perfil',
         'section-tag-partner': 'Únete a la flota', 'section-sub-partner': 'Genera ingresos adicionales rentando tu auto con nosotros',
         'section-tag-nosotros': 'Quiénes somos',
@@ -176,7 +176,7 @@
         'footer-text': '© 2026 Rumbo Rent — El Salvador. Alquiler de vehículos.',
       },
       en: {
-        'nav-inicio': 'Home', 'nav-flota': 'Fleet', 'nav-como': 'How It Works',
+        'nav-inicio': 'Home', 'nav-flota': 'Fleet',         'nav-como': 'How to Book',
         'nav-requisitos': 'Requirements', 'nav-partner': 'Join the Fleet',
         'nav-nosotros': 'About Us', 'nav-faq': 'FAQ', 'nav-contacto': 'Contact',
         'nav-whatsapp': 'WhatsApp', 'nav-instagram': 'Instagram',
@@ -200,14 +200,14 @@
         'preview-nosotros': 'About Us', 'preview-nosotros-desc': 'Salvadoran young entrepreneurs, transparent service.', 'preview-nosotros-btn': 'Learn More',
         'preview-faq': 'FAQ', 'preview-faq-desc': 'Answers about rental, insurance and payments.', 'preview-faq-btn': 'View FAQ',
         'page-title-flota': 'Available <span class="gold">Vehicles</span>',
-        'page-title-como-funciona': 'Steps to <span class="gold">Rent</span>',
+        'page-title-como-reservar': 'Steps to <span class="gold">Rent</span>',
         'page-title-requisitos': 'What do you need to <span class="gold">rent</span>?',
         'page-title-partner': 'Have a vehicle? <span class="gold">Join our fleet</span>',
         'page-title-nosotros': 'A new <span class="gold">path</span> begins today',
         'page-title-faq': 'Frequently Asked <span class="gold">Questions</span>',
         'page-title-contacto': '<span class="gold">Contact Us</span>',
         'section-tag-flota': 'Our Fleet', 'section-sub-flota': 'SUVs from $40/day · Sedans from $30/day',
-        'section-tag-como-funciona': 'How It Works', 'section-sub-como-funciona': 'Get your vehicle ready in just 3 steps',
+        'section-tag-como-reservar': 'How It Works', 'section-sub-como-reservar': 'Get your vehicle ready in just 3 steps',
         'section-tag-requisitos': 'Requirements', 'section-sub-requisitos': 'Required documents by profile',
         'section-tag-partner': 'Join the Fleet', 'section-sub-partner': 'Earn extra income by renting your car with us',
         'section-tag-nosotros': 'About Us',
@@ -315,7 +315,7 @@
       if (id !== 'hero') {
         const titles = {
           flota: langData[lang]['page-title-flota'],
-          'como-funciona': langData[lang]['page-title-como-funciona'],
+          'como-reservar': langData[lang]['page-title-como-reservar'],
           requisitos: langData[lang]['page-title-requisitos'],
           partner: langData[lang]['page-title-partner'],
           nosotros: langData[lang]['page-title-nosotros'],
@@ -1043,7 +1043,7 @@
     <ul>
       <li><a href="#" onclick="showPage('hero');return false;" data-i18n="nav-inicio">Inicio</a></li>
       <li><a href="#" onclick="showPage('flota');return false;" data-i18n="nav-flota">Flota</a></li>
-      <li><a href="#" onclick="showPage('como-funciona');return false;" data-i18n="nav-como">Cómo funciona</a></li>
+      <li><a href="#" onclick="showPage('como-reservar');return false;" data-i18n="nav-como">¿Cómo reservar?</a></li>
       <li><a href="#" onclick="showPage('requisitos');return false;" data-i18n="nav-requisitos">Requisitos</a></li>
       <li><a href="#" onclick="showPage('partner');return false;" data-i18n="nav-partner">Únete a la flota</a></li>
       <li><a href="#" onclick="showPage('nosotros');return false;" data-i18n="nav-nosotros">Nosotros</a></li>
@@ -1105,7 +1105,7 @@
             <svg class="preview-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
             <h4 data-i18n="preview-como">Cómo funciona</h4>
             <p data-i18n="preview-como-desc">Elige, reserva por WhatsApp y disfruta. Así de fácil.</p>
-            <a href="#" onclick="showPage('como-funciona');return false;" class="preview-btn" data-i18n="preview-como-btn">Ver pasos</a>
+            <a href="#" onclick="showPage('como-reservar');return false;" class="preview-btn" data-i18n="preview-como-btn">Ver pasos</a>
           </div>
           <div class="preview-card">
             <svg class="preview-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
@@ -1245,11 +1245,11 @@
     </div>
   </section>
 
-  <section id="como-funciona" class="page" style="background: rgba(255,255,255,0.02);">
+  <section id="como-reservar" class="page" style="background: rgba(255,255,255,0.02);">
     <div class="section-inner">
-      <p class="section-tag" data-i18n="section-tag-como-funciona">Cómo funciona</p>
-      <h2 class="section-title" data-i18n="page-title-como-funciona">Pasos para <span class="gold">rentar</span></h2>
-      <p class="section-sub" data-i18n="section-sub-como-funciona">En solo 3 pasos tienes tu vehículo listo</p>
+      <p class="section-tag" data-i18n="section-tag-como-reservar">Cómo funciona</p>
+      <h2 class="section-title" data-i18n="page-title-como-reservar">Pasos para <span class="gold">rentar</span></h2>
+      <p class="section-sub" data-i18n="section-sub-como-reservar">En solo 3 pasos tienes tu vehículo listo</p>
       <div class="steps-grid">
         <div class="step-card">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
