@@ -664,11 +664,16 @@
       margin-bottom: 3rem;
     }
     .fleet-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 1.5rem;
       max-width: 900px;
       margin: 0 auto;
+    }
+    .fleet-grid .car-card {
+      flex: 0 1 320px;
+      min-width: 280px;
     }
     .fleet-category {
       text-align: center;
@@ -1028,7 +1033,6 @@
       .req-grid { grid-template-columns: 1fr; }
       .trust-badges { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; }
-      .fleet-grid { grid-template-columns: 1fr; }
       .previews-grid { grid-template-columns: 1fr; }
     }
   </style>
@@ -1237,6 +1241,20 @@
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="car-forte-gt-feat-2">Pantalla multimedia + Bluetooth</span></li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="car-forte-gt-feat-3">Aire acondicionado</span></li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="car-forte-gt-feat-4">Sin depósito</span></li>
+            </ul>
+            <div class="price">$30 <small data-i18n="price-per-day">/ día</small></div>
+          </div>
+        </div>
+        <div class="car-card">
+          <div class="placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a1 1 0 0 0-.8-.4H5.24a2 2 0 0 0-1.8 1.1l-.8 1.63A6 6 0 0 0 2 12.42V16h2"/><circle cx="6.5" cy="16.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/></svg></div>
+          <div class="car-card-body">
+            <div class="badge" data-i18n="car-forte-ex-badge">Black Edition</div>
+            <h3 data-i18n="car-forte-ex-name">Kia Forte EX 2019</h3>
+            <ul class="car-card-features">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="car-forte-ex-feat-1">Edición Black Edition</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="car-forte-ex-feat-2">Gran eficiencia de combustible</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="car-forte-ex-feat-3">Sin tarifas ocultas</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="car-forte-ex-feat-4">Entrega en aeropuerto</span></li>
             </ul>
             <div class="price">$30 <small data-i18n="price-per-day">/ día</small></div>
           </div>
