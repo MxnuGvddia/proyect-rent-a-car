@@ -8,29 +8,38 @@
   <meta name="keywords" content="Renta de autos El Salvador, alquiler de vehiculos El Salvador, Rumbo Rent, renta de carros">
   <link rel="icon" href="logo.png">
    <script>
-    function showPage(id) {
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.querySelector('.hero').classList.toggle('hero--page', id !== 'hero');
-      const extras = document.querySelectorAll('.hero-badge, .hero-extras, .hero-micro, .hero-blocks, .hero-deck, .hero-page-title ~ .btn, .wrap > img, .page-previews');
-      if (id === 'hero') {
-        document.getElementById('hero-page-title').innerHTML = langData[currentLang]['hero-page-title'];
-        extras.forEach(e => e.style.display = '');
-      } else {
-        document.getElementById(id).classList.add('active');
-        const titles = {
-          flota: 'page-title-flota',
-          'como-funciona': 'page-title-como-funciona',
-          requisitos: 'page-title-requisitos',
-          partner: 'page-title-partner',
-          nosotros: 'page-title-nosotros',
-          faq: 'page-title-faq',
-          contacto: 'page-title-contacto',
-        };
-        document.getElementById('hero-page-title').innerHTML = langData[currentLang][titles[id]] || '';
-        extras.forEach(e => e.style.display = 'none');
-      }
-      if (window.location.hash !== '#' + id) history.pushState(null, '', '#' + id);
-    }
+     function showPage(id) {
+       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+       document.querySelector('.hero').classList.toggle('hero--page', id !== 'hero');
+       const wrap = document.querySelector('.hero .wrap');
+       const titleEl = document.getElementById('hero-page-title');
+       const extras = document.querySelectorAll('.hero-badge, .hero-extras, .hero-micro, .hero-blocks, .hero-deck, .hero-page-title ~ .btn, .wrap > img, .page-previews');
+       wrap.classList.remove('anim-in');
+       wrap.classList.add('fade-out');
+       clearTimeout(window._pageTimer);
+       window._pageTimer = setTimeout(() => {
+         wrap.classList.remove('fade-out');
+         if (id === 'hero') {
+           titleEl.innerHTML = langData[currentLang]['hero-page-title'];
+           extras.forEach(e => { e.style.display = ''; });
+         } else {
+           document.getElementById(id).classList.add('active');
+           const titles = {
+             flota: 'page-title-flota',
+             'como-funciona': 'page-title-como-funciona',
+             requisitos: 'page-title-requisitos',
+             partner: 'page-title-partner',
+             nosotros: 'page-title-nosotros',
+             faq: 'page-title-faq',
+             contacto: 'page-title-contacto',
+           };
+           titleEl.innerHTML = langData[currentLang][titles[id]] || '';
+           extras.forEach(e => { e.style.display = 'none'; });
+         }
+         wrap.classList.add('anim-in');
+         if (window.location.hash !== '#' + id) history.pushState(null, '', '#' + id);
+       }, 200);
+     }
     window.addEventListener('hashchange', function() {
       const id = location.hash.slice(1) || 'hero';
       showPage(id);
@@ -447,6 +456,14 @@
       padding: 0.5rem 2rem 4rem;
       text-align: center;
     }
+    .hero .wrap.fade-out {
+      animation: heroOut 0.2s ease forwards;
+    }
+    .hero .wrap.anim-in {
+      animation: heroIn 0.5s ease forwards;
+    }
+    @keyframes heroOut { 0% { opacity: 1; transform: translateY(0); } 100% { opacity: 0; transform: translateY(-14px); } }
+    @keyframes heroIn { 0% { opacity: 0; transform: translateY(18px); } 100% { opacity: 1; transform: translateY(0); } }
     .hero .wrap img { display: block; margin: 0 auto 1.5rem; }
     .hero-page-title {
       font-size: 3rem;
