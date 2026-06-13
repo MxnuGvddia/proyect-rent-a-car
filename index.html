@@ -1041,7 +1041,7 @@
     ];
 
     const shapePositions = [];
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 35; i++) {
       const geo = geometries[i % geometries.length];
       const isWire = i % 4 === 0;
       const mat = new THREE.MeshStandardMaterial({
@@ -1053,7 +1053,7 @@
         opacity: isWire ? 0.15 : 0.25 + Math.random() * 0.2,
       });
       const mesh = new THREE.Mesh(geo, mat);
-      const size = 0.3 + Math.random() * 0.7;
+      const size = 0.2 + Math.random() * 1.1;
       mesh.scale.set(size, size, size);
       const px = (Math.random() - 0.5) * 14;
       const py = (Math.random() - 0.5) * 8;
