@@ -326,6 +326,8 @@
           contacto: langData[lang]['page-title-contacto'],
         };
         document.getElementById('hero-page-title').innerHTML = titles[id] || '';
+      } else {
+        document.getElementById('hero-page-title').innerHTML = langData[lang]['hero-page-title'];
       }
     }
 
