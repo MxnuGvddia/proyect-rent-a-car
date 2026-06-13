@@ -664,16 +664,11 @@
       margin-bottom: 3rem;
     }
     .fleet-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
       max-width: 900px;
       margin: 0 auto;
-    }
-    .fleet-grid .car-card {
-      flex: 0 1 320px;
-      min-width: 280px;
     }
     .fleet-category {
       text-align: center;
@@ -1033,6 +1028,7 @@
       .req-grid { grid-template-columns: 1fr; }
       .trust-badges { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; }
+      .fleet-grid { grid-template-columns: 1fr; }
       .previews-grid { grid-template-columns: 1fr; }
     }
   </style>
