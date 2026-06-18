@@ -39,7 +39,8 @@
            extras.forEach(e => { e.style.display = 'none'; });
          }
          wrap.classList.add('anim-in');
-         if (window.location.hash !== '#' + id) history.pushState(null, '', '#' + id);
+          if (window.location.hash !== '#' + id) history.pushState(null, '', '#' + id);
+          if (id === 'cobertura' && typeof coberturaMap !== 'undefined') { setTimeout(() => coberturaMap.invalidateSize(), 350); }
        }, 200);
      }
     window.addEventListener('hashchange', function() {
@@ -1126,22 +1127,31 @@
       margin-bottom: 1rem;
     }
     .map-container {
-      max-width: 600px;
+      max-width: 800px;
       margin: 2rem auto 0;
-      padding: 0 1rem;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(249,168,38,0.15);
     }
-    .map-container .map-svg {
+    .map-leaflet {
       width: 100%;
-      height: auto;
-      display: block;
+      height: 450px;
+      background: #111;
     }
     @media (max-width: 480px) {
-      .map-container { max-width: 100%; }
+      .map-leaflet { height: 320px; }
     }
+    .leaflet-control-zoom a { background: #1a1a1a !important; color: #f9a826 !important; border-color: rgba(249,168,38,0.3) !important; }
+    .leaflet-control-attribution { background: rgba(0,0,0,0.7) !important; color: rgba(255,255,255,0.5) !important; font-size: 10px !important; }
+    .leaflet-control-attribution a { color: #f9a826 !important; }
+    .leaflet-popup-content-wrapper { background: #1a1a1a !important; color: #fff !important; border: 1px solid rgba(249,168,38,0.3) !important; border-radius: 12px !important; }
+    .leaflet-popup-tip { background: #1a1a1a !important; }
+    .leaflet-popup-content { margin: 10px 14px !important; font-size: 13px !important; }
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 </head>
 <body>
 
@@ -1615,32 +1625,7 @@
       <h2 class="section-title" data-i18n="page-title-cobertura">Cobertura <span class="gold">Nacional</span></h2>
       <p class="section-sub" data-i18n="section-sub-cobertura">Recorre El Salvador con total libertad</p>
       <div class="map-container">
-        <svg class="map-svg" viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M85 115 C100 95, 160 80, 220 75 C280 70, 340 75, 380 85 C410 93, 430 105, 435 125 C438 145, 430 165, 415 180 C405 190, 390 200, 375 210 C355 220, 340 225, 320 230 C290 238, 260 242, 230 244 C200 246, 170 244, 145 240 C120 236, 100 228, 80 218 C60 208, 45 195, 38 178 C30 160, 32 140, 42 125 C52 112, 68 120, 85 115Z" stroke="#f9a826" stroke-width="2.5" stroke-linejoin="round" fill="rgba(249,168,38,0.06)"/>
-          <g class="map-car">
-            <path d="M185 165 C185 160, 190 155, 200 155 L210 155 L215 148 C218 144, 225 142, 232 142 L268 142 C275 142, 282 144, 285 148 L290 155 L300 155 C310 155, 315 160, 315 165 L315 175 C315 180, 310 185, 300 185 L200 185 C190 185, 185 180, 185 175Z" fill="#f9a826" opacity="0.9"/>
-            <circle cx="210" cy="185" r="10" fill="#111" stroke="#f9a826" stroke-width="2"/>
-            <circle cx="210" cy="185" r="4" fill="#f9a826"/>
-            <circle cx="290" cy="185" r="10" fill="#111" stroke="#f9a826" stroke-width="2"/>
-            <circle cx="290" cy="185" r="4" fill="#f9a826"/>
-            <rect x="215" y="150" width="64" height="5" rx="2" fill="rgba(0,0,0,0.3)"/>
-          </g>
-          <g class="map-marker marker-airport">
-            <circle cx="205" cy="195" r="5" fill="#f9a826"/>
-            <circle cx="205" cy="195" r="8" fill="rgba(249,168,38,0.2)"/>
-            <path d="M203 189 L207 189 L207 195 L210 196 L210 197 L205 196 L200 197 L200 196 L203 195Z" fill="#111"/>
-          </g>
-          <g class="map-marker marker-beach">
-            <circle cx="130" cy="228" r="5" fill="#f9a826"/>
-            <circle cx="130" cy="228" r="8" fill="rgba(249,168,38,0.2)"/>
-            <path d="M127 225 C129 223, 131 223, 133 225 C135 227, 133 229, 130 230 C127 229, 125 227, 127 225Z" fill="#111"/>
-          </g>
-          <g class="map-marker marker-volcano">
-            <circle cx="310" cy="120" r="5" fill="#f9a826"/>
-            <circle cx="310" cy="120" r="8" fill="rgba(249,168,38,0.2)"/>
-            <path d="M308 125 L310 118 L312 125Z" fill="#111"/>
-          </g>
-        </svg>
+        <div id="map" class="map-leaflet"></div>
       </div>
     </div>
   </section>
@@ -1889,6 +1874,40 @@
 
     document.querySelector('nav ul').addEventListener('click', function(e) {
       if (e.target.tagName === 'A') this.classList.remove('open');
+    });
+  </script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const coberturaMap = L.map('map', { zoomControl: false }).setView([13.7, -88.9], 8.5);
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',
+        subdomains: 'abcd',
+        maxZoom: 19
+      }).addTo(coberturaMap);
+      L.control.zoom({ position: 'bottomright' }).addTo(coberturaMap);
+
+      const goldIcon = L.divIcon({
+        className: '',
+        html: '<svg viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="#f9a826" opacity="0.25"/><circle cx="12" cy="12" r="6" fill="#f9a826"/><circle cx="12" cy="12" r="3" fill="#111"/></svg>',
+        iconSize: [28, 28],
+        iconAnchor: [14, 14]
+      });
+
+      const carIcon = L.divIcon({
+        className: '',
+        html: '<svg viewBox="0 0 24 24" width="36" height="36"><circle cx="12" cy="12" r="14" fill="#f9a826" opacity="0.15"/><path d="M5 14 C5 12.5, 6 11.5, 7 11.5 L7.5 11.5 L8 9.5 C8.3 8.5, 9.5 8, 11 8 L15 8 C16.5 8, 17.7 8.5, 18 9.5 L18.5 11.5 L19 11.5 C20 11.5, 21 12.5, 21 14 L21 15 C21 15.5, 20.5 16, 20 16 L19 16 C19 17, 18 18, 17 18 C16 18, 15 17, 15 16 L11 16 C11 17, 10 18, 9 18 C8 18, 7 17, 7 16 L6 16 C5.5 16, 5 15.5, 5 15 Z" fill="#f9a826"/><circle cx="9" cy="16" r="2" fill="#111"/><circle cx="17" cy="16" r="2" fill="#111"/></svg>',
+        iconSize: [36, 36],
+        iconAnchor: [18, 18]
+      });
+
+      L.marker([13.6929, -89.2182], { icon: carIcon }).addTo(coberturaMap).bindPopup('San Salvador — <b>Rumbo Rent</b>');
+      L.marker([13.4447, -89.0568], { icon: goldIcon }).addTo(coberturaMap).bindPopup('Aeropuerto Internacional');
+      L.marker([13.5028, -89.3990], { icon: goldIcon }).addTo(coberturaMap).bindPopup('El Tunco — Playa');
+      L.marker([13.8527, -89.6300], { icon: goldIcon }).addTo(coberturaMap).bindPopup('Volcán Santa Ana');
+      L.marker([13.8700, -89.5500], { icon: goldIcon }).addTo(coberturaMap).bindPopup('Lago de Coatepeque');
+      L.marker([13.4830, -88.1830], { icon: goldIcon }).addTo(coberturaMap).bindPopup('San Miguel');
+      L.marker([13.9840, -89.6700], { icon: goldIcon }).addTo(coberturaMap).bindPopup('Ruta de las Flores');
     });
   </script>
 </body>
