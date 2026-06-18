@@ -26,13 +26,14 @@
            document.getElementById(id).classList.add('active');
             const titles = {
               flota: 'page-title-flota',
-              'como-reservar': 'page-title-como-reservar',
-              requisitos: 'page-title-requisitos',
-              partner: 'page-title-partner',
-              nosotros: 'page-title-nosotros',
-               faq: 'page-title-faq',
-               redes: 'page-title-redes',
-               legal: 'page-title-legal',
+               'como-reservar': 'page-title-como-reservar',
+               requisitos: 'page-title-requisitos',
+               partner: 'page-title-partner',
+               nosotros: 'page-title-nosotros',
+                faq: 'page-title-faq',
+                redes: 'page-title-redes',
+                legal: 'page-title-legal',
+                cobertura: 'page-title-cobertura',
              };
            titleEl.innerHTML = langData[currentLang][titles[id]] || '';
            extras.forEach(e => { e.style.display = 'none'; });
@@ -56,7 +57,7 @@
       es: {
         'nav-inicio': 'Inicio', 'nav-flota': 'Flota',         'nav-como': '¿Cómo reservar?',
         'nav-requisitos': 'Requisitos', 'nav-partner': 'Únete a la flota',
-        'nav-nosotros': 'Nosotros', 'nav-faq': 'FAQ', 'nav-redes': 'Redes Sociales',
+        'nav-nosotros': 'Nosotros', 'nav-faq': 'FAQ', 'nav-redes': 'Redes Sociales', 'nav-cobertura': 'Cobertura Nacional',
         'hero-badge': '+20 clientes confían en nosotros',
         'hero-page-title': 'Alquila el carro <br class="mobile-break"><span class="dim">perfecto.</span><br>Al mejor <span class="hit">precio.</span>',
         'hero-deck': 'Renta de vehículos en <b>El Salvador</b> desde <b>$30/día</b> con seguro incluido y sin cargos ocultos.',
@@ -88,8 +89,10 @@
         'section-tag-partner': 'Únete a la flota', 'section-sub-partner': 'Genera ingresos adicionales rentando tu auto con nosotros',
         'section-tag-nosotros': 'Quiénes somos',
         'section-tag-faq': 'FAQ', 'section-sub-faq': 'Resuelve tus dudas sobre alquilar con Rumbo Rent',
-        'page-title-redes': '<span class="gold">Redes Sociales</span>',
-        'section-tag-redes': 'Síguenos', 'section-sub-redes': 'Encuéntranos en nuestras redes sociales',
+         'page-title-redes': '<span class="gold">Redes Sociales</span>',
+         'section-tag-redes': 'Síguenos', 'section-sub-redes': 'Encuéntranos en nuestras redes sociales',
+         'page-title-cobertura': 'Cobertura <span class="gold">Nacional</span>',
+         'section-tag-cobertura': 'Cobertura', 'section-sub-cobertura': 'Recorre El Salvador con total libertad',
         'about-intro': 'Somos una empresa salvadoreña creada por jóvenes emprendedores con la visión de ofrecer un servicio de renta de vehículos <strong>confiable, transparente</strong> y pensado para cada viajero.',
         'about-item-1': 'Vehículos cómodos y seguros',
         'about-item-2': 'Entrega en aeropuerto',
@@ -203,7 +206,7 @@
       en: {
         'nav-inicio': 'Home', 'nav-flota': 'Fleet',         'nav-como': 'How to Book',
         'nav-requisitos': 'Requirements', 'nav-partner': 'Join the Fleet',
-        'nav-nosotros': 'About Us', 'nav-faq': 'FAQ', 'nav-redes': 'Social Media',
+        'nav-nosotros': 'About Us', 'nav-faq': 'FAQ', 'nav-redes': 'Social Media', 'nav-cobertura': 'National Coverage',
         'hero-badge': '+20 customers trust us',
         'hero-page-title': 'Rent the <br class="mobile-break"><span class="dim">perfect</span><br>car. At the best <span class="hit">price.</span>',
         'hero-deck': 'Car rental in <b>El Salvador</b> from <b>$30/day</b> with insurance included and no hidden fees.',
@@ -237,6 +240,8 @@
         'section-tag-faq': 'FAQ', 'section-sub-faq': 'Answers about renting with Rumbo Rent',
         'page-title-redes': '<span class="gold">Social Media</span>',
         'section-tag-redes': 'Follow Us', 'section-sub-redes': 'Find us on our social networks',
+        'page-title-cobertura': 'National <span class="gold">Coverage</span>',
+        'section-tag-cobertura': 'Coverage', 'section-sub-cobertura': 'Explore El Salvador with total freedom',
         'about-intro': 'We are a Salvadoran company created by young entrepreneurs with the vision of offering a <strong>reliable, transparent</strong> car rental service designed for every traveler.',
         'about-item-1': 'Comfortable and safe vehicles',
         'about-item-2': 'Airport delivery',
@@ -370,7 +375,8 @@
           nosotros: langData[lang]['page-title-nosotros'],
           faq: langData[lang]['page-title-faq'],
           redes: langData[lang]['page-title-redes'],
-          legal: langData[lang]['page-title-legal'],
+           legal: langData[lang]['page-title-legal'],
+           cobertura: langData[lang]['page-title-cobertura'],
         };
         document.getElementById('hero-page-title').innerHTML = titles[id] || '';
       } else {
@@ -1119,6 +1125,19 @@
       line-height: 1.7;
       margin-bottom: 1rem;
     }
+    .map-container {
+      max-width: 600px;
+      margin: 2rem auto 0;
+      padding: 0 1rem;
+    }
+    .map-container .map-svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    @media (max-width: 480px) {
+      .map-container { max-width: 100%; }
+    }
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1138,6 +1157,7 @@
       <li><a href="#" onclick="showPage('requisitos');return false;" data-i18n="nav-requisitos">Requisitos</a></li>
       <li><a href="#" onclick="showPage('partner');return false;" data-i18n="nav-partner">Únete a la flota</a></li>
       <li><a href="#" onclick="showPage('nosotros');return false;" data-i18n="nav-nosotros">Nosotros</a></li>
+      <li><a href="#" onclick="showPage('cobertura');return false;" data-i18n="nav-cobertura">Cobertura Nacional</a></li>
       <li><a href="#" onclick="showPage('legal');return false;" data-i18n="nav-legal">Aviso Legal</a></li>
       <li><a href="#" onclick="showPage('faq');return false;" data-i18n="nav-faq">FAQ</a></li>
       <li><a href="#" onclick="showPage('redes');return false;" data-i18n="nav-redes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> <span data-i18n="nav-redes">Redes Sociales</span></a></li>
@@ -1585,6 +1605,42 @@
           <p data-i18n="redes-cta-text">Reserva tu vehículo ahora y recibe atención personalizada al instante.</p>
           <a href="https://wa.me/50375922093" class="btn btn-gold" target="_blank" data-i18n="redes-wa-btn">Cotizar por WhatsApp</a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cobertura" class="page">
+    <div class="section-inner">
+      <p class="section-tag" data-i18n="section-tag-cobertura">Cobertura</p>
+      <h2 class="section-title" data-i18n="page-title-cobertura">Cobertura <span class="gold">Nacional</span></h2>
+      <p class="section-sub" data-i18n="section-sub-cobertura">Recorre El Salvador con total libertad</p>
+      <div class="map-container">
+        <svg class="map-svg" viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M85 115 C100 95, 160 80, 220 75 C280 70, 340 75, 380 85 C410 93, 430 105, 435 125 C438 145, 430 165, 415 180 C405 190, 390 200, 375 210 C355 220, 340 225, 320 230 C290 238, 260 242, 230 244 C200 246, 170 244, 145 240 C120 236, 100 228, 80 218 C60 208, 45 195, 38 178 C30 160, 32 140, 42 125 C52 112, 68 120, 85 115Z" stroke="#f9a826" stroke-width="2.5" stroke-linejoin="round" fill="rgba(249,168,38,0.06)"/>
+          <g class="map-car">
+            <path d="M185 165 C185 160, 190 155, 200 155 L210 155 L215 148 C218 144, 225 142, 232 142 L268 142 C275 142, 282 144, 285 148 L290 155 L300 155 C310 155, 315 160, 315 165 L315 175 C315 180, 310 185, 300 185 L200 185 C190 185, 185 180, 185 175Z" fill="#f9a826" opacity="0.9"/>
+            <circle cx="210" cy="185" r="10" fill="#111" stroke="#f9a826" stroke-width="2"/>
+            <circle cx="210" cy="185" r="4" fill="#f9a826"/>
+            <circle cx="290" cy="185" r="10" fill="#111" stroke="#f9a826" stroke-width="2"/>
+            <circle cx="290" cy="185" r="4" fill="#f9a826"/>
+            <rect x="215" y="150" width="64" height="5" rx="2" fill="rgba(0,0,0,0.3)"/>
+          </g>
+          <g class="map-marker marker-airport">
+            <circle cx="205" cy="195" r="5" fill="#f9a826"/>
+            <circle cx="205" cy="195" r="8" fill="rgba(249,168,38,0.2)"/>
+            <path d="M203 189 L207 189 L207 195 L210 196 L210 197 L205 196 L200 197 L200 196 L203 195Z" fill="#111"/>
+          </g>
+          <g class="map-marker marker-beach">
+            <circle cx="130" cy="228" r="5" fill="#f9a826"/>
+            <circle cx="130" cy="228" r="8" fill="rgba(249,168,38,0.2)"/>
+            <path d="M127 225 C129 223, 131 223, 133 225 C135 227, 133 229, 130 230 C127 229, 125 227, 127 225Z" fill="#111"/>
+          </g>
+          <g class="map-marker marker-volcano">
+            <circle cx="310" cy="120" r="5" fill="#f9a826"/>
+            <circle cx="310" cy="120" r="8" fill="rgba(249,168,38,0.2)"/>
+            <path d="M308 125 L310 118 L312 125Z" fill="#111"/>
+          </g>
+        </svg>
       </div>
     </div>
   </section>
