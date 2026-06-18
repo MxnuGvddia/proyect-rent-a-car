@@ -30,9 +30,10 @@
               requisitos: 'page-title-requisitos',
               partner: 'page-title-partner',
               nosotros: 'page-title-nosotros',
-              faq: 'page-title-faq',
-              redes: 'page-title-redes',
-            };
+               faq: 'page-title-faq',
+               redes: 'page-title-redes',
+               legal: 'page-title-legal',
+             };
            titleEl.innerHTML = langData[currentLang][titles[id]] || '';
            extras.forEach(e => { e.style.display = 'none'; });
          }
@@ -182,6 +183,22 @@
         'redes-cta-text': 'Reserva tu vehículo ahora y recibe atención personalizada al instante.',
         'redes-wa-btn': 'Cotizar por WhatsApp',
         'footer-text': '© 2026 Rumbo Rent — El Salvador. Alquiler de vehículos.',
+        'nav-legal': 'Aviso Legal',
+        'page-title-legal': 'Aviso <span class="gold">Legal</span>',
+        'section-tag-legal': 'Aviso Legal',
+        'legal-intro': 'Este Aviso Legal regula el uso del sitio web de Rumbo Rent, dedicado al alquiler de vehículos en El Salvador. Al acceder y utilizar este sitio web, aceptas los términos y condiciones descritos a continuación.',
+        'legal-acceptance-title': 'Aceptación de los Términos',
+        'legal-acceptance-text': 'Al utilizar nuestro sitio web y servicios, confirmas que has leído, entendido y aceptado estar sujeto a estos términos. Si no estás de acuerdo con alguna parte, te recomendamos no utilizar nuestros servicios.',
+        'legal-usage-title': 'Normas de Uso',
+        'legal-usage-text': 'El usuario se compromete a utilizar el sitio web y los servicios de Rumbo Rent de manera lícita, respetando la legislación vigente y las presentes condiciones. Queda prohibido cualquier uso fraudulento o que pueda lesionar los intereses de la empresa.',
+        'legal-ip-title': 'Propiedad Intelectual',
+        'legal-ip-text': 'Todos los contenidos del sitio web, incluyendo textos, imágenes, logotipos y diseños, son propiedad de Rumbo Rent o cuentan con la autorización correspondiente. Queda prohibida su reproducción, distribución o modificación sin autorización expresa.',
+        'legal-liability-title': 'Limitación de Responsabilidad',
+        'legal-liability-text': 'Rumbo Rent no se hace responsable por daños o perjuicios derivados del uso inadecuado del sitio web o de los vehículos alquilados. El cliente asume la responsabilidad del vehículo durante el período de alquiler.',
+        'legal-privacy-title': 'Privacidad',
+        'legal-privacy-text': 'Los datos personales proporcionados serán tratados con confidencialidad y utilizados únicamente para los fines del servicio de alquiler. No compartiremos tu información con terceros sin tu consentimiento.',
+        'legal-contact-title': 'Contacto',
+        'legal-contact-text': 'Si tienes preguntas sobre este Aviso Legal, puedes contactarnos a través de WhatsApp al +503 6445 0461 o seguirnos en Instagram @rumborent_.',
       },
       en: {
         'nav-inicio': 'Home', 'nav-flota': 'Fleet',         'nav-como': 'How to Book',
@@ -313,6 +330,22 @@
         'redes-cta-text': 'Book your vehicle now and receive personalized assistance instantly.',
         'redes-wa-btn': 'Get a Quote on WhatsApp',
         'footer-text': '&copy; 2026 Rumbo Rent — El Salvador. Car rental.',
+        'nav-legal': 'Legal Notice',
+        'page-title-legal': 'Legal <span class="gold">Notice</span>',
+        'section-tag-legal': 'Legal Notice',
+        'legal-intro': 'This Legal Notice regulates the use of the Rumbo Rent website, dedicated to vehicle rental in El Salvador. By accessing and using this website, you accept the terms and conditions described below.',
+        'legal-acceptance-title': 'Acceptance of Terms',
+        'legal-acceptance-text': 'By using our website and services, you confirm that you have read, understood, and agree to be bound by these terms. If you do not agree with any part, we recommend not using our services.',
+        'legal-usage-title': 'Usage Rules',
+        'legal-usage-text': 'The user agrees to use the Rumbo Rent website and services lawfully, respecting current legislation and these conditions. Any fraudulent use or use that may harm the company\'s interests is prohibited.',
+        'legal-ip-title': 'Intellectual Property',
+        'legal-ip-text': 'All content on the website, including texts, images, logos, and designs, are the property of Rumbo Rent or have the corresponding authorization. Their reproduction, distribution, or modification without express authorization is prohibited.',
+        'legal-liability-title': 'Limitation of Liability',
+        'legal-liability-text': 'Rumbo Rent is not responsible for damages resulting from improper use of the website or rented vehicles. The client assumes responsibility for the vehicle during the rental period.',
+        'legal-privacy-title': 'Privacy',
+        'legal-privacy-text': 'Personal data provided will be treated confidentially and used only for the purposes of the rental service. We will not share your information with third parties without your consent.',
+        'legal-contact-title': 'Contact',
+        'legal-contact-text': 'If you have questions about this Legal Notice, you can contact us via WhatsApp at +503 6445 0461 or follow us on Instagram @rumborent_.',
       }
     };
     let currentLang = localStorage.getItem('rumbolang') || 'es';
@@ -337,6 +370,7 @@
           nosotros: langData[lang]['page-title-nosotros'],
           faq: langData[lang]['page-title-faq'],
           redes: langData[lang]['page-title-redes'],
+          legal: langData[lang]['page-title-legal'],
         };
         document.getElementById('hero-page-title').innerHTML = titles[id] || '';
       } else {
@@ -1074,6 +1108,17 @@
       .fleet-grid > .car-card { flex: 0 0 240px; }
       .previews-grid { grid-template-columns: 1fr; }
     }
+    .legal-content h3 {
+      color: #f9a826;
+      font-size: 1.15rem;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    .legal-content p {
+      color: rgba(255,255,255,0.7);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1093,6 +1138,7 @@
       <li><a href="#" onclick="showPage('requisitos');return false;" data-i18n="nav-requisitos">Requisitos</a></li>
       <li><a href="#" onclick="showPage('partner');return false;" data-i18n="nav-partner">Únete a la flota</a></li>
       <li><a href="#" onclick="showPage('nosotros');return false;" data-i18n="nav-nosotros">Nosotros</a></li>
+      <li><a href="#" onclick="showPage('legal');return false;" data-i18n="nav-legal">Aviso Legal</a></li>
       <li><a href="#" onclick="showPage('faq');return false;" data-i18n="nav-faq">FAQ</a></li>
       <li><a href="#" onclick="showPage('redes');return false;" data-i18n="nav-redes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> <span data-i18n="nav-redes">Redes Sociales</span></a></li>
       <li class="lang-switch">
@@ -1443,6 +1489,28 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a1 1 0 0 0-.8-.4H5.24a2 2 0 0 0-1.8 1.1l-.8 1.63A6 6 0 0 0 2 12.42V16h2"/><circle cx="6.5" cy="16.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/></svg>
           <span data-i18n="partner-tagline">+ Ingresos · Sin preocupaciones</span>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="legal" class="page">
+    <div class="section-inner">
+      <p class="section-tag" data-i18n="section-tag-legal">Aviso Legal</p>
+      <h2 class="section-title" data-i18n="page-title-legal">Aviso <span class="gold">Legal</span></h2>
+      <div class="legal-content" style="max-width:800px;margin:0 auto;">
+        <p data-i18n="legal-intro">Este Aviso Legal regula el uso del sitio web de Rumbo Rent, dedicado al alquiler de vehículos en El Salvador. Al acceder y utilizar este sitio web, aceptas los términos y condiciones descritos a continuación.</p>
+        <h3 data-i18n="legal-acceptance-title">Aceptación de los Términos</h3>
+        <p data-i18n="legal-acceptance-text">Al utilizar nuestro sitio web y servicios, confirmas que has leído, entendido y aceptado estar sujeto a estos términos. Si no estás de acuerdo con alguna parte, te recomendamos no utilizar nuestros servicios.</p>
+        <h3 data-i18n="legal-usage-title">Normas de Uso</h3>
+        <p data-i18n="legal-usage-text">El usuario se compromete a utilizar el sitio web y los servicios de Rumbo Rent de manera lícita, respetando la legislación vigente y las presentes condiciones. Queda prohibido cualquier uso fraudulento o que pueda lesionar los intereses de la empresa.</p>
+        <h3 data-i18n="legal-ip-title">Propiedad Intelectual</h3>
+        <p data-i18n="legal-ip-text">Todos los contenidos del sitio web, incluyendo textos, imágenes, logotipos y diseños, son propiedad de Rumbo Rent o cuentan con la autorización correspondiente. Queda prohibida su reproducción, distribución o modificación sin autorización expresa.</p>
+        <h3 data-i18n="legal-liability-title">Limitación de Responsabilidad</h3>
+        <p data-i18n="legal-liability-text">Rumbo Rent no se hace responsable por daños o perjuicios derivados del uso inadecuado del sitio web o de los vehículos alquilados. El cliente asume la responsabilidad del vehículo durante el período de alquiler.</p>
+        <h3 data-i18n="legal-privacy-title">Privacidad</h3>
+        <p data-i18n="legal-privacy-text">Los datos personales proporcionados serán tratados con confidencialidad y utilizados únicamente para los fines del servicio de alquiler. No compartiremos tu información con terceros sin tu consentimiento.</p>
+        <h3 data-i18n="legal-contact-title">Contacto</h3>
+        <p data-i18n="legal-contact-text">Si tienes preguntas sobre este Aviso Legal, puedes contactarnos a través de WhatsApp al <strong>+503 6445 0461</strong> o seguirnos en Instagram <strong>@rumborent_</strong>.</p>
       </div>
     </div>
   </section>
