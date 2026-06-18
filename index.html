@@ -1151,6 +1151,7 @@
       .map-leaflet { height: 320px; }
     }
     .leaflet-control-zoom a { background: #1a1a1a !important; color: #f9a826 !important; border-color: rgba(249,168,38,0.3) !important; }
+    .leaflet-control-reset { border-top: 1px solid rgba(249,168,38,0.3) !important; font-size: 18px !important; line-height: 30px !important; text-decoration: none !important; }
     .leaflet-control-attribution { background: rgba(0,0,0,0.7) !important; color: rgba(255,255,255,0.5) !important; font-size: 10px !important; }
     .leaflet-control-attribution a { color: #f9a826 !important; }
     .leaflet-popup-content-wrapper { background: #1a1a1a !important; color: #fff !important; border: 1px solid rgba(249,168,38,0.3) !important; border-radius: 12px !important; }
@@ -1900,6 +1901,8 @@
       carto.addTo(coberturaMap);
       carto.on('tileerror', function() { if (!coberturaMap.hasLayer(osm)) { coberturaMap.removeLayer(carto); osm.addTo(coberturaMap); } });
       L.control.zoom({ position: 'bottomright' }).addTo(coberturaMap);
+      L.Control.resetView = L.Control.extend({ onAdd: function() { var btn = L.DomUtil.create('a', 'leaflet-control-zoom leaflet-control-reset'); btn.innerHTML = '⟲'; btn.href = '#'; btn.title = 'Restablecer vista'; btn.onclick = function(e) { e.preventDefault(); coberturaMap.setView([13.7, -88.9], 8.5); }; return btn; } });
+      new L.Control.resetView({ position: 'bottomright' }).addTo(coberturaMap);
       const goldIcon = L.divIcon({ className: '', html: '<svg viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="#f9a826" opacity="0.25"/><circle cx="12" cy="12" r="6" fill="#f9a826"/><circle cx="12" cy="12" r="3" fill="#111"/></svg>', iconSize: [28,28], iconAnchor: [14,14] });
       const carIcon = L.divIcon({ className: '', html: '<svg viewBox="0 0 24 24" width="36" height="36"><circle cx="12" cy="12" r="14" fill="#f9a826" opacity="0.15"/><path d="M5 14 C5 12.5,6 11.5,7 11.5 L7.5 11.5 L8 9.5 C8.3 8.5,9.5 8,11 8 L15 8 C16.5 8,17.7 8.5,18 9.5 L18.5 11.5 L19 11.5 C20 11.5,21 12.5,21 14 L21 15 C21 15.5,20.5 16,20 16 L19 16 C19 17,18 18,17 18 C16 18,15 17,15 16 L11 16 C11 17,10 18,9 18 C8 18,7 17,7 16 L6 16 C5.5 16,5 15.5,5 15 Z" fill="#f9a826"/><circle cx="9" cy="16" r="2" fill="#111"/><circle cx="17" cy="16" r="2" fill="#111"/></svg>', iconSize: [36,36], iconAnchor: [18,18] });
       L.marker([13.6929, -89.2182], { icon: carIcon }).addTo(coberturaMap).bindPopup('San Salvador — <b>Rumbo Rent</b>');
