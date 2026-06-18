@@ -431,13 +431,24 @@
       letter-spacing: 0.5px;
     }
     nav .logo img { height: 32px; border-radius: 6px; }
-    nav .logo span.gold {
-      background: linear-gradient(135deg, #f9a826, #e88500);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    nav .logo span.white { color: #fff; }
+     nav .logo span.gold {
+       background: linear-gradient(135deg, #f9a826, #d4891a, #f9a826, #e88500);
+       background-size: 200% 100%;
+       -webkit-background-clip: text;
+       -webkit-text-fill-color: transparent;
+       background-clip: text;
+       transition: background-position 0.4s;
+     }
+     nav .logo span.white {
+       background: linear-gradient(135deg, #c0c0c0, #ffffff, #d0d0d0, #ffffff);
+       background-size: 200% 100%;
+       -webkit-background-clip: text;
+       -webkit-text-fill-color: transparent;
+       background-clip: text;
+       transition: background-position 0.4s;
+     }
+     nav .logo:hover span.gold,
+     nav .logo:hover span.white { background-position: 100% 0; }
     nav ul {
       display: flex;
       gap: 1.5rem;
@@ -458,13 +469,22 @@
       background: rgba(255,255,255,0.06); border-radius: 20px;
       padding: 2px; cursor: pointer;
     }
-    .lang-opt {
-      padding: 4px 10px; border-radius: 18px;
-      font-size: 0.75rem; font-weight: 700;
-      color: rgba(255,255,255,0.35); text-decoration: none;
-      transition: all 0.3s; user-select: none;
-    }
-    .lang-opt.active { background: #f9a826; color: #000; }
+     .lang-opt {
+       padding: 4px 10px; border-radius: 18px;
+       font-size: 0.75rem; font-weight: 700;
+       color: rgba(255,255,255,0.35); text-decoration: none;
+       transition: all 0.3s; user-select: none;
+       position: relative; overflow: hidden;
+     }
+     .lang-opt:hover { color: #f9a826; }
+     .lang-opt.active {
+       background: linear-gradient(135deg, #f9a826, #d4891a, #f9a826, #e88500);
+       background-size: 200% 100%;
+       color: #000;
+       animation: shimmer 2s ease infinite;
+     }
+     .lang-opt.active:hover { background-position: 100% 0; }
+     @keyframes shimmer { 0%{background-position:0 0} 50%{background-position:100% 0} 100%{background-position:0 0} }
     .nav-wa {
       display: flex;
       align-items: center;
