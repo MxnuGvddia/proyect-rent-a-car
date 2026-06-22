@@ -13,55 +13,102 @@
   <link rel="preconnect" href="https://c.basemaps.cartocdn.com">
   <link rel="preconnect" href="https://d.basemaps.cartocdn.com">
   <link rel="dns-prefetch" href="https://unpkg.com">
-   <script>
-     function showPage(id) {
-       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-       document.querySelector('.hero').classList.toggle('hero--page', id !== 'hero');
-       const wrap = document.querySelector('.hero .wrap');
-       const titleEl = document.getElementById('hero-page-title');
-       const extras = document.querySelectorAll('.hero-badge, .hero-extras, .hero-micro, .hero-blocks, .hero-deck, .hero-page-title ~ .btn, .wrap > img, .page-previews');
-       wrap.classList.remove('anim-in');
-       wrap.classList.add('fade-out');
-       clearTimeout(window._pageTimer);
-       window._pageTimer = setTimeout(() => {
-         wrap.classList.remove('fade-out');
-         if (id === 'hero') {
-           titleEl.innerHTML = langData[currentLang]['hero-page-title'];
-           extras.forEach(e => { e.style.display = ''; });
-         } else {
-           document.getElementById(id).classList.add('active');
-            const titles = {
-              flota: 'page-title-flota',
-               'como-reservar': 'page-title-como-reservar',
-               requisitos: 'page-title-requisitos',
-               partner: 'page-title-partner',
-               nosotros: 'page-title-nosotros',
-                faq: 'page-title-faq',
-                redes: 'page-title-redes',
-                legal: 'page-title-legal',
-                cobertura: 'page-title-cobertura',
-             };
-           titleEl.innerHTML = langData[currentLang][titles[id]] || '';
-           extras.forEach(e => { e.style.display = 'none'; });
-         }
-         wrap.classList.add('anim-in');
-          if (window.location.hash !== '#' + id) history.pushState(null, '', '#' + id);
-          if (id === 'cobertura') {
-            if (typeof coberturaMap === 'undefined') initMap();
-            setTimeout(() => { if (coberturaMap) coberturaMap.invalidateSize(); }, 650);
+    <script>
+      let currentPageId = 'hero';
+      const pageTitles = {
+        flota: 'page-title-flota', 'como-reservar': 'page-title-como-reservar',
+        requisitos: 'page-title-requisitos', partner: 'page-title-partner',
+        nosotros: 'page-title-nosotros', faq: 'page-title-faq',
+        redes: 'page-title-redes', legal: 'page-title-legal', cobertura: 'page-title-cobertura'
+      };
+
+      function showPage(id) {
+        if (id === currentPageId) return;
+        const prevPage = currentPageId;
+        currentPageId = id;
+        document.querySelector('nav ul')?.classList.remove('open');
+
+        const hero = document.querySelector('.hero');
+        const wrap = document.querySelector('.hero .wrap');
+        const titleEl = document.getElementById('hero-page-title');
+        const extras = document.querySelectorAll('.hero-badge, .hero-extras, .hero-micro, .hero-blocks, .hero-deck, .hero-page-title ~ .btn, .wrap > img, .page-previews');
+
+        hero.classList.toggle('hero--page', id !== 'hero');
+
+        const outgoing = document.querySelector('.page.active');
+
+        // Build timeline
+        const tl = gsap.timeline({
+          onComplete: () => {
+            if (id === 'cobertura') {
+              if (typeof coberturaMap === 'undefined') initMap();
+              setTimeout(() => { if (typeof coberturaMap !== 'undefined') coberturaMap.invalidateSize(); }, 600);
+            }
           }
-       }, 200);
-     }
-    window.addEventListener('hashchange', function() {
-      const id = location.hash.slice(1) || 'hero';
-      showPage(id);
-    });
-    window.addEventListener('DOMContentLoaded', function() {
-      const id = location.hash.slice(1) || 'hero';
-      showPage(id);
-    });
-    </script>
+        });
+
+        // Fade out hero content
+        tl.to(wrap, { opacity: 0, y: -12, duration: 0.18, ease: 'power2.in' });
+
+        // Fade out current page if exists
+        if (outgoing) {
+          tl.to(outgoing, { opacity: 0, y: 18, duration: 0.15, ease: 'power2.in' }, '-=0.08');
+        }
+
+        // Swap content
+        tl.call(() => {
+          if (outgoing) outgoing.classList.remove('active');
+
+          if (id === 'hero') {
+            extras.forEach(e => { e.style.display = ''; });
+            titleEl.innerHTML = langData[currentLang]['hero-page-title'];
+          } else {
+            const target = document.getElementById(id);
+            if (target) {
+              target.classList.add('active');
+              target.style.opacity = '0';
+              target.style.transform = 'translateY(24px)';
+            }
+            extras.forEach(e => { e.style.display = 'none'; });
+            titleEl.innerHTML = langData[currentLang][pageTitles[id]] || '';
+          }
+
+          if (window.location.hash !== '#' + id) history.pushState(null, '', '#' + id);
+        });
+
+        // Fade in new page
+        if (id !== 'hero') {
+          const target = document.getElementById(id);
+          if (target) {
+            tl.to(target, { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out', clearProps: 'all' }, '+=0.05');
+          }
+        }
+
+        // Fade in hero content
+        tl.to(wrap, { opacity: 1, y: 0, duration: 0.28, ease: 'power2.out', clearProps: 'all' }, '-=0.15');
+      }
+
+      function handleHash() {
+        const id = location.hash.slice(1) || 'hero';
+        if (id !== currentPageId) showPage(id);
+      }
+
+      window.addEventListener('hashchange', handleHash);
+      window.addEventListener('DOMContentLoaded', () => {
+        const id = location.hash.slice(1) || 'hero';
+        currentPageId = id;
+        if (id !== 'hero') {
+          document.querySelector('.hero').classList.add('hero--page');
+          const target = document.getElementById(id);
+          if (target) { target.classList.add('active'); }
+          const titles = pageTitles;
+          document.getElementById('hero-page-title').innerHTML = langData[currentLang][titles[id]] || '';
+          document.querySelectorAll('.hero-badge, .hero-extras, .hero-micro, .hero-blocks, .hero-deck, .hero-page-title ~ .btn, .wrap > img, .page-previews').forEach(e => e.style.display = 'none');
+        }
+      });
+     </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script>
     const langData = {
       es: {
@@ -792,7 +839,9 @@
       border: 1px solid rgba(255,255,255,0.06);
       transition: transform 0.3s, border-color 0.3s;
     }
-    .car-card:hover { transform: translateY(-4px); border-color: rgba(249,168,38,0.3); }
+    .car-card:hover { transform: translateY(-6px); border-color: rgba(249,168,38,0.4); box-shadow: 0 12px 40px rgba(249,168,38,0.12); }
+    .car-card:hover .car-img { transform: scale(1.04); }
+    .car-card .car-img { transition: transform 0.5s ease; will-change: transform; }
     .car-card img {
       width: 100%;
       height: 220px;
@@ -999,7 +1048,7 @@
       font-size: 0.95rem;
     }
     .faq-item.open .faq-a {
-      max-height: 200px;
+      max-height: 600px;
       padding-top: 0.8rem;
     }
     #contacto {
@@ -1193,6 +1242,18 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.in-view { opacity: 1; transform: translateY(0); }
+    .reveal.in-view.in-view-fast { transition-duration: 0.35s; }
+    .page.active { animation: pageIn 0.5s ease forwards; }
+    @keyframes pageIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    nav ul li a[data-i18n^="nav-"].active { color: #f9a826 !important; }
+    .field-error { border-color: #e74c3c !important; box-shadow: 0 0 0 2px rgba(231,76,60,0.2) !important; }
+    .shake { animation: shake 0.4s ease; }
+    @keyframes shake { 0%,100% { transform: translateX(0); } 20% { transform: translateX(-6px); } 40% { transform: translateX(6px); } 60% { transform: translateX(-4px); } 80% { transform: translateX(4px); } }
+    .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%); background: #1a1a1a; border: 1px solid rgba(249,168,38,0.3); color: #fff; padding: 0.8rem 1.5rem; border-radius: 12px; font-size: 0.9rem; z-index: 9999; opacity: 0; transition: opacity 0.3s; pointer-events: none; }
+    .toast.show { opacity: 1; }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; } .reveal { opacity: 1; transform: none; } .page.active { animation: none; opacity: 1; } }
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1689,7 +1750,23 @@
 
   <script>
     document.querySelectorAll('.faq-q').forEach(q => {
-      q.addEventListener('click', () => q.parentElement.classList.toggle('open'));
+      q.addEventListener('click', () => {
+        const item = q.parentElement;
+        const answer = item.querySelector('.faq-a');
+        const isOpen = item.classList.contains('open');
+        if (!isOpen) {
+          answer.style.maxHeight = 'none';
+          const h = answer.scrollHeight;
+          answer.style.maxHeight = '0';
+          requestAnimationFrame(() => {
+            answer.style.maxHeight = h + 'px';
+            item.classList.add('open');
+          });
+        } else {
+          answer.style.maxHeight = '0';
+          item.classList.remove('open');
+        }
+      });
     });
   </script>
   <script>
@@ -1948,6 +2025,51 @@
       L.marker([13.4830, -88.1830], { icon: goldIcon }).addTo(coberturaMap).bindPopup('San Miguel');
       L.marker([13.9840, -89.6700], { icon: goldIcon }).addTo(coberturaMap).bindPopup('Ruta de las Flores');
     }
+  </script>
+  <script>
+    (function() {
+      // Scroll-reveal observer
+      const revealObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) { e.target.classList.add('in-view'); revealObserver.unobserve(e.target); }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll('.reveal').forEach(function(el) { revealObserver.observe(el); });
+
+      // Nav active link sync
+      function syncNav() {
+        var id = location.hash.slice(1) || 'hero';
+        document.querySelectorAll('nav ul li a[data-i18n^="nav-"]').forEach(function(a) {
+          var match = a.getAttribute('onclick') && a.getAttribute('onclick').match(/showPage\('([^']+)'\)/);
+          a.classList.toggle('active', match && match[1] === id);
+        });
+      }
+      window.addEventListener('hashchange', syncNav);
+      syncNav();
+
+      // Toast notification helper
+      window.showToast = function(msg) {
+        var t = document.querySelector('.toast');
+        if (!t) { t = document.createElement('div'); t.className = 'toast'; document.body.appendChild(t); }
+        t.textContent = msg;
+        t.classList.add('show');
+        clearTimeout(t._hide);
+        t._hide = setTimeout(function() { t.classList.remove('show'); }, 3000);
+      };
+
+      // Form validation
+      document.querySelectorAll('.contact-form').forEach(function(form) {
+        form.addEventListener('submit', function(e) {
+          var valid = true;
+          this.querySelectorAll('[required]').forEach(function(f) {
+            f.classList.remove('field-error', 'shake');
+            if (!f.value.trim()) { valid = false; f.classList.add('field-error', 'shake'); }
+          });
+          if (!valid) { e.preventDefault(); window.showToast('Por favor completa los campos requeridos.'); }
+          else { e.preventDefault(); window.showToast('\u00a1Mensaje enviado con \u00e9xito!'); }
+        });
+      });
+    })();
   </script>
 </body>
 </html>
