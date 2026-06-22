@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rumbo Rent — Alquiler de Vehículos en El Salvador</title>
+  <meta name="description" content="Rumbo Rent: alquiler de camionetas y sedanes desde $29/día en El Salvador. Sin depósito, sin cargos ocultos, entrega en aeropuerto. ¡Reserva ya!">
+  <link rel="icon" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --bg-primary:#080c20;
+      --bg-secondary:#0d1230;
+      --bg-card:rgba(255,255,255,0.04);
+      --bg-card-hover:rgba(255,255,255,0.08);
+      --gold:#d4a853;
+      --gold-light:#f5d88a;
+      --gold-dark:#b8862e;
+      --accent:#f5a623;
+      --text:#ffffff;
+      --text-secondary:#a0a8c0;
+      --text-muted:#6a7290;
+      --font-heading:'Poppins',sans-serif;
+      --font-body:'Inter',sans-serif;
+      --nav-height:80px;
+      --radius:16px;
+      --shadow-card:0 8px 40px rgba(0,0,0,0.3);
+      --shadow-glow:0 0 40px rgba(212,168,83,0.15);
+      --transition:0.4s cubic-bezier(.25,.46,.45,.94)
+    }
+    html{scroll-behavior:smooth}
+    body{
+      font-family:var(--font-body);
+      background:var(--bg-primary);
+      color:var(--text);
+      line-height:1.7;
+      overflow-x:hidden;
+      -webkit-font-smoothing:antialiased
+    }
+
+    ::-webkit-scrollbar{width:8px}
+    ::-webkit-scrollbar-track{background:var(--bg-primary)}
+    ::-webkit-scrollbar-thumb{background:var(--gold-dark);border-radius:4px}
+    ::-webkit-scrollbar-thumb:hover{background:var(--gold)}
+
+    ::selection{background:var(--gold);color:var(--bg-primary)}
+
+    .container{
+      max-width:1200px;
+      margin:0 auto;
+      padding:0 24px
+    }
+
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;height:auto;display:block}
+
+    .section{padding:120px 0}
+    .section-label{
+      font-family:var(--font-heading);
+      font-size:.75rem;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      color:var(--gold);
+      margin-bottom:12px;
+      display:flex;
+      align-items:center;
+      gap:12px
+    }
+    .section-label::after{
+      content:'';
+      flex:1;
+      height:1px;
+      background:linear-gradient(90deg,var(--gold),transparent);
+      max-width:80px
+    }
+    .section-title{
+      font-family:var(--font-heading);
+      font-size:clamp(2rem,5vw,3.2rem);
+      font-weight:800;
+      line-height:1.15;
+      margin-bottom:20px
+    }
+    .section-title .highlight{
+      background:linear-gradient(135deg,var(--gold),var(--accent),var(--gold));
+      background-size:200% auto;
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      animation:gradientShift 4s ease infinite
+    }
+    @keyframes gradientShift{
+      0%,100%{background-position:0% center}
+      50%{background-position:100% center}
+    }
+    .section-subtitle{
+      color:var(--text-secondary);
+      font-size:1.1rem;
+      max-width:600px;
+      line-height:1.8
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:14px 32px;
+      border-radius:50px;
+      font-family:var(--font-body);
+      font-weight:600;
+      font-size:1rem;
+      border:none;
+      cursor:pointer;
+      transition:all var(--transition);
+      position:relative;
+      overflow:hidden
+    }
+    .btn::after{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:linear-gradient(135deg,transparent 30%,rgba(255,255,255,0.1) 50%,transparent 70%);
+      transform:translateX(-100%) rotate(15deg);
+      transition:transform .6s
+    }
+    .btn:hover::after{transform:translateX(100%) rotate(15deg)}
+    .btn-primary{
+      background:linear-gradient(135deg,var(--gold),var(--gold-dark));
+      color:var(--bg-primary);
+      box-shadow:0 4px 20px rgba(212,168,83,0.3)
+    }
+    .btn-primary:hover{
+      transform:translateY(-3px);
+      box-shadow:0 8px 35px rgba(212,168,83,0.45)
+    }
+    .btn-secondary{
+      background:transparent;
+      color:var(--text);
+      border:1.5px solid rgba(255,255,255,0.2)
+    }
+    .btn-secondary:hover{
+      background:rgba(255,255,255,0.08);
+      border-color:var(--gold);
+      transform:translateY(-3px)
+    }
+    .btn-whatsapp{
+      background:linear-gradient(135deg,#25D366,#128C7E);
+      color:white;
+      box-shadow:0 4px 20px rgba(37,211,102,0.3)
+    }
+    .btn-whatsapp:hover{
+      transform:translateY(-3px);
+      box-shadow:0 8px 35px rgba(37,211,102,0.45)
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(40px);
+      transition:opacity .8s ease,transform .8s ease
+    }
+    .reveal.visible{
+      opacity:1;
+      transform:translateY(0)
+    }
+    .reveal-left{
+      opacity:0;
+      transform:translateX(-60px);
+      transition:opacity .8s ease,transform .8s ease
+    }
+    .reveal-left.visible{
+      opacity:1;
+      transform:translateX(0)
+    }
+    .reveal-right{
+      opacity:0;
+      transform:translateX(60px);
+      transition:opacity .8s ease,transform .8s ease
+    }
+    .reveal-right.visible{
+      opacity:1;
+      transform:translateX(0)
+    }
+    .reveal-scale{
+      opacity:0;
+      transform:scale(.9);
+      transition:opacity .8s ease,transform .8s ease
+    }
+    .reveal-scale.visible{
+      opacity:1;
+      transform:scale(1)
+    }
+    .stagger-children>*{
+      opacity:0;
+      transform:translateY(30px);
+      transition:opacity .6s ease,transform .6s ease
+    }
+    .stagger-children.visible>*{
+      opacity:1;
+      transform:translateY(0)
+    }
+    .stagger-children.visible>*:nth-child(1){transition-delay:.1s}
+    .stagger-children.visible>*:nth-child(2){transition-delay:.2s}
+    .stagger-children.visible>*:nth-child(3){transition-delay:.3s}
+    .stagger-children.visible>*:nth-child(4){transition-delay:.4s}
+    .stagger-children.visible>*:nth-child(5){transition-delay:.5s}
+    .stagger-children.visible>*:nth-child(6){transition-delay:.6s}
+    .stagger-children.visible>*:nth-child(7){transition-delay:.7s}
+    .stagger-children.visible>*:nth-child(8){transition-delay:.8s}
+
+    /* ===== NAVBAR ===== */
+    .navbar{
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+      z-index:1000;
+      padding:20px 0;
+      transition:all var(--transition)
+    }
+    .navbar.scrolled{
+      background:rgba(8,12,32,.85);
+      backdrop-filter:blur(20px);
+      -webkit-backdrop-filter:blur(20px);
+      padding:12px 0;
+      box-shadow:0 1px 0 rgba(255,255,255,.06)
+    }
+    .navbar .container{
+      display:flex;
+      align-items:center;
+      justify-content:space-between
+    }
+    .navbar .logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-family:var(--font-heading);
+      font-weight:800;
+      font-size:1.4rem;
+      letter-spacing:-.5px
+    }
+    .navbar .logo img{
+      width:42px;
+      height:42px;
+      border-radius:10px;
+      object-fit:cover
+    }
+    .navbar .logo span{color:var(--gold)}
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:32px;
+      list-style:none
+    }
+    .nav-links a{
+      font-size:.9rem;
+      font-weight:500;
+      color:var(--text-secondary);
+      transition:color var(--transition);
+      position:relative
+    }
+    .nav-links a::after{
+      content:'';
+      position:absolute;
+      bottom:-4px;
+      left:0;
+      width:0;
+      height:2px;
+      background:var(--gold);
+      transition:width var(--transition)
+    }
+    .nav-links a:hover{color:var(--text)}
+    .nav-links a:hover::after{width:100%}
+    .nav-links .btn-nav{
+      padding:10px 24px;
+      border-radius:50px;
+      background:linear-gradient(135deg,var(--gold),var(--gold-dark));
+      color:var(--bg-primary)!important;
+      font-weight:600
+    }
+    .nav-links .btn-nav::after{display:none}
+    .nav-toggle{
+      display:none;
+      flex-direction:column;
+      gap:5px;
+      cursor:pointer;
+      padding:4px;
+      background:none;
+      border:none;
+      z-index:1001
+    }
+    .nav-toggle span{
+      display:block;
+      width:26px;
+      height:2px;
+      background:var(--text);
+      transition:all var(--transition);
+      border-radius:2px
+    }
+    .nav-toggle.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .nav-toggle.active span:nth-child(2){opacity:0;transform:scaleX(0)}
+    .nav-toggle.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+    /* ===== HERO ===== */
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      position:relative;
+      overflow:hidden;
+      padding-top:var(--nav-height)
+    }
+    .hero-canvas{
+      position:absolute;
+      inset:0;
+      z-index:0
+    }
+    .hero-bg{
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(ellipse at 20% 50%,rgba(212,168,83,0.08) 0%,transparent 50%),
+        radial-gradient(ellipse at 80% 50%,rgba(245,166,35,0.06) 0%,transparent 50%),
+        radial-gradient(ellipse at 50% 0%,rgba(13,18,48,1) 0%,transparent 60%),
+        var(--bg-primary);
+      z-index:0
+    }
+    .hero-grid{
+      position:absolute;
+      inset:0;
+      background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);
+      background-size:60px 60px;
+      z-index:0;
+      mask-image:radial-gradient(ellipse at center,black 30%,transparent 70%);
+      -webkit-mask-image:radial-gradient(ellipse at center,black 30%,transparent 70%)
+    }
+    .hero-content{
+      position:relative;
+      z-index:2;
+      text-align:center;
+      max-width:900px;
+      margin:0 auto;
+      padding:0 24px
+    }
+    .hero-logo{
+      width:100px;
+      height:100px;
+      border-radius:24px;
+      object-fit:cover;
+      margin:0 auto 28px;
+      box-shadow:0 20px 60px rgba(0,0,0,0.5),0 0 40px rgba(212,168,83,0.1);
+      animation:float 6s ease-in-out infinite
+    }
+    @keyframes float{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-12px)}
+    }
+    .hero h1{
+      font-family:var(--font-heading);
+      font-size:clamp(2.8rem,8vw,6rem);
+      font-weight:900;
+      line-height:1.05;
+      letter-spacing:-2px;
+      margin-bottom:20px
+    }
+    .hero h1 .gradient-text{
+      background:linear-gradient(135deg,var(--gold) 0%,var(--gold-light) 40%,var(--accent) 80%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text
+    }
+    .hero h1 .block-text{display:block}
+    .hero p{
+      font-size:clamp(1.05rem,2vw,1.25rem);
+      color:var(--text-secondary);
+      max-width:640px;
+      margin:0 auto 30px;
+      line-height:1.8
+    }
+    .hero-stats{
+      display:flex;
+      justify-content:center;
+      gap:40px;
+      flex-wrap:wrap;
+      margin:40px 0 36px
+    }
+    .hero-stat{
+      text-align:center
+    }
+    .hero-stat .number{
+      font-family:var(--font-heading);
+      font-size:1.8rem;
+      font-weight:800;
+      color:var(--gold)
+    }
+    .hero-stat .label{
+      font-size:.8rem;
+      color:var(--text-muted);
+      text-transform:uppercase;
+      letter-spacing:1px;
+      margin-top:2px
+    }
+    .hero-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 20px;
+      border-radius:50px;
+      background:rgba(212,168,83,0.1);
+      border:1px solid rgba(212,168,83,0.2);
+      font-size:.85rem;
+      color:var(--gold-light);
+      margin-bottom:24px;
+      animation:pulse-badge 2s ease-in-out infinite
+    }
+    @keyframes pulse-badge{
+      0%,100%{box-shadow:0 0 0 0 rgba(212,168,83,0.2)}
+      50%{box-shadow:0 0 0 8px rgba(212,168,83,0)}
+    }
+    .hero-buttons{
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
+      justify-content:center
+    }
+    .hero-scroll{
+      position:absolute;
+      bottom:32px;
+      left:50%;
+      transform:translateX(-50%);
+      z-index:2;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:8px;
+      color:var(--text-muted);
+      font-size:.75rem;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      animation:scrollBounce 2s ease-in-out infinite
+    }
+    .hero-scroll .scroll-line{
+      width:1px;
+      height:40px;
+      background:linear-gradient(180deg,var(--text-muted),transparent)
+    }
+    @keyframes scrollBounce{
+      0%,100%{transform:translateX(-50%) translateY(0)}
+      50%{transform:translateX(-50%) translateY(6px)}
+    }
+
+    /* ===== FLOATING PARTICLES ===== */
+    .particles{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+    .particle{
+      position:absolute;
+      width:4px;
+      height:4px;
+      background:var(--gold);
+      border-radius:50%;
+      opacity:0;
+      animation:particleFloat linear infinite
+    }
+    @keyframes particleFloat{
+      0%{transform:translateY(100vh) scale(0);opacity:0}
+      10%{opacity:.6}
+      90%{opacity:.6}
+      100%{transform:translateY(-10vh) scale(1);opacity:0}
+    }
+
+    /* ===== FLEET / VEHICLES ===== */
+    .fleet-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
+      gap:24px
+    }
+    .car-card{
+      position:relative;
+      border-radius:var(--radius);
+      overflow:hidden;
+      background:var(--bg-card);
+      border:1px solid rgba(255,255,255,0.06);
+      transition:all var(--transition);
+      cursor:pointer;
+      perspective:800px;
+      transform-style:preserve-3d
+    }
+    .car-card:hover{
+      background:var(--bg-card-hover);
+      border-color:rgba(212,168,83,0.2);
+      box-shadow:var(--shadow-card),var(--shadow-glow)
+    }
+    .car-card .car-image{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+      transition:transform .6s ease;
+      background:var(--bg-secondary)
+    }
+    .car-card:hover .car-image{transform:scale(1.08)}
+    .car-card .car-info{
+      padding:20px 24px
+    }
+    .car-card .car-name{
+      font-family:var(--font-heading);
+      font-weight:700;
+      font-size:1.15rem;
+      margin-bottom:4px
+    }
+    .car-card .car-tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px;
+      margin:8px 0 12px
+    }
+    .car-card .car-tags span{
+      padding:3px 10px;
+      border-radius:20px;
+      font-size:.72rem;
+      font-weight:500;
+      background:rgba(212,168,83,0.1);
+      color:var(--gold-light);
+      border:1px solid rgba(212,168,83,0.15)
+    }
+    .car-card .car-price{
+      font-family:var(--font-heading);
+      font-weight:800;
+      font-size:1.4rem;
+      color:var(--gold)
+    }
+    .car-card .car-price small{
+      font-size:.85rem;
+      font-weight:400;
+      color:var(--text-muted);
+      font-family:var(--font-body)
+    }
+
+    /* ===== WHY US ===== */
+    .features-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:24px
+    }
+    .feature-item{
+      padding:32px 28px;
+      border-radius:var(--radius);
+      background:var(--bg-card);
+      border:1px solid rgba(255,255,255,0.06);
+      transition:all var(--transition)
+    }
+    .feature-item:hover{
+      background:var(--bg-card-hover);
+      border-color:rgba(212,168,83,0.15);
+      transform:translateY(-4px);
+      box-shadow:var(--shadow-card)
+    }
+    .feature-item .icon{
+      width:52px;
+      height:52px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:14px;
+      background:linear-gradient(135deg,rgba(212,168,83,0.15),rgba(245,166,35,0.08));
+      font-size:1.4rem;
+      margin-bottom:16px;
+      color:var(--gold)
+    }
+    .feature-item h3{
+      font-family:var(--font-heading);
+      font-weight:700;
+      font-size:1.1rem;
+      margin-bottom:8px
+    }
+    .feature-item p{
+      color:var(--text-secondary);
+      font-size:.92rem;
+      line-height:1.7
+    }
+
+    /* ===== GALLERY ===== */
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+      gap:12px
+    }
+    .gallery-grid .gallery-item{
+      position:relative;
+      border-radius:12px;
+      overflow:hidden;
+      aspect-ratio:1;
+      cursor:pointer
+    }
+    .gallery-grid .gallery-item img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:transform .6s ease
+    }
+    .gallery-grid .gallery-item:hover img{transform:scale(1.1)}
+    .gallery-grid .gallery-item .overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,transparent 40%,rgba(8,12,32,0.8));
+      opacity:0;
+      transition:opacity var(--transition);
+      display:flex;
+      align-items:flex-end;
+      padding:16px
+    }
+    .gallery-grid .gallery-item:hover .overlay{opacity:1}
+    .gallery-grid .gallery-item .overlay i{
+      color:var(--text);
+      font-size:1.2rem
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials-section{
+      background:var(--bg-secondary)
+    }
+    .testimonials-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:24px
+    }
+    .testimonial-card{
+      padding:32px;
+      border-radius:var(--radius);
+      background:var(--bg-card);
+      border:1px solid rgba(255,255,255,0.06);
+      position:relative
+    }
+    .testimonial-card::before{
+      content:'"';
+      font-family:var(--font-heading);
+      font-size:4rem;
+      color:var(--gold);
+      opacity:.2;
+      position:absolute;
+      top:8px;
+      right:20px;
+      line-height:1
+    }
+    .testimonial-card .stars{
+      color:var(--gold);
+      margin-bottom:12px;
+      font-size:.9rem
+    }
+    .testimonial-card p{
+      color:var(--text-secondary);
+      font-size:.95rem;
+      line-height:1.7;
+      margin-bottom:16px
+    }
+    .testimonial-card .author{
+      display:flex;
+      align-items:center;
+      gap:12px
+    }
+    .testimonial-card .author .avatar{
+      width:40px;
+      height:40px;
+      border-radius:50%;
+      background:linear-gradient(135deg,var(--gold),var(--accent));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+      font-size:.9rem;
+      color:var(--bg-primary)
+    }
+    .testimonial-card .author .name{
+      font-weight:600;
+      font-size:.9rem
+    }
+    .testimonial-card .author .role{
+      font-size:.8rem;
+      color:var(--text-muted)
+    }
+
+    /* ===== CTA BANNER ===== */
+    .cta-banner{
+      text-align:center;
+      padding:100px 24px;
+      position:relative;
+      overflow:hidden
+    }
+    .cta-banner::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(ellipse at 30% 50%,rgba(212,168,83,0.08) 0%,transparent 50%),
+        radial-gradient(ellipse at 70% 50%,rgba(245,166,35,0.06) 0%,transparent 50%)
+    }
+    .cta-banner h2{
+      font-family:var(--font-heading);
+      font-size:clamp(2rem,4vw,2.8rem);
+      font-weight:800;
+      margin-bottom:16px;
+      position:relative
+    }
+    .cta-banner p{
+      color:var(--text-secondary);
+      font-size:1.1rem;
+      max-width:500px;
+      margin:0 auto 32px;
+      position:relative
+    }
+    .cta-banner .btn-group{
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
+      justify-content:center;
+      position:relative
+    }
+
+    /* ===== CONTACT ===== */
+    .contact-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:48px;
+      align-items:start
+    }
+    .contact-info-list{
+      display:flex;
+      flex-direction:column;
+      gap:16px
+    }
+    .contact-card{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      padding:20px 24px;
+      border-radius:12px;
+      background:var(--bg-card);
+      border:1px solid rgba(255,255,255,0.06);
+      transition:all var(--transition)
+    }
+    .contact-card:hover{
+      background:var(--bg-card-hover);
+      border-color:rgba(212,168,83,0.15)
+    }
+    .contact-card .icon{
+      width:44px;
+      height:44px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:12px;
+      background:rgba(212,168,83,0.1);
+      color:var(--gold);
+      font-size:1.1rem;
+      flex-shrink:0
+    }
+    .contact-card .info h4{
+      font-weight:600;
+      font-size:.9rem;
+      margin-bottom:2px
+    }
+    .contact-card .info p,.contact-card .info a{
+      color:var(--text-secondary);
+      font-size:.85rem
+    }
+    .contact-card .info a:hover{color:var(--gold)}
+
+    .contact-form{
+      padding:32px;
+      border-radius:var(--radius);
+      background:var(--bg-card);
+      border:1px solid rgba(255,255,255,0.06)
+    }
+    .contact-form h3{
+      font-family:var(--font-heading);
+      font-weight:700;
+      font-size:1.3rem;
+      margin-bottom:20px
+    }
+    .form-group{
+      margin-bottom:16px
+    }
+    .form-group label{
+      display:block;
+      font-size:.85rem;
+      font-weight:500;
+      color:var(--text-secondary);
+      margin-bottom:6px
+    }
+    .form-group input,.form-group select,.form-group textarea{
+      width:100%;
+      padding:12px 16px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,0.1);
+      background:rgba(255,255,255,0.04);
+      color:var(--text);
+      font-family:var(--font-body);
+      font-size:.95rem;
+      transition:border-color var(--transition);
+      outline:none
+    }
+    .form-group input:focus,.form-group select:focus,.form-group textarea:focus{
+      border-color:var(--gold)
+    }
+    .form-group textarea{
+      min-height:100px;
+      resize:vertical
+    }
+    .form-group select option{background:var(--bg-primary);color:var(--text)}
+
+    /* ===== FOOTER ===== */
+    .footer{
+      padding:60px 0 30px;
+      border-top:1px solid rgba(255,255,255,0.06);
+      background:var(--bg-secondary)
+    }
+    .footer-grid{
+      display:grid;
+      grid-template-columns:2fr 1fr 1fr 1fr;
+      gap:40px;
+      margin-bottom:40px
+    }
+    .footer-brand p{
+      color:var(--text-secondary);
+      font-size:.9rem;
+      margin-top:12px;
+      max-width:300px
+    }
+    .footer-social{
+      display:flex;
+      gap:12px;
+      margin-top:16px
+    }
+    .footer-social a{
+      width:38px;
+      height:38px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:10px;
+      background:var(--bg-card);
+      color:var(--text-secondary);
+      transition:all var(--transition);
+      font-size:1rem
+    }
+    .footer-social a:hover{
+      background:var(--gold);
+      color:var(--bg-primary);
+      transform:translateY(-3px)
+    }
+    .footer h4{
+      font-family:var(--font-heading);
+      font-weight:700;
+      font-size:.95rem;
+      margin-bottom:16px
+    }
+    .footer ul{
+      list-style:none
+    }
+    .footer ul li{
+      margin-bottom:10px
+    }
+    .footer ul a{
+      color:var(--text-muted);
+      font-size:.88rem;
+      transition:color var(--transition)
+    }
+    .footer ul a:hover{color:var(--gold)}
+    .footer-bottom{
+      padding-top:24px;
+      border-top:1px solid rgba(255,255,255,0.06);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:12px;
+      font-size:.85rem;
+      color:var(--text-muted)
+    }
+
+    /* ===== WHATSAPP FLOAT ===== */
+    .whatsapp-float{
+      position:fixed;
+      bottom:24px;
+      right:24px;
+      z-index:999;
+      width:56px;
+      height:56px;
+      border-radius:50%;
+      background:linear-gradient(135deg,#25D366,#128C7E);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-size:1.6rem;
+      box-shadow:0 4px 20px rgba(37,211,102,0.4);
+      transition:all var(--transition);
+      animation:wobble 4s ease-in-out infinite
+    }
+    .whatsapp-float:hover{
+      transform:scale(1.1);
+      box-shadow:0 8px 35px rgba(37,211,102,0.5)
+    }
+    @keyframes wobble{
+      0%,100%{transform:rotate(0) scale(1)}
+      2%{transform:rotate(-8deg) scale(1.05)}
+      4%{transform:rotate(8deg) scale(1.05)}
+      6%{transform:rotate(-4deg) scale(1.02)}
+      8%{transform:rotate(4deg) scale(1.02)}
+      10%{transform:rotate(0) scale(1)}
+    }
+
+    /* ===== MODAL ===== */
+    .modal-overlay{
+      position:fixed;
+      inset:0;
+      z-index:2000;
+      background:rgba(0,0,0,0.7);
+      backdrop-filter:blur(10px);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:24px
+    }
+    .modal-overlay.active{display:flex}
+    .modal-content{
+      max-width:600px;
+      width:100%;
+      background:var(--bg-secondary);
+      border-radius:var(--radius);
+      padding:40px;
+      border:1px solid rgba(255,255,255,0.08);
+      position:relative;
+      animation:modalIn .3s ease
+    }
+    @keyframes modalIn{
+      from{transform:scale(.95) translateY(20px);opacity:0}
+      to{transform:scale(1) translateY(0);opacity:1}
+    }
+    .modal-close{
+      position:absolute;
+      top:16px;
+      right:16px;
+      background:none;
+      border:none;
+      color:var(--text-muted);
+      font-size:1.4rem;
+      cursor:pointer;
+      transition:color var(--transition)
+    }
+    .modal-close:hover{color:var(--text)}
+    .modal-content img{
+      width:100%;
+      height:280px;
+      object-fit:cover;
+      border-radius:12px;
+      margin-bottom:20px;
+      background:var(--bg-primary)
+    }
+    .modal-content h2{
+      font-family:var(--font-heading);
+      font-weight:700;
+      font-size:1.4rem;
+      margin-bottom:8px
+    }
+    .modal-content .price-large{
+      font-family:var(--font-heading);
+      font-size:2rem;
+      font-weight:800;
+      color:var(--gold);
+      margin-bottom:12px
+    }
+    .modal-content .price-large small{
+      font-size:1rem;
+      color:var(--text-muted);
+      font-weight:400;
+      font-family:var(--font-body)
+    }
+    .modal-content .features-list{
+      list-style:none;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:8px;
+      margin:16px 0 24px
+    }
+    .modal-content .features-list li{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      font-size:.88rem;
+      color:var(--text-secondary)
+    }
+    .modal-content .features-list li i{
+      color:var(--gold);
+      font-size:.75rem
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media(max-width:1024px){
+      .footer-grid{grid-template-columns:1fr 1fr}
+      .contact-grid{grid-template-columns:1fr}
+    }
+    @media(max-width:768px){
+      .nav-links{
+        position:fixed;
+        top:0;
+        right:-100%;
+        width:280px;
+        height:100vh;
+        background:rgba(8,12,32,.95);
+        backdrop-filter:blur(20px);
+        flex-direction:column;
+        padding:100px 32px 32px;
+        gap:20px;
+        transition:right var(--transition);
+        box-shadow:-10px 0 40px rgba(0,0,0,0.5);
+        align-items:flex-start
+      }
+      .nav-links.open{right:0}
+      .nav-toggle{display:flex}
+      .hero-stats{gap:24px}
+      .hero-stat .number{font-size:1.4rem}
+      .fleet-grid{grid-template-columns:1fr}
+      .testimonials-grid{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr;gap:24px}
+      .footer-bottom{flex-direction:column;text-align:center}
+      .section{padding:80px 0}
+      .modal-content .features-list{grid-template-columns:1fr}
+    }
+    @media(max-width:480px){
+      .hero-buttons .btn{width:100%;justify-content:center}
+      .cta-banner .btn-group .btn{width:100%;justify-content:center}
+      .car-card .car-image{height:180px}
+    }
+
+    .nav-overlay{
+      position:fixed;
+      inset:0;
+      z-index:999;
+      background:rgba(0,0,0,0.5);
+      display:none
+    }
+    .nav-overlay.active{display:block}
+  </style>
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#" class="logo">
+        <img src="logo.png" alt="Rumbo Rent">
+        Rumbo<span>Rent</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#vehiculos">Vehículos</a></li>
+        <li><a href="#por-que">Por Qué</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#testimonios">Testimonios</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="https://wa.me/50364450461" class="btn-nav" target="_blank"><i class="fab fa-whatsapp"></i> Reservar</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-overlay" id="navOverlay"></div>
+
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <canvas class="hero-canvas" id="heroCanvas"></canvas>
+    <div class="hero-content">
+      <div class="hero-badge"><i class="fas fa-shield-alt"></i> Sin depósito · Sin cargos ocultos</div>
+      <img src="logo.png" alt="Rumbo Rent" class="hero-logo" loading="eager">
+      <h1>
+        <span class="gradient-text">Rumbo Rent</span>
+        <span class="block-text">Tu mejor ruta</span>
+      </h1>
+      <p>Alquiler de vehículos en El Salvador — camionetas 4x4 y sedanes modernos. Te recogemos en el aeropuerto, sin depósito, sin sorpresas.</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="number">$29</div><div class="label">Desde / día</div></div>
+        <div class="hero-stat"><div class="number">8+</div><div class="label">Vehículos</div></div>
+        <div class="hero-stat"><div class="number">100%</div><div class="label">Sin depósito</div></div>
+        <div class="hero-stat"><div class="number">★ 4.9</div><div class="label">Valoración</div></div>
+      </div>
+      <div class="hero-buttons">
+        <a href="https://wa.me/50364450461" class="btn btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Reserva por WhatsApp</a>
+        <a href="#vehiculos" class="btn btn-secondary"><i class="fas fa-car"></i> Ver vehículos</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Descubre</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <section class="section" id="vehiculos">
+    <div class="container">
+      <div class="reveal"><div class="section-label">Flota</div></div>
+      <div class="reveal"><h2 class="section-title">Nuestros <span class="highlight">Vehículos</span></h2></div>
+      <div class="reveal"><p class="section-subtitle">Camionetas y sedanes modernos, revisados y listos para cualquier aventura en El Salvador.</p></div>
+      <div class="fleet-grid stagger-children" style="margin-top:48px" id="fleetGrid">
+        <div class="car-card" data-name="Jeep Grand Cherokee 2021 4x4" data-price="40" data-image="JEEP.jpeg" data-features="4x4|Aeropuerto|7 asientos|Cobertura total|Bluetooth|Aire acondicionado">
+          <img class="car-image" src="JEEP.jpeg" alt="Jeep Grand Cherokee 2021" loading="lazy">
+          <div class="car-info">
+            <div class="car-name">Jeep Grand Cherokee 2021</div>
+            <div class="car-tags"><span>4x4</span><span>Automático</span><span>7 asientos</span></div>
+            <div class="car-price">$40 <small>/ día</small></div>
+          </div>
+        </div>
+        <div class="car-card" data-name="Kia Sorento 2019" data-price="40" data-image="sorento.jpeg" data-features="7 asientos|Espacio familiar|Aeropuerto|Cobertura total|Bluetooth|Aire acondicionado">
+          <img class="car-image" src="sorento.jpeg" alt="Kia Sorento 2019" loading="lazy">
+          <div class="car-info">
+            <div class="car-name">Kia Sorento 2019</div>
+            <div class="car-tags"><span>SUV</span><span>Automático</span><span>7 asientos</span></div>
+            <div class="car-price">$40 <small>/ día</small></div>
+          </div>
+        </div>
+        <div class="car-card" data-name="Mitsubishi Outlander 2015" data-price="40" data-image="Mitsubishi Outlander 2015 normal.png" data-features="SUV|Espacio|Aeropuerto|Cobertura total|Aire acondicionado">
+          <img class="car-image" src="Mitsubishi Outlander 2015 normal.png" alt="Mitsubishi Outlander" loading="lazy">
+          <div class="car-info">
+            <div class="car-name">Mitsubishi Outlander 2015</div>
+            <div class="car-tags"><span>SUV</span><span>Automático</span><span>5 asientos</span></div>
+            <div class="car-price">$40 <small>/ día</small></div>
+          </div>
+        </div>
+        <div class="car-card" data-name="Nissan Rogue" data-price="40" data-image="nissan rogue.png" data-features="SUV|Económico|Aeropuerto|Cobertura total|Bluetooth">
+          <img class="car-image" src="nissan rogue.png" alt="Nissan Rogue" loading="lazy">
+          <div class="car-info">
+            <div class="car-name">Nissan Rogue</div>
+            <div class="car-tags"><span>SUV</span><span>Automático</span><span>5 asientos</span></div>
+            <div class="car-price">$40 <small>/ día</small></div>
+          </div>
+        </div>
+        <div class="car-card" data-name="Kia Forte EX Black 2019" data-price="29" data-image="kia ex black.png" data-features="Deportivo|Bluetooth|Aeropuerto|Cobertura total|Económico">
+          <img class="car-image" src="kia ex black.png" alt="Kia Forte EX Black" loading="lazy">
+          <div class="car-info">
+            <div class="car-name">Kia Forte EX Black 2019</div>
+            <div class="car-tags"><span>Sedán</span><span>Automático</span><span>Económico</span></div>
+            <div class="car-price">$29 <small>/ día</small></div>
+          </div>
+        </div>
+        <div class="car-card" data-name="Kia Forte GT K3 2020" data-price="29" data-image="kia forte.png" data-features="GT|Deportivo|Bluetooth|Aeropuerto|Cobertura total">
+          <img class="car-image" src="kia forte.png" alt="Kia Forte GT K3 2020" loading="lazy">
+          <div class="car-info">
+            <div class="car-name">Kia Forte GT K3 2020</div>
+            <div class="car-tags"><span>Sedán</span><span>Automático</span><span>GT</span></div>
+            <div class="car-price">$29 <small>/ día</small></div>
+          </div>
+        </div>
+        <div class="car-card" data-name="Kia Rio" data-price="29" data-image="kia rio.png" data-features="Económico|Bluetooth|Aeropuerto|Cobertura total">
+          <img class="car-image" src="kia rio.png" alt="Kia Rio" loading="lazy">
+          <div class="car-info">
+            <div class="car-name">Kia Rio</div>
+            <div class="car-tags"><span>Sedán</span><span>Automático</span><span>Económico</span></div>
+            <div class="car-price">$29 <small>/ día</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="por-que" style="background:var(--bg-secondary)">
+    <div class="container">
+      <div class="reveal"><div class="section-label">Por Qué</div></div>
+      <div class="reveal"><h2 class="section-title">¿Por qué <span class="highlight">Rumbo Rent</span>?</h2></div>
+      <div class="reveal"><p class="section-subtitle">Te mereces conducir tranquilo. Sin letras chiquitas, sin cargos ocultos.</p></div>
+      <div class="features-grid stagger-children" style="margin-top:48px">
+        <div class="feature-item">
+          <div class="icon"><i class="fas fa-tag"></i></div>
+          <h3>Mejores Precios</h3>
+          <p>Desde $29 al día — la mejor relación calidad-precio en El Salvador, sin competencia.</p>
+        </div>
+        <div class="feature-item">
+          <div class="icon"><i class="fas fa-car"></i></div>
+          <h3>Variedad de Flota</h3>
+          <p>Camionetas 4x4, SUVs familiares y sedanes económicos. Todos modernos y revisados.</p>
+        </div>
+        <div class="feature-item">
+          <div class="icon"><i class="fas fa-shield-alt"></i></div>
+          <h3>Sin Depósito</h3>
+          <p>No pedimos depósito de seguridad — tu palabra y tu reserva bastan. Confianza total.</p>
+        </div>
+        <div class="feature-item">
+          <div class="icon"><i class="fas fa-plane-arrival"></i></div>
+          <h3>Entrega en Aeropuerto</h3>
+          <p>Te esperamos en el aeropuerto con el vehículo listo. Llegas, firmas y te vas.</p>
+        </div>
+        <div class="feature-item">
+          <div class="icon"><i class="fas fa-star"></i></div>
+          <h3>Calidad Garantizada</h3>
+          <p>Vehículos en excelente estado mecánico y estético. Viaja seguro, viaja cómodo.</p>
+        </div>
+        <div class="feature-item">
+          <div class="icon"><i class="fas fa-ban"></i></div>
+          <h3>Sin Cargos Ocultos</h3>
+          <p>El precio que ves es el precio que pagas. Sin sorpresas, sin cargos extras.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="galeria">
+    <div class="container">
+      <div class="reveal"><div class="section-label">Galería</div></div>
+      <div class="reveal"><h2 class="section-title">Momentos <span class="highlight">Rumbo Rent</span></h2></div>
+      <div class="reveal"><p class="section-subtitle">Así es viajar con nosotros — clientes felices, destinos increíbles.</p></div>
+      <div class="gallery-grid stagger-children" style="margin-top:48px">
+        <div class="gallery-item"><img src="(1) Instagram_files/722036686_1548455313533589_8898268873966992010_n.jpg" alt="Cliente Rumbo Rent" loading="lazy"><div class="overlay"><i class="fas fa-search-plus"></i></div></div>
+        <div class="gallery-item"><img src="(1) Instagram_files/723510244_1329278392673062_8522470620363068872_n.jpg" alt="Vehículo Rumbo Rent" loading="lazy"><div class="overlay"><i class="fas fa-search-plus"></i></div></div>
+        <div class="gallery-item"><img src="(1) Instagram_files/721415534_18112228111730329_1805440092267787467_n.jpg" alt="Cliente Rumbo Rent" loading="lazy"><div class="overlay"><i class="fas fa-search-plus"></i></div></div>
+        <div class="gallery-item"><img src="(1) Instagram_files/721842363_18112230604730329_7852601891406353232_n.jpg" alt="Vehículo Rumbo Rent" loading="lazy"><div class="overlay"><i class="fas fa-search-plus"></i></div></div>
+        <div class="gallery-item"><img src="(1) Instagram_files/722203998_18112231642730329_3186039725698412010_n.jpg" alt="Cliente Rumbo Rent" loading="lazy"><div class="overlay"><i class="fas fa-search-plus"></i></div></div>
+        <div class="gallery-item"><img src="(1) Instagram_files/723014803_18112229476730329_4232437437141705147_n.jpg" alt="Cliente Rumbo Rent" loading="lazy"><div class="overlay"><i class="fas fa-search-plus"></i></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section testimonials-section" id="testimonios">
+    <div class="container">
+      <div class="reveal"><div class="section-label">Testimonios</div></div>
+      <div class="reveal"><h2 class="section-title">Lo que dicen <span class="highlight">nuestros clientes</span></h2></div>
+      <div class="testimonials-grid stagger-children" style="margin-top:48px">
+        <div class="testimonial-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p>Excelente servicio, la camioneta impecable. Me recogieron en el aeropuerto y en 10 minutos ya estaba manejando. Sin depósito, sin vueltas. 100% recomendado.</p>
+          <div class="author"><div class="avatar">CM</div><div class="name">Carlos M.</div></div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p>Renté un sedan por una semana y todo perfecto. El precio es el mejor que encontré en El Salvador, el carro limpio y la atención increíble. Definitivamente vuelvo.</p>
+          <div class="author"><div class="avatar">AL</div><div class="name">Ana L.</div></div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p>Viaje familiar a la playa con la Sorento — espacio para todos y el equipaje. El proceso de reserva super fácil por WhatsApp. Sin cargos ocultos, tal cual prometen.</p>
+          <div class="author"><div class="avatar">RG</div><div class="name">Roberto G.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-banner">
+    <h2 class="reveal">¿Listo para <span class="highlight">rodar</span>?</h2>
+    <p class="reveal">Reserva hoy y asegura tu vehículo. Te esperamos en el aeropuerto.</p>
+    <div class="btn-group reveal">
+      <a href="https://wa.me/50364450461" class="btn btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Reserva por WhatsApp</a>
+      <a href="#contacto" class="btn btn-secondary"><i class="fas fa-phone-alt"></i> Más información</a>
+    </div>
+  </section>
+
+  <section class="section" id="contacto" style="background:var(--bg-secondary)">
+    <div class="container">
+      <div class="reveal"><div class="section-label">Contacto</div></div>
+      <div class="reveal"><h2 class="section-title">Contácta <span class="highlight">nos</span></h2></div>
+      <div class="reveal"><p class="section-subtitle">Estamos a un mensaje de distancia. Te respondemos al instante.</p></div>
+      <div class="contact-grid" style="margin-top:48px">
+        <div class="contact-info-list stagger-children">
+          <div class="contact-card">
+            <div class="icon"><i class="fab fa-whatsapp"></i></div>
+            <div class="info"><h4>WhatsApp</h4><a href="https://wa.me/50364450461" target="_blank">+503 6445 0461</a></div>
+          </div>
+          <div class="contact-card">
+            <div class="icon"><i class="fab fa-instagram"></i></div>
+            <div class="info"><h4>Instagram</h4><a href="https://www.instagram.com/rumborent_" target="_blank">@rumborent_</a></div>
+          </div>
+          <div class="contact-card">
+            <div class="icon"><i class="fas fa-plane-arrival"></i></div>
+            <div class="info"><h4>Entrega</h4><p>Aeropuerto de San Salvador (ESA)</p></div>
+          </div>
+          <div class="contact-card">
+            <div class="icon"><i class="fas fa-globe-americas"></i></div>
+            <div class="info"><h4>Cobertura</h4><p>Todo El Salvador</p></div>
+          </div>
+        </div>
+        <div class="contact-form reveal-right">
+          <h3>Reserva tu vehículo</h3>
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="formName">Nombre</label>
+              <input type="text" id="formName" placeholder="Tu nombre" required>
+            </div>
+            <div class="form-group">
+              <label for="formWhatsapp">WhatsApp</label>
+              <input type="tel" id="formWhatsapp" placeholder="+503 7000 0000" required>
+            </div>
+            <div class="form-group">
+              <label for="formVehicle">Vehículo de interés</label>
+              <select id="formVehicle">
+                <option value="">Selecciona uno</option>
+                <option>Jeep Grand Cherokee 2021</option>
+                <option>Kia Sorento 2019</option>
+                <option>Mitsubishi Outlander 2015</option>
+                <option>Nissan Rogue</option>
+                <option>Kia Forte EX Black 2019</option>
+                <option>Kia Forte GT K3 2020</option>
+                <option>Kia Rio</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="formDates">Fechas (aproximado)</label>
+              <input type="text" id="formDates" placeholder="Ej: 5-10 julio">
+            </div>
+            <div class="form-group">
+              <label for="formMessage">Mensaje</label>
+              <textarea id="formMessage" placeholder="Cuéntanos qué necesitas..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-whatsapp" style="width:100%;justify-content:center"><i class="fab fa-whatsapp"></i> Enviar por WhatsApp</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo" style="display:flex;align-items:center;gap:10px;font-family:var(--font-heading);font-weight:800;font-size:1.2rem">
+            <img src="logo.png" alt="Rumbo Rent" style="width:36px;height:36px;border-radius:8px;object-fit:cover">
+            Rumbo<span style="color:var(--gold)">Rent</span>
+          </a>
+          <p>Alquiler de vehículos en El Salvador. Sin depósito, sin cargos ocultos, con la mejor calidad.</p>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/rumborent_" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/50364450461" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4>Vehículos</h4>
+          <ul>
+            <li><a href="#vehiculos">Jeep Grand Cherokee</a></li>
+            <li><a href="#vehiculos">Kia Sorento</a></li>
+            <li><a href="#vehiculos">Kia Forte GT K3</a></li>
+            <li><a href="#vehiculos">Kia Rio</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Empresa</h4>
+          <ul>
+            <li><a href="#por-que">Por qué nosotros</a></li>
+            <li><a href="#testimonios">Testimonios</a></li>
+            <li><a href="#galeria">Galería</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="https://wa.me/50364450461" target="_blank">WhatsApp</a></li>
+            <li><a href="https://www.instagram.com/rumborent_" target="_blank">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Rumbo Rent — El Salvador. Todos los derechos reservados.</span>
+        <span>Hecho con <i class="fas fa-heart" style="color:var(--gold)"></i> para El Salvador</span>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/50364450461" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <div class="modal-overlay" id="carModal">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
+      <img id="modalImage" src="" alt="">
+      <h2 id="modalName"></h2>
+      <div class="price-large" id="modalPrice"></div>
+      <ul class="features-list" id="modalFeatures"></ul>
+      <a href="https://wa.me/50364450461" class="btn btn-whatsapp" target="_blank" style="width:100%;justify-content:center"><i class="fab fa-whatsapp"></i> Reservar este vehículo</a>
+    </div>
+  </div>
+
+  <script>
+    // Particles
+    (function(){
+      const container = document.createElement('div');
+      container.className = 'particles';
+      document.body.prepend(container);
+      const count = Math.min(30, Math.floor(window.innerWidth / 40));
+      for(let i=0;i<count;i++){
+        const el = document.createElement('div');
+        el.className = 'particle';
+        el.style.left = Math.random()*100+'%';
+        el.style.width = el.style.height = (2+Math.random()*3)+'px';
+        el.style.animationDuration = (15+Math.random()*20)+'s';
+        el.style.animationDelay = (Math.random()*15)+'s';
+        el.style.opacity = (0.2+Math.random()*0.3);
+        container.appendChild(el);
+      }
+    })();
+
+    // Canvas animation
+    const canvas = document.getElementById('heroCanvas');
+    const ctx = canvas.getContext('2d');
+    let W,H;
+    function resize(){
+      W=canvas.width=window.innerWidth;
+      H=canvas.height=window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize',resize);
+
+    const stars = Array.from({length:80},()=>({
+      x:Math.random()*W,y:Math.random()*H,
+      r:0.5+Math.random()*1.5,
+      a:0.2+Math.random()*0.8,
+      da:0.002+Math.random()*0.005
+    }));
+
+    function drawStars(){
+      ctx.clearRect(0,0,W,H);
+      for(const s of stars){
+        s.a += s.da;
+        if(s.a>1||s.a<0.1)s.da*=-1;
+        ctx.beginPath();
+        ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+        ctx.fillStyle=`rgba(255,255,255,${s.a*0.3})`;
+        ctx.fill();
+      }
+      const grd = ctx.createRadialGradient(W*0.5,H*0.5,0,W*0.5,H*0.5,W*0.5);
+      grd.addColorStop(0,'rgba(212,168,83,0.02)');
+      grd.addColorStop(1,'transparent');
+      ctx.fillStyle=grd;
+      ctx.fillRect(0,0,W,H);
+      requestAnimationFrame(drawStars);
+    }
+    drawStars();
+
+    window.addEventListener('resize',()=>{
+      W=canvas.width=window.innerWidth;
+      H=canvas.height=window.innerHeight;
+      stars.forEach(s=>{s.x=Math.random()*W;s.y=Math.random()*H});
+    });
+
+    // Navbar scroll
+    const navbar = document.getElementById('navbar');
+    let lastScroll=0;
+    window.addEventListener('scroll',()=>{
+      const y=window.scrollY;
+      navbar.classList.toggle('scrolled',y>60);
+      lastScroll=y;
+    });
+
+    // Mobile nav
+    const navToggle=document.getElementById('navToggle');
+    const navLinks=document.getElementById('navLinks');
+    const navOverlay=document.getElementById('navOverlay');
+    function toggleNav(){
+      navToggle.classList.toggle('active');
+      navLinks.classList.toggle('open');
+      navOverlay.classList.toggle('active');
+      document.body.style.overflow=navLinks.classList.contains('open')?'hidden':'';
+    }
+    navToggle.addEventListener('click',toggleNav);
+    navOverlay.addEventListener('click',toggleNav);
+    navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',toggleNav));
+
+    // Scroll Reveal
+    const revealObserver = new IntersectionObserver((entries)=>{
+      for(const entry of entries){
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      }
+    },{threshold:0.1});
+
+    document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale,.stagger-children')
+      .forEach(el=>revealObserver.observe(el));
+
+    // 3D tilt on car cards
+    document.querySelectorAll('.car-card').forEach(card=>{
+      card.addEventListener('mousemove',e=>{
+        const r=card.getBoundingClientRect();
+        const x=e.clientX-r.left;
+        const y=e.clientY-r.top;
+        const cx=r.width/2,cy=r.height/2;
+        const rotX=(y-cy)/12;
+        const rotY=(cx-x)/12;
+        card.style.transform=`perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+      });
+      card.addEventListener('mouseleave',()=>{
+        card.style.transform='perspective(800px) rotateX(0) rotateY(0)';
+      });
+      // Modal
+      card.addEventListener('click',()=>openModal(card));
+    });
+
+    // Modal
+    const modal=document.getElementById('carModal');
+    const modalImg=document.getElementById('modalImage');
+    const modalName=document.getElementById('modalName');
+    const modalPrice=document.getElementById('modalPrice');
+    const modalFeatures=document.getElementById('modalFeatures');
+    const modalClose=document.getElementById('modalClose');
+
+    function openModal(card){
+      const name=card.dataset.name;
+      const price=card.dataset.price;
+      const img=card.dataset.image;
+      const feats=card.dataset.features.split('|');
+      modalImg.src=img;
+      modalImg.alt=name;
+      modalName.textContent=name;
+      modalPrice.innerHTML=`$${price} <small>/ día</small>`;
+      modalFeatures.innerHTML=feats.map(f=>`<li><i class="fas fa-check-circle"></i> ${f}</li>`).join('');
+      modal.classList.add('active');
+      document.body.style.overflow='hidden';
+    }
+
+    function closeModal(){
+      modal.classList.remove('active');
+      document.body.style.overflow='';
+    }
+
+    modalClose.addEventListener('click',closeModal);
+    modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+
+    // Contact form submit -> WhatsApp
+    document.getElementById('contactForm').addEventListener('submit',function(e){
+      e.preventDefault();
+      const name=document.getElementById('formName').value.trim();
+      const phone=document.getElementById('formWhatsapp').value.trim();
+      const vehicle=document.getElementById('formVehicle').value;
+      const dates=document.getElementById('formDates').value.trim();
+      const msg=document.getElementById('formMessage').value.trim();
+      let text=`Hola Rumbo Rent!%0AQuiero reservar un vehículo.%0A`;
+      if(name)text+=`Nombre: ${name}%0A`;
+      if(phone)text+=`WhatsApp: ${phone}%0A`;
+      if(vehicle)text+=`Vehículo: ${vehicle}%0A`;
+      if(dates)text+=`Fechas: ${dates}%0A`;
+      if(msg)text+=`Mensaje: ${msg}`;
+      window.open(`https://wa.me/50364450461?text=${text}`,'_blank');
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',function(e){
+        const href=this.getAttribute('href');
+        if(href==='#')return;
+        e.preventDefault();
+        const target=document.querySelector(href);
+        if(target)target.scrollIntoView({behavior:'smooth',block:'start'});
+      });
+    });
+  </script>
+</body>
+</html>

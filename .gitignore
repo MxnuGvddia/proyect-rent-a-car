@@ -1,0 +1,11 @@
+# Reference pages (scraped competitors)
+(1) Instagram.html
+Alquila un auto - Carvi.html
+Alquila un auto - Carvi_files/
+Renta de Autos en El Salvador _ Encuentra tu auto Ideal _ CR Rental Car.html
+Renta de Autos en El Salvador _ Encuentra tu auto Ideal _ CR Rental Car_files/
+
+# Instagram scraper assets (keep images, ignore code)
+(1) Instagram_files/*.js
+(1) Instagram_files/*.css
+(1) Instagram_files/saved_resource.html
