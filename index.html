@@ -1367,7 +1367,11 @@
   .days-selector button:hover { border-color:#f9a826; color:#f9a826; }
   .days-selector .days-value {
     flex:1; text-align:center; font-size:1.4rem; font-weight:700; color:#fff;
+    background:transparent; border:none; outline:none; width:3rem;
+    -moz-appearance:textfield;
   }
+  .days-selector .days-value::-webkit-inner-spin-button,
+  .days-selector .days-value::-webkit-outer-spin-button { -webkit-appearance:none; }
   .quote-result {
     margin-top:auto; padding-top:1.2rem;
     border-top:1px solid rgba(249,168,38,0.12);
@@ -2258,7 +2262,7 @@
         <label data-i18n="magic-days">2. Días de alquiler</label>
         <div class="days-selector">
           <button id="daysMinus" aria-label="Menos días">−</button>
-          <span class="days-value" id="daysValue">3</span>
+          <input type="number" class="days-value" id="daysValue" value="3" min="1" max="30" aria-label="Cantidad de días">
           <button id="daysPlus" aria-label="Más días">+</button>
         </div>
       </div>
@@ -2347,10 +2351,18 @@
     }
 
     daysMinus.addEventListener('click', function() {
-      if (days > 1) { days--; daysVal.textContent = days; updateQuote(); }
+      if (days > 1) { days--; daysVal.value = days; updateQuote(); }
     });
     daysPlus.addEventListener('click', function() {
-      if (days < 30) { days++; daysVal.textContent = days; updateQuote(); }
+      if (days < 30) { days++; daysVal.value = days; updateQuote(); }
+    });
+    daysVal.addEventListener('input', function() {
+      var v = parseInt(this.value);
+      if (isNaN(v) || v < 1) v = 1;
+      if (v > 30) v = 30;
+      days = v;
+      this.value = v;
+      updateQuote();
     });
 
     function getPhone() {
