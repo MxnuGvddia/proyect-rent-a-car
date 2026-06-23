@@ -2289,22 +2289,23 @@
   <script>
   (function() {
     'use strict';
-    if (typeof gsap === 'undefined') return;
+    function initMagic() {
+      if (typeof gsap === 'undefined') { setTimeout(initMagic, 100); return; }
 
-    const overlay = document.getElementById('bookingOverlay');
-    const panel = document.getElementById('bookingPanel');
-    const backdrop = document.getElementById('bookingBackdrop');
-    const openBtn = document.getElementById('magicBtn');
-    const closeBtn = document.getElementById('bookingClose');
-    const vehicleOpts = document.getElementById('vehicleOptions');
-    const daysVal = document.getElementById('daysValue');
-    const daysMinus = document.getElementById('daysMinus');
-    const daysPlus = document.getElementById('daysPlus');
-    const qPriceDay = document.getElementById('qPriceDay');
-    const qDays = document.getElementById('qDays');
-    const qTotal = document.getElementById('qTotal');
-    const quoteResult = document.getElementById('quoteResult');
-    const waBtn = document.getElementById('whatsappBtn');
+      const overlay = document.getElementById('bookingOverlay');
+      const panel = document.getElementById('bookingPanel');
+      const backdrop = document.getElementById('bookingBackdrop');
+      const openBtn = document.getElementById('magicBtn');
+      const closeBtn = document.getElementById('bookingClose');
+      const vehicleOpts = document.getElementById('vehicleOptions');
+      const daysVal = document.getElementById('daysValue');
+      const daysMinus = document.getElementById('daysMinus');
+      const daysPlus = document.getElementById('daysPlus');
+      const qPriceDay = document.getElementById('qPriceDay');
+      const qDays = document.getElementById('qDays');
+      const qTotal = document.getElementById('qTotal');
+      const quoteResult = document.getElementById('quoteResult');
+      const waBtn = document.getElementById('whatsappBtn');
 
     const fleet = [
       { name: 'Jeep Grand Cherokee 2021', price: 60 },
@@ -2431,6 +2432,8 @@
     document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && overlay.classList.contains('active')) closePanel(); });
 
     updateQuote();
+    }
+    initMagic();
   })();
   </script>
 </body>
