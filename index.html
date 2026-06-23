@@ -2379,11 +2379,11 @@
       if (!selectedVehicle) return;
       const total = selectedVehicle.price * days;
       const msg = encodeURIComponent(
-        'Hola Rumbo Rent! 🌟\n\n' +
+        'Hola Rumbo Rent!\n\n' +
         'Quisiera cotizar:\n' +
-        '🚗 ' + selectedVehicle.name + '\n' +
-        '📅 ' + days + ' día' + (days > 1 ? 's' : '') + '\n' +
-        '💰 Total estimado: $' + total + '\n\n' +
+        '- Vehiculo: ' + selectedVehicle.name + '\n' +
+        '- Dias: ' + days + ' día' + (days > 1 ? 's' : '') + '\n' +
+        '- Total estimado: $' + total + '\n\n' +
         'Quedo atento a su respuesta.'
       );
       const phone = getPhone();
