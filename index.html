@@ -1948,9 +1948,9 @@
         const targetX = ud.baseX;
         const targetY = ud.baseY + Math.sin(t * ud.floatSpeed + ud.floatOffset) * ud.floatAmp;
         const targetZ = ud.baseZ;
-        mesh.position.x += (targetX - mesh.position.x) * 0.04;
-        mesh.position.y += (targetY - mesh.position.y) * 0.04;
-        mesh.position.z += (targetZ - mesh.position.z) * 0.04;
+        mesh.position.x = targetX;
+        mesh.position.y = targetY;
+        mesh.position.z = targetZ;
         const pulse = 1 + Math.sin(t * 0.5 + ud.floatOffset) * 0.05;
         const targetScale = ud.baseScale * pulse;
         mesh.scale.x += (targetScale - mesh.scale.x) * 0.08;
