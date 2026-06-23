@@ -419,6 +419,10 @@
     };
     let currentLang = localStorage.getItem('rumbolang') || 'es';
 
+    function toggleLang() {
+      setLang(currentLang === 'es' ? 'en' : 'es');
+    }
+
     function setLang(lang) {
       currentLang = lang;
       localStorage.setItem('rumbolang', lang);
@@ -428,7 +432,8 @@
         if (langData[lang][key]) el.innerHTML = langData[lang][key];
       });
       document.querySelectorAll('.lang-opt').forEach(b => b.classList.remove('active'));
-      document.querySelector('.lang-' + lang).classList.add('active');
+      document.querySelector('.lang-opt').classList.add('active');
+      document.getElementById('lang-toggle').textContent = lang === 'es' ? 'EN' : 'ES';
       const id = location.hash.slice(1) || 'hero';
       if (id !== 'hero') {
         const titles = {
@@ -1277,8 +1282,7 @@
       <li><a href="#" onclick="showPage('redes');return false;" data-i18n="nav-redes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> <span data-i18n="nav-redes">Redes Sociales</span></a></li>
       <li class="lang-switch">
         <div class="lang-toggle">
-          <a href="#" class="lang-opt lang-es" onclick="setLang('es');return false;">ES</a>
-          <a href="#" class="lang-opt lang-en" onclick="setLang('en');return false;">EN</a>
+          <a href="#" class="lang-opt" id="lang-toggle" onclick="toggleLang();return false;">EN</a>
         </div>
       </li>
     </ul>
