@@ -539,8 +539,7 @@
     nav ul li a:hover { color: #f9a826; }
     nav .nav-social { display: inline-flex; align-items: center; gap: 0.35rem; }
     nav .nav-social svg { width: 18px; height: 18px; }
-    .nav-actions { display: inline-flex; align-items: center; gap: 0.5rem; flex: 1; }
-    .nav-actions .lang-switch { margin-left: auto; }
+    .nav-actions { display: inline-flex; align-items: center; gap: 0.5rem; margin-left: auto; }
     .lang-switch { display: inline-flex; align-items: center; }
     .lang-toggle {
       display: inline-flex; align-items: center; gap: 0;
@@ -986,7 +985,6 @@
     .about-footer { color: rgba(255,255,255,0.6); font-size: 0.95rem; font-style: italic; line-height: 1.7; }
     .about-footer strong { color: #f9a826; }
     @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 480px) { .about-grid { grid-template-columns: 1fr; } }
     .req-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1148,7 +1146,6 @@
     }
     .partner-visual svg { width: 64px; height: 64px; color: #f9a826; opacity: 0.7; }
     .partner-visual span { font-size: 0.9rem; color: rgba(255,255,255,0.5); max-width: 140px; }
-    @media (max-width: 768px) { .partner-content { flex-direction: column; text-align: center; } .partner-list li { justify-content: center; } }
     footer {
       text-align: center;
       padding: 2rem;
@@ -1205,15 +1202,69 @@
       }
       .hero .wrap { padding: 7rem 1.5rem 3rem; }
       .hero h1 { font-size: 2.2rem; }
+      .hero-page-title { font-size: 2.2rem; }
       .mobile-break { display: none; }
       .hero-blocks { grid-template-columns: 1fr; }
       .section-title { font-size: 1.8rem; }
+      .section-sub { font-size: 0.95rem; }
       .steps-grid { grid-template-columns: 1fr; }
       .req-grid { grid-template-columns: 1fr; }
       .trust-badges { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; }
       .fleet-grid > .car-card { flex: 0 0 240px; }
       .previews-grid { grid-template-columns: 1fr; }
+      .partner-content { flex-direction: column; text-align: center; }
+      .partner-list li { justify-content: center; }
+    }
+    @media (max-width: 600px) {
+      nav { padding: 0.6rem 1rem; }
+      body { padding-top: 48px; }
+      section { padding: 3rem 1rem; }
+      .page.active { padding-top: 3rem; }
+      .hero--page { min-height: 30vh; }
+      .hero .wrap { padding: 6rem 1rem 2.5rem; }
+      section .section-inner { padding: 0; }
+      .faq-list { padding: 0; }
+      .map-container { margin: 1.5rem 0 0; border-radius: 12px; }
+      .fleet-grid { gap: 1rem; }
+      .fleet-grid > .car-card { flex: 0 0 220px; }
+      .car-card-body { padding: 0.9rem; }
+      .car-card-body h3 { font-size: 1rem; }
+      .car-card .price { font-size: 1.2rem; }
+      .hero h1 { font-size: 1.8rem; }
+      .hero-page-title { font-size: 1.8rem; }
+      .hero-deck { font-size: 1rem; }
+      .section-title { font-size: 1.5rem; }
+      .section-sub { font-size: 0.9rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .partner-content { flex-direction: column; text-align: center; gap: 1.5rem; }
+      .partner-text { order: 1; }
+      .partner-visual { width: 100%; max-width: 200px; height: 200px; order: 0; margin: 0 auto; }
+      .partner-list li { justify-content: center; }
+      nav .logo { font-size: 1.1rem; }
+      nav .logo img { height: 26px; }
+      .nav-wa { padding: 0.3rem 0.7rem; font-size: 0.8rem; }
+      .preview-card { padding: 1rem; }
+      .btn { padding: 0.8rem 1.8rem; font-size: 0.95rem; }
+      .legal-content { padding: 0; }
+      .about-content { padding: 0; }
+    }
+    @media (max-width: 400px) {
+      nav { padding: 0.5rem 0.75rem; }
+      body { padding-top: 44px; }
+      section { padding: 2rem 0.75rem; }
+      .hero .wrap { padding: 5.5rem 0.75rem 2rem; }
+      .hero h1 { font-size: 1.5rem; }
+      .hero-page-title { font-size: 1.5rem; }
+      .section-title { font-size: 1.3rem; }
+      nav .logo { font-size: 0.95rem; }
+      nav .logo img { height: 22px; }
+      .fleet-grid > .car-card { flex: 0 0 200px; }
+      .lang-opt { padding: 3px 7px; font-size: 0.7rem; }
+      .mobile-menu-btn { font-size: 1.3rem; }
+      .hamburger, .hamburger::before, .hamburger::after { width: 20px; }
+      .hamburger::before { top: -6px; }
+      .hamburger::after { top: 6px; }
     }
     .legal-content h3 {
       color: #f9a826;
