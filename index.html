@@ -2433,7 +2433,15 @@
     waBtn.addEventListener('click', function() {
       if (!selectedVehicle) return;
       const total = selectedVehicle.price * days;
-      const msg = encodeURIComponent(
+      const isEn = currentLang === 'en';
+      const msg = encodeURIComponent(isEn ?
+        'Hi Rumbo Rent!\n\n' +
+        'I would like to get a quote:\n' +
+        '- Vehicle: ' + selectedVehicle.name + '\n' +
+        '- Days: ' + days + '\n' +
+        '- Estimated total: $' + total + '\n\n' +
+        'Thank you.'
+      :
         'Hola Rumbo Rent!\n\n' +
         'Quisiera cotizar:\n' +
         '- Vehiculo: ' + selectedVehicle.name + '\n' +
