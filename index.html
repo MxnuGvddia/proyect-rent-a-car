@@ -539,7 +539,8 @@
     nav ul li a:hover { color: #f9a826; }
     nav .nav-social { display: inline-flex; align-items: center; gap: 0.35rem; }
     nav .nav-social svg { width: 18px; height: 18px; }
-    .lang-switch { display: inline-flex; align-items: center; margin-left: 0.75rem; }
+    .nav-actions { display: inline-flex; align-items: center; gap: 0.5rem; }
+    .lang-switch { display: inline-flex; align-items: center; }
     .lang-toggle {
       display: inline-flex; align-items: center; gap: 0;
       background: rgba(255,255,255,0.06); border-radius: 20px;
@@ -1429,7 +1430,15 @@
     <a href="#" class="logo" onclick="showPage('hero');return false;">
       <span class="gold">Rumbo</span> <span class="white">Rent A Car</span>
     </a>
-    <button class="mobile-menu-btn" onclick="document.querySelector('nav ul').classList.toggle('open')"><span class="hamburger"></span></button>
+    <div class="nav-actions">
+      <button class="mobile-menu-btn" onclick="document.querySelector('nav ul').classList.toggle('open')"><span class="hamburger"></span></button>
+      <div class="lang-switch">
+        <div class="lang-toggle">
+          <a href="#" class="lang-opt" onclick="toggleLang();return false;">ES</a>
+          <a href="#" class="lang-opt" onclick="toggleLang();return false;">EN</a>
+        </div>
+      </div>
+    </div>
     <ul>
       <li><a href="#" onclick="showPage('hero');return false;" data-i18n="nav-inicio">Inicio</a></li>
       <li><a href="#" onclick="showPage('como-reservar');return false;" data-i18n="nav-como">¿Cómo reservar?</a></li>
@@ -1440,12 +1449,6 @@
       <li><a href="#" onclick="showPage('legal');return false;" data-i18n="nav-legal">Aviso Legal</a></li>
       <li><a href="#" onclick="showPage('faq');return false;" data-i18n="nav-faq">FAQ</a></li>
       <li><a href="#" onclick="showPage('redes');return false;" data-i18n="nav-redes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> <span data-i18n="nav-redes">Redes Sociales</span></a></li>
-      <li class="lang-switch">
-        <div class="lang-toggle">
-          <a href="#" class="lang-opt" onclick="toggleLang();return false;">ES</a>
-          <a href="#" class="lang-opt" onclick="toggleLang();return false;">EN</a>
-        </div>
-      </li>
     </ul>
   </nav>
 
