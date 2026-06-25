@@ -156,7 +156,7 @@
         'page-title-partner': '¿Tienes un vehículo? <span class="gold">Únelo a nuestra flota</span>',
         'page-title-nosotros': 'Un nuevo <span class="gold">rumbo</span> comienza hoy',
         'page-title-faq': 'Preguntas <span class="gold">frecuentes</span>',
-        'section-tag-flota': 'Nuestra Flota', 'section-sub-flota': 'SUVs from $35/day · Sedans from $20/day',
+        'section-tag-flota': 'Nuestra Flota', 'section-sub-flota': 'SUVs desde $35/día · Sedanes desde $20/día',
         'section-tag-como-reservar': 'Cómo funciona', 'section-sub-como-reservar': 'En solo 3 pasos tienes tu vehículo listo',
         'section-tag-requisitos': 'Requisitos', 'section-sub-requisitos': 'Documentos requeridos según tu perfil',
         'section-tag-partner': 'Únete a la flota', 'section-sub-partner': 'Genera ingresos adicionales rentando tu auto con nosotros',
@@ -175,7 +175,7 @@
         'about-item-6': 'Atención personalizada',
         'about-footer': 'Cada reserva nos ayuda a seguir construyendo un sueño hecho en <strong>El Salvador</strong> para quienes desean descubrir nuestro hermoso país con <strong>libertad y confianza</strong>.',
         'fleet-category-suv': 'Camionetas',
-        'fleet-category-sedan': 'Sedans',
+        'fleet-category-sedan': 'Sedanes',
         'car-jeep-badge': '4x4',
         'car-jeep-name': 'Jeep Grand Cherokee 2021',
         'car-jeep-feat-1': 'Cobertura total',
@@ -200,24 +200,24 @@
         'car-rogue-feat-2': 'Sin depósito',
         'car-rogue-feat-3': 'Sin cargos ocultos',
         'car-rogue-feat-4': 'Entrega en aeropuerto',
-        'car-forte-gt-badge': 'Sporty',
+        'car-forte-gt-badge': 'Deportivo',
         'car-forte-gt-name': 'Kia Forte GT K3 2020',
-        'car-forte-gt-feat-1': 'Sporty GT design',
-        'car-forte-gt-feat-2': 'Multimedia screen + Bluetooth',
-        'car-forte-gt-feat-3': 'Air conditioning',
-        'car-forte-gt-feat-4': 'No deposit',
+        'car-forte-gt-feat-1': 'Diseño deportivo GT',
+        'car-forte-gt-feat-2': 'Pantalla multimedia + Bluetooth',
+        'car-forte-gt-feat-3': 'Aire acondicionado',
+        'car-forte-gt-feat-4': 'Sin depósito',
         'car-forte-ex-badge': 'Black Edition',
         'car-forte-ex-name': 'Kia Forte EX 2019',
-        'car-forte-ex-feat-1': 'Black Edition trim',
-        'car-forte-ex-feat-2': 'Great fuel efficiency',
-        'car-forte-ex-feat-3': 'No hidden fees',
-        'car-forte-ex-feat-4': 'Airport delivery',
-        'car-rio-badge': 'Economical',
+        'car-forte-ex-feat-1': 'Edición Black',
+        'car-forte-ex-feat-2': 'Excelente rendimiento',
+        'car-forte-ex-feat-3': 'Sin cargos ocultos',
+        'car-forte-ex-feat-4': 'Entrega en aeropuerto',
+        'car-rio-badge': 'Económico',
         'car-rio-name': 'Kia Rio 2016',
-        'car-rio-feat-1': 'Excellent fuel economy',
-        'car-rio-feat-2': 'No deposit',
-        'car-rio-feat-3': 'Automatic transmission',
-        'car-rio-feat-4': 'Airport delivery',
+        'car-rio-feat-1': 'Excelente economía de combustible',
+        'car-rio-feat-2': 'Sin depósito',
+        'car-rio-feat-3': 'Transmisión automática',
+        'car-rio-feat-4': 'Entrega en aeropuerto',
         'price-per-day': '/ day',
         'step-1-title': 'Elige tu vehículo',
         'step-1-desc': 'Revisa nuestra flota y selecciona el auto que más te guste.',
@@ -283,6 +283,8 @@
         'magic-days-label': 'Días',
         'magic-total': 'Total estimado',
         'magic-whatsapp': 'Enviar cotización por WhatsApp',
+        'cat-camionetas': 'CAMIONETAS',
+        'cat-sedanes': 'SEDANES',
       },
       en: {
         'nav-inicio': 'Home', 'nav-flota': 'Fleet',         'nav-como': 'How to Book',
@@ -440,6 +442,8 @@
         'magic-days-label': 'Days',
         'magic-total': 'Estimated total',
         'magic-whatsapp': 'Send quote via WhatsApp',
+        'cat-camionetas': 'SUVS & FAMILY',
+        'cat-sedanes': 'SEDANS',
       }
     };
     let currentLang = localStorage.getItem('rumbolang') || 'es';
@@ -1630,18 +1634,18 @@
       <a href="https://wa.me/50375922093" class="btn btn-gold" target="_blank" data-i18n="hero-cta">
         Cotizar por WhatsApp
       </a>
-      <h2 style="order:6;color:#f9a826;font-size:1rem;text-transform:uppercase;letter-spacing:1px;text-align:center;width:100%;margin:2.5rem 0 0.5rem">CAMIONETAS</h2>
+      <h2 style="order:6;color:#f9a826;font-size:1rem;text-transform:uppercase;letter-spacing:1px;text-align:center;width:100%;margin:2.5rem 0 0.5rem" data-i18n="cat-camionetas">CAMIONETAS</h2>
       <div class="category-grid">
         <div class="car-card">
           <img class="car-img" src="JEEP.jpeg" alt="Jeep Grand Cherokee 2021" loading="lazy" width="280" height="220">
           <div class="car-card-body">
-            <div class="badge">4×4</div>
-            <h3>Jeep Grand Cherokee 2021</h3>
+            <div class="badge" data-i18n="car-jeep-badge">4×4</div>
+            <h3 data-i18n="car-jeep-name">Jeep Grand Cherokee 2021</h3>
             <ul class="car-card-features">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Full coverage</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Airport delivery</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>4×4 system</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>No deposit</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="car-jeep-feat-1">Full coverage</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="car-jeep-feat-2">Airport delivery</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="car-jeep-feat-3">4×4 system</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="car-jeep-feat-4">No deposit</span></li>
             </ul>
             <div class="price">$40 - $55 <small>/ day</small></div>
           </div>
@@ -1649,13 +1653,13 @@
         <div class="car-card">
           <img class="car-img" src="sorento.jpeg" alt="Kia Sorento 2019" loading="lazy" width="280" height="220">
           <div class="car-card-body">
-            <div class="badge">7 seats</div>
-            <h3>Kia Sorento 2019</h3>
+            <div class="badge" data-i18n="car-sorento-badge">7 seats</div>
+            <h3 data-i18n="car-sorento-name">Kia Sorento 2019</h3>
             <ul class="car-card-features">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Spacious trunk</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>No deposit</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Ideal for group trips</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Airport delivery</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="car-sorento-feat-1">Spacious trunk</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="car-sorento-feat-2">No deposit</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="car-sorento-feat-3">Ideal for group trips</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="car-sorento-feat-4">Airport delivery</span></li>
             </ul>
             <div class="price">$45 - $60 <small>/ day</small></div>
           </div>
@@ -1663,13 +1667,13 @@
         <div class="car-card">
           <img class="car-img" src="outlander.png" alt="Mitsubishi Outlander 2015" loading="lazy" width="280" height="220">
           <div class="car-card-body">
-            <div class="badge">SUV</div>
-            <h3>Mitsubishi Outlander 2015</h3>
+            <div class="badge" data-i18n="car-outlander-badge">SUV</div>
+            <h3 data-i18n="car-outlander-name">Mitsubishi Outlander 2015</h3>
             <ul class="car-card-features">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Space and comfort</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>No deposit</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>No hidden fees</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Airport delivery</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="car-outlander-feat-1">Space and comfort</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="car-outlander-feat-2">No deposit</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="car-outlander-feat-3">No hidden fees</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="car-outlander-feat-4">Airport delivery</span></li>
             </ul>
             <div class="price">$35 - $40 <small>/ day</small></div>
           </div>
@@ -1677,20 +1681,20 @@
         <div class="car-card">
           <img class="car-img" src="nissan-rogue.png" alt="Nissan Rogue 2018" loading="lazy" width="280" height="220">
           <div class="car-card-body">
-            <div class="badge">SUV</div>
-            <h3>Nissan Rogue 2018</h3>
+            <div class="badge" data-i18n="car-rogue-badge">SUV</div>
+            <h3 data-i18n="car-rogue-name">Nissan Rogue 2018</h3>
             <ul class="car-card-features">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Space and comfort</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>No deposit</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>No hidden fees</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Airport delivery</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="car-rogue-feat-1">Space and comfort</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="car-rogue-feat-2">No deposit</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="car-rogue-feat-3">No hidden fees</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="car-rogue-feat-4">Airport delivery</span></li>
             </ul>
             <div class="price">$35 - $50 <small>/ day</small></div>
           </div>
         </div>
       </div>
 
-      <h2 style="order:6;color:#f9a826;font-size:1rem;text-transform:uppercase;letter-spacing:1px;text-align:center;width:100%;margin:2rem 0 0.5rem">SEDANS</h2>
+      <h2 style="order:6;color:#f9a826;font-size:1rem;text-transform:uppercase;letter-spacing:1px;text-align:center;width:100%;margin:2rem 0 0.5rem" data-i18n="cat-sedanes">SEDANS</h2>
       <div class="category-grid">
         <div class="car-card">
           <img class="car-img" src="kia-forte-gt.png" alt="Kia Forte GT K3 2020" loading="lazy" width="280" height="220">
@@ -1786,18 +1790,18 @@
   <!-- Sección de Camionetas -->
   <section id="camionetas" class="page">
     <div class="section-inner">
-      <h2>CAMIONETAS</h2>
+      <h2 data-i18n="cat-camionetas">CAMIONETAS</h2>
       <div class="category-grid">
         <div class="car-card">
           <img class="car-img" src="JEEP.jpeg" alt="Jeep Grand Cherokee 2021" loading="lazy" width="280" height="220">
           <div class="car-card-body">
-            <div class="badge">4×4</div>
-            <h3>Jeep Grand Cherokee 2021</h3>
+            <div class="badge" data-i18n="car-jeep-badge">4×4</div>
+            <h3 data-i18n="car-jeep-name">Jeep Grand Cherokee 2021</h3>
             <ul class="car-card-features">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Full coverage</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Airport delivery</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>4×4 system</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>No deposit</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="car-jeep-feat-1">Full coverage</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="car-jeep-feat-2">Airport delivery</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="car-jeep-feat-3">4×4 system</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="car-jeep-feat-4">No deposit</span></li>
             </ul>
             <div class="price">$40 - $55 <small>/ day</small></div>
           </div>
@@ -1805,13 +1809,13 @@
         <div class="car-card">
           <img class="car-img" src="sorento.jpeg" alt="Kia Sorento 2019" loading="lazy" width="280" height="220">
           <div class="car-card-body">
-            <div class="badge">7 seats</div>
-            <h3>Kia Sorento 2019</h3>
+            <div class="badge" data-i18n="car-sorento-badge">7 seats</div>
+            <h3 data-i18n="car-sorento-name">Kia Sorento 2019</h3>
             <ul class="car-card-features">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Spacious trunk</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>No deposit</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Ideal for group trips</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Airport delivery</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="car-sorento-feat-1">Spacious trunk</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="car-sorento-feat-2">No deposit</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="car-sorento-feat-3">Ideal for group trips</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="car-sorento-feat-4">Airport delivery</span></li>
             </ul>
             <div class="price">$45 - $60 <small>/ day</small></div>
           </div>
@@ -1819,13 +1823,13 @@
         <div class="car-card">
           <img class="car-img" src="outlander.png" alt="Mitsubishi Outlander 2015" loading="lazy" width="280" height="220">
           <div class="car-card-body">
-            <div class="badge">SUV</div>
-            <h3>Mitsubishi Outlander 2015</h3>
+            <div class="badge" data-i18n="car-outlander-badge">SUV</div>
+            <h3 data-i18n="car-outlander-name">Mitsubishi Outlander 2015</h3>
             <ul class="car-card-features">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Space and comfort</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>No deposit</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>No hidden fees</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Airport delivery</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="car-outlander-feat-1">Space and comfort</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="car-outlander-feat-2">No deposit</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="car-outlander-feat-3">No hidden fees</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="car-outlander-feat-4">Airport delivery</span></li>
             </ul>
             <div class="price">$35 - $40 <small>/ day</small></div>
           </div>
@@ -1833,13 +1837,13 @@
         <div class="car-card">
           <img class="car-img" src="nissan-rogue.png" alt="Nissan Rogue 2018" loading="lazy" width="280" height="220">
           <div class="car-card-body">
-            <div class="badge">SUV</div>
-            <h3>Nissan Rogue 2018</h3>
+            <div class="badge" data-i18n="car-rogue-badge">SUV</div>
+            <h3 data-i18n="car-rogue-name">Nissan Rogue 2018</h3>
             <ul class="car-card-features">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Space and comfort</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>No deposit</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>No hidden fees</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Airport delivery</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="car-rogue-feat-1">Space and comfort</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="car-rogue-feat-2">No deposit</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="car-rogue-feat-3">No hidden fees</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="car-rogue-feat-4">Airport delivery</span></li>
             </ul>
             <div class="price">$35 - $50 <small>/ day</small></div>
           </div>
@@ -1851,7 +1855,7 @@
   <!-- Sección de Sedanes -->
   <section id="sedanes" class="page">
     <div class="section-inner">
-      <h2>SEDANS</h2>
+      <h2 data-i18n="cat-sedanes">SEDANS</h2>
       <div class="category-grid">
         <div class="car-card">
           <img class="car-img" src="kia-forte-gt.png" alt="Kia Forte GT K3 2020" loading="lazy" width="280" height="220">
