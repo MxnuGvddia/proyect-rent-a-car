@@ -42,7 +42,7 @@
 
         hero.classList.toggle('hero--page', id !== 'hero');
 
-        const outgoing = document.querySelector('.page.active');
+        const outgoing = document.querySelectorAll('.page.active');
 
         // Build timeline
         const tl = gsap.timeline({
@@ -58,24 +58,27 @@
         tl.to(wrap, { opacity: 0, y: -12, duration: 0.18, ease: 'power2.in' });
 
         // Fade out current page if exists
-        if (outgoing) {
+        if (outgoing.length) {
           tl.to(outgoing, { opacity: 0, y: 18, duration: 0.15, ease: 'power2.in' }, '-=0.08');
         }
 
         // Swap content
         tl.call(() => {
-          if (outgoing) outgoing.classList.remove('active');
+          outgoing.forEach(p => p.classList.remove('active'));
 
           if (id === 'hero') {
             extras.forEach(e => { e.style.display = ''; });
             titleEl.innerHTML = langData[currentLang]['hero-page-title'];
           } else {
-            const target = document.getElementById(id);
-            if (target) {
-              target.classList.add('active');
-              target.style.opacity = '0';
-              target.style.transform = 'translateY(24px)';
-            }
+            const targetIds = id === 'flota' ? ['flota', 'camionetas', 'sedanes'] : [id];
+            targetIds.forEach(tid => {
+              const target = document.getElementById(tid);
+              if (target) {
+                target.classList.add('active');
+                target.style.opacity = '0';
+                target.style.transform = 'translateY(24px)';
+              }
+            });
             extras.forEach(e => { e.style.display = 'none'; });
             titleEl.innerHTML = langData[currentLang][pageTitles[id]] || '';
           }
@@ -85,10 +88,13 @@
 
         // Fade in new page
         if (id !== 'hero') {
-          const target = document.getElementById(id);
-          if (target) {
-            tl.to(target, { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out', clearProps: 'all' }, '+=0.05');
-          }
+          const targetIds = id === 'flota' ? ['flota', 'camionetas', 'sedanes'] : [id];
+          targetIds.forEach(tid => {
+            const target = document.getElementById(tid);
+            if (target) {
+              tl.to(target, { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out', clearProps: 'all' }, '+=0.05');
+            }
+          });
         }
 
         // Fade in hero content
@@ -106,8 +112,11 @@
         currentPageId = id;
         if (id !== 'hero') {
           document.querySelector('.hero').classList.add('hero--page');
-          const target = document.getElementById(id);
-          if (target) { target.classList.add('active'); }
+          const targetIds = id === 'flota' ? ['flota', 'camionetas', 'sedanes'] : [id];
+          targetIds.forEach(tid => {
+            const target = document.getElementById(tid);
+            if (target) { target.classList.add('active'); }
+          });
           const titles = pageTitles;
           document.getElementById('hero-page-title').innerHTML = langData[currentLang][titles[id]] || '';
           document.querySelectorAll('.hero-badge, .hero-extras, .hero-micro, .hero-blocks, .hero-deck, .hero-page-title ~ .btn, .wrap > img, .page-previews').forEach(e => e.style.display = 'none');
@@ -630,8 +639,10 @@
     .nav-cta a.btn { padding: 0.5rem 1.2rem; font-size: 0.85rem; white-space: nowrap; }
     .nav-actions .lang-switch { display: none; }
     .nav-lang { display: flex; align-items: center; }
-    .hero .wrap > .fleet-category { order: 5; }
-    .hero .wrap > .fleet-grid { order: 6; }
+    .hero .wrap > .fleet-category,
+    .hero .wrap > h2.fleet-section-title { order: 5; }
+    .hero .wrap > .fleet-grid,
+    .hero .wrap > .category-grid { order: 6; }
     .hero .wrap > .page-previews { order: 7; }
     .hero .wrap.fade-out {
       animation: heroOut 0.2s ease forwards;
@@ -841,7 +852,8 @@
       font-size: 1.05rem;
       margin-bottom: 3rem;
     }
-    .fleet-grid {
+    .fleet-grid,
+    .category-grid {
       display: flex;
       gap: 1.5rem;
       overflow-x: auto;
@@ -851,14 +863,20 @@
       padding: 0 0.25rem 0.75rem 0.25rem;
       justify-content: flex-start;
     }
-    .fleet-grid::-webkit-scrollbar { height: 6px; }
-    .fleet-grid::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 3px; }
-    .fleet-grid::-webkit-scrollbar-thumb { background: #f9a826; border-radius: 3px; }
-    .fleet-grid > .car-card {
+    .fleet-grid::-webkit-scrollbar,
+    .category-grid::-webkit-scrollbar { height: 6px; }
+    .fleet-grid::-webkit-scrollbar-track,
+    .category-grid::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 3px; }
+    .fleet-grid::-webkit-scrollbar-thumb,
+    .category-grid::-webkit-scrollbar-thumb { background: #f9a826; border-radius: 3px; }
+    .fleet-grid > .car-card,
+    .category-grid > .car-card {
       flex: 0 0 280px;
       scroll-snap-align: start;
     }
-    .fleet-category {
+    .fleet-category,
+    .page .section-inner > h2.fleet-section-title,
+    .hero .wrap > h2.fleet-section-title {
       text-align: center;
       color: #f9a826;
       font-size: 1.1rem;
@@ -866,7 +884,9 @@
       text-transform: uppercase;
       letter-spacing: 1px;
     }
-    .fleet-category:first-of-type { margin-top: 0.5rem; }
+    .fleet-category:first-of-type,
+    .page .section-inner > h2.fleet-section-title:first-of-type,
+    .hero .wrap > h2.fleet-section-title:first-of-type { margin-top: 0.5rem; }
     .car-card {
       position: relative;
       border-radius: 16px;
@@ -1232,8 +1252,10 @@
       .req-grid { grid-template-columns: 1fr; }
       .trust-badges { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; }
-      .fleet-grid { width: 100%; min-width: 0; }
-      .fleet-grid > .car-card { flex: 0 0 240px; }
+      .fleet-grid,
+      .category-grid { width: 100%; min-width: 0; }
+      .fleet-grid > .car-card,
+      .category-grid > .car-card { flex: 0 0 240px; }
       .previews-grid { grid-template-columns: 1fr; }
       .partner-content { flex-direction: column; text-align: center; }
       .partner-list li { justify-content: center; }
@@ -1381,6 +1403,8 @@
     .car-card .badge,
     .car-card-body .price,
     .fleet-category,
+    .page .section-inner > h2.fleet-section-title,
+    .hero .wrap > h2.fleet-section-title,
     .legal-content h3 {
       background: linear-gradient(135deg, #ffe066, #ffd700, #f9a826, #ffd700, #fff5cc, #ffd700);
       background-size: 200% 200%;
@@ -1605,8 +1629,8 @@
       <a href="https://wa.me/50375922093" class="btn btn-gold" target="_blank" data-i18n="hero-cta">
         Cotizar por WhatsApp
       </a>
-      <h3 class="fleet-category" data-i18n="fleet-category-suv">Camionetas</h3>
-      <div class="fleet-grid">
+      <h2 class="fleet-section-title">CAMIONETAS</h2>
+      <div class="category-grid">
         <div class="car-card">
           <img class="car-img" src="JEEP.jpeg" alt="Jeep Grand Cherokee 2021" loading="lazy" width="280" height="220">
           <div class="car-card-body">
@@ -1665,8 +1689,8 @@
         </div>
       </div>
 
-      <h3 class="fleet-category" data-i18n="fleet-category-sedan">Sedans</h3>
-      <div class="fleet-grid">
+      <h2 class="fleet-section-title">SEDANS</h2>
+      <div class="category-grid">
         <div class="car-card">
           <img class="car-img" src="kia-forte-gt.png" alt="Kia Forte GT K3 2020" loading="lazy" width="280" height="220">
           <div class="car-card-body">
@@ -1755,9 +1779,14 @@
       <p class="section-tag" data-i18n="section-tag-flota">Nuestra Flota</p>
       <h2 class="section-title" data-i18n="page-title-flota">Vehículos <span class="gold">disponibles</span></h2>
       <p class="section-sub" data-i18n="section-sub-flota">SUVs from $35/day · Sedans from $20/day</p>
+    </div>
+  </section>
 
-      <h3 class="fleet-category" data-i18n="fleet-category-suv">Camionetas</h3>
-      <div class="fleet-grid">
+  <!-- Sección de Camionetas -->
+  <section id="camionetas" class="page">
+    <div class="section-inner">
+      <h2>CAMIONETAS</h2>
+      <div class="category-grid">
         <div class="car-card">
           <img class="car-img" src="JEEP.jpeg" alt="Jeep Grand Cherokee 2021" loading="lazy" width="280" height="220">
           <div class="car-card-body">
@@ -1815,9 +1844,14 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <h3 class="fleet-category" data-i18n="fleet-category-sedan">Sedans</h3>
-      <div class="fleet-grid">
+  <!-- Sección de Sedanes -->
+  <section id="sedanes" class="page">
+    <div class="section-inner">
+      <h2>SEDANS</h2>
+      <div class="category-grid">
         <div class="car-card">
           <img class="car-img" src="kia-forte-gt.png" alt="Kia Forte GT K3 2020" loading="lazy" width="280" height="220">
           <div class="car-card-body">
