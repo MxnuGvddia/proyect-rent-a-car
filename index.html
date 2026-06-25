@@ -38,7 +38,7 @@
         const hero = document.querySelector('.hero');
         const wrap = document.querySelector('.hero .wrap');
         const titleEl = document.getElementById('hero-page-title');
-        const extras = document.querySelectorAll('.hero-badge, .hero-extras, .hero-micro, .hero-blocks, .hero-deck, .hero-page-title ~ .btn, .wrap > img, .page-previews');
+        const extras = document.querySelectorAll('.hero-badge, .hero-extras, .hero-micro, .hero-blocks, .hero-deck, .hero-page-title ~ .btn, .wrap > img, .page-previews, .hero-fleet');
 
         hero.classList.toggle('hero--page', id !== 'hero');
 
@@ -1634,7 +1634,7 @@
       <a href="https://wa.me/50375922093" class="btn btn-gold" target="_blank" data-i18n="hero-cta">
         Cotizar por WhatsApp
       </a>
-      <h2 style="order:6;color:#f9a826;font-size:1rem;text-transform:uppercase;letter-spacing:1px;text-align:center;width:100%;margin:2.5rem 0 0.5rem" data-i18n="cat-camionetas">CAMIONETAS</h2>
+      <div class="hero-fleet"><h2 style="order:6;color:#f9a826;font-size:1rem;text-transform:uppercase;letter-spacing:1px;text-align:center;width:100%;margin:2.5rem 0 0.5rem" data-i18n="cat-camionetas">CAMIONETAS</h2>
       <div class="category-grid">
         <div class="car-card">
           <img class="car-img" src="JEEP.jpeg" alt="Jeep Grand Cherokee 2021" loading="lazy" width="280" height="220">
@@ -1738,6 +1738,7 @@
             <div class="price">$20 - $30 <small>/ day</small></div>
           </div>
         </div>
+      </div>
       </div>
     </div>
   </section>
