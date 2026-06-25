@@ -2137,20 +2137,7 @@
     document.querySelectorAll('.faq-q').forEach(q => {
       q.addEventListener('click', () => {
         const item = q.parentElement;
-        const answer = item.querySelector('.faq-a');
-        const isOpen = item.classList.contains('open');
-        if (!isOpen) {
-          answer.style.maxHeight = 'none';
-          const h = answer.scrollHeight;
-          answer.style.maxHeight = '0';
-          requestAnimationFrame(() => {
-            answer.style.maxHeight = h + 'px';
-            item.classList.add('open');
-          });
-        } else {
-          answer.style.maxHeight = '0';
-          item.classList.remove('open');
-        }
+        item.classList.toggle('open');
       });
     });
   </script>
