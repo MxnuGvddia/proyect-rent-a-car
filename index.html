@@ -40,7 +40,7 @@
         const titleEl = document.getElementById('hero-page-title');
         const extras = document.querySelectorAll('.hero-badge, .hero-extras, .hero-micro, .hero-blocks, .hero-deck, .hero-page-title ~ .btn, .wrap > img, .page-previews');
 
-        hero.classList.toggle('hero--page', id !== 'hero' && id !== 'flota');
+        hero.classList.toggle('hero--page', id !== 'hero');
 
         const outgoing = document.querySelectorAll('.page.active');
 
@@ -69,20 +69,8 @@
           if (id === 'hero') {
             extras.forEach(e => { e.style.display = ''; });
             titleEl.innerHTML = langData[currentLang]['hero-page-title'];
-          } else if (id === 'flota') {
-            const targetIds = ['flota', 'camionetas', 'sedanes'];
-            targetIds.forEach(tid => {
-              const target = document.getElementById(tid);
-              if (target) {
-                target.classList.add('active');
-                target.style.opacity = '0';
-                target.style.transform = 'translateY(24px)';
-              }
-            });
-            extras.forEach(e => { e.style.display = ''; });
-            titleEl.innerHTML = langData[currentLang]['hero-page-title'];
           } else {
-            const targetIds = [id];
+            const targetIds = id === 'flota' ? ['flota', 'camionetas', 'sedanes'] : [id];
             targetIds.forEach(tid => {
               const target = document.getElementById(tid);
               if (target) {
@@ -123,19 +111,15 @@
         const id = location.hash.slice(1) || 'hero';
         currentPageId = id;
         if (id !== 'hero') {
-          if (id !== 'flota') document.querySelector('.hero').classList.add('hero--page');
+          document.querySelector('.hero').classList.add('hero--page');
           const targetIds = id === 'flota' ? ['flota', 'camionetas', 'sedanes'] : [id];
           targetIds.forEach(tid => {
             const target = document.getElementById(tid);
             if (target) { target.classList.add('active'); }
           });
           const titles = pageTitles;
-          if (id === 'flota') {
-            document.getElementById('hero-page-title').innerHTML = langData[currentLang]['hero-page-title'];
-          } else {
-            document.getElementById('hero-page-title').innerHTML = langData[currentLang][titles[id]] || '';
-            document.querySelectorAll('.hero-badge, .hero-extras, .hero-micro, .hero-blocks, .hero-deck, .hero-page-title ~ .btn, .wrap > img, .page-previews').forEach(e => e.style.display = 'none');
-          }
+          document.getElementById('hero-page-title').innerHTML = langData[currentLang][titles[id]] || '';
+          document.querySelectorAll('.hero-badge, .hero-extras, .hero-micro, .hero-blocks, .hero-deck, .hero-page-title ~ .btn, .wrap > img, .page-previews').forEach(e => e.style.display = 'none');
         }
       });
      </script>
