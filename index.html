@@ -1232,6 +1232,7 @@
       .req-grid { grid-template-columns: 1fr; }
       .trust-badges { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; }
+      .fleet-grid { width: 100%; min-width: 0; }
       .fleet-grid > .car-card { flex: 0 0 240px; }
       .previews-grid { grid-template-columns: 1fr; }
       .partner-content { flex-direction: column; text-align: center; }
@@ -2640,47 +2641,6 @@
     updateQuote();
     }
     initMagic();
-
-    // Mobile fleet marquee — infinite auto-scroll + scrollbar
-    function initFleetMarquee() {
-      if (window.innerWidth >= 768) return;
-      var grids = document.querySelectorAll('.fleet-grid');
-      if (!grids.length) return;
-      grids.forEach(function(grid) {
-        if (grid.classList.contains('marquee-ready')) return;
-        grid.classList.add('marquee-ready');
-        var cards = Array.from(grid.children);
-        if (cards.length < 1) return;
-        cards.forEach(function(c) { grid.appendChild(c.cloneNode(true)); });
-        var origW = grid.scrollWidth / 2;
-        var speed = 0.5;
-        var paused = false;
-        var raf = null;
-
-        function tick() {
-          if (!paused) {
-            grid.scrollLeft += speed;
-            if (grid.scrollLeft >= origW) grid.scrollLeft = 0;
-          }
-          raf = requestAnimationFrame(tick);
-        }
-
-        grid.addEventListener('mouseenter', function() { paused = true; });
-        grid.addEventListener('mouseleave', function() { paused = false; });
-        grid.addEventListener('touchstart', function() { paused = true; }, { passive: true });
-        grid.addEventListener('touchend', function() { paused = false; }, { passive: true });
-        grid.addEventListener('scroll', function() {
-          if (grid.scrollLeft + grid.clientWidth >= grid.scrollWidth - 10) grid.scrollLeft = 0;
-        }, { passive: true });
-
-        raf = requestAnimationFrame(tick);
-      });
-    }
-
-    initFleetMarquee();
-    window.addEventListener('resize', function() {
-      if (window.innerWidth < 768) initFleetMarquee();
-    });
   })();
   </script>
 </body>
