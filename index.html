@@ -284,6 +284,7 @@
         'magic-days-label': 'Días',
         'magic-total': 'Total estimado',
         'magic-whatsapp': 'Enviar cotización por WhatsApp',
+        'magic-note': 'Para reservas de 14+ días aplican descuentos especiales.',
         'cat-camionetas': 'CAMIONETAS',
         'cat-pickups': 'PICKUPS',
         'car-bt50-badge': 'Pickup',
@@ -463,6 +464,7 @@
         'magic-days-label': 'Days',
         'magic-total': 'Estimated total',
         'magic-whatsapp': 'Send quote via WhatsApp',
+        'magic-note': 'Special discounts apply for 14+ day rentals.',
         'cat-camionetas': 'TRUCKS',
         'cat-pickups': 'PICKUPS',
         'car-bt50-badge': 'Pickup',
@@ -1566,6 +1568,7 @@
   }
   .days-selector .days-value::-webkit-inner-spin-button,
   .days-selector .days-value::-webkit-outer-spin-button { -webkit-appearance:none; }
+  .magic-note { text-align:center; color:rgba(255,255,255,0.45); font-size:0.78rem; margin:0.5rem 0 0; line-height:1.4; }
   .quote-result {
     margin-top:auto; padding-top:1.2rem;
     border-top:1px solid rgba(249,168,38,0.12);
@@ -2601,7 +2604,7 @@
         <div class="vehicle-options" id="vehicleOptions"></div>
       </div>
 
-      <div class="booking-step" id="step2">
+          <div class="booking-step" id="step2">
         <label data-i18n="magic-days">2. Días de alquiler</label>
         <div class="days-selector">
           <button id="daysMinus" aria-label="Menos días">−</button>
@@ -2609,6 +2612,8 @@
           <button id="daysPlus" aria-label="Más días">+</button>
         </div>
       </div>
+
+      <div class="magic-note" data-i18n="magic-note">Para reservas de 14+ días aplican descuentos especiales.</div>
 
       <div class="quote-result" id="quoteResult">
         <div class="q-row">
