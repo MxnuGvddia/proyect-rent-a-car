@@ -2730,25 +2730,24 @@
       if (!selectedVehicle) return;
       const total = selectedVehicle.price * days;
       const isEn = currentLang === 'en';
-      var em = function(cp) { return String.fromCodePoint(cp); };
       const msg = encodeURIComponent(isEn ?
-        em(0x1F697)+' Thank you for choosing Rumbo Rent!\n\n' +
+        '- Thank you for choosing Rumbo Rent!\n\n' +
         'We have received your rental inquiry with the following details:\n' +
-        em(0x1F698)+' Vehicle: ' + selectedVehicle.name + '\n' +
-        em(0x1F4C5)+' Rental Duration: ' + days + ' day' + (days > 1 ? 's' : '') + '\n' +
-        em(0x1F4B5)+' Estimated Total: $' + total + '\n\n' +
+        '> Vehicle: ' + selectedVehicle.name + '\n' +
+        '> Rental Duration: ' + days + ' day' + (days > 1 ? 's' : '') + '\n' +
+        '> Estimated Total: $' + total + '\n\n' +
         '*The estimated price is subject to vehicle availability and may vary depending on the rental dates.*\n\n' +
         'Our team will contact you shortly to confirm availability and provide you with all the necessary information.\n\n' +
-        'Thank you for choosing Rumbo Rent. We look forward to serving you! '+em(0x1F60A)
+        'Thank you for choosing Rumbo Rent. We look forward to serving you!'
       :
-        em(0x1F697)+' Gracias por tu inter\u00E9s en Rumbo Rent.\n\n' +
+        '- Gracias por tu inter\u00E9s en Rumbo Rent.\n\n' +
         'Hemos recibido tu solicitud de cotizaci\u00F3n con la siguiente informaci\u00F3n:\n' +
-        em(0x1F698)+' Veh\u00EDculo: ' + selectedVehicle.name + '\n' +
-        em(0x1F4C5)+' Duraci\u00F3n: ' + days + ' d\u00EDa' + (days > 1 ? 's' : '') + '\n' +
-        em(0x1F4B5)+' Total estimado: $' + total + '\n\n' +
+        '> Veh\u00EDculo: ' + selectedVehicle.name + '\n' +
+        '> Duraci\u00F3n: ' + days + ' d\u00EDa' + (days > 1 ? 's' : '') + '\n' +
+        '> Total estimado: $' + total + '\n\n' +
         '*El precio est\u00E1 sujeto a disponibilidad y puede variar seg\u00FAn las fechas de la reserva.*\n\n' +
         'En breve uno de nuestros asesores se pondr\u00E1 en contacto contigo para brindarte la informaci\u00F3n y confirmar la disponibilidad del veh\u00EDculo.\n\n' +
-        '\u00A1Gracias por elegir Rumbo Rent! '+em(0x1F60A)
+        'Gracias por elegir Rumbo Rent!'
       );
       const phone = getPhone();
       window.open('https://wa.me/' + phone + '?text=' + msg, '_blank');
