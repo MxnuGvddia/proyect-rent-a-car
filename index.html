@@ -2731,19 +2731,23 @@
       const total = selectedVehicle.price * days;
       const isEn = currentLang === 'en';
       const msg = encodeURIComponent(isEn ?
-        'Hi Rumbo Rent!\n\n' +
-        'I would like to get a quote:\n' +
-        '- Vehicle: ' + selectedVehicle.name + '\n' +
-        '- Days: ' + days + '\n' +
-        '- Estimated total: $' + total + '\n\n' +
-        'Thank you.'
+        '🚗 Thank you for choosing Rumbo Rent!\n\n' +
+        'We have received your rental inquiry with the following details:\n' +
+        '🚘 Vehicle: ' + selectedVehicle.name + '\n' +
+        '📅 Rental Duration: ' + days + ' day' + (days > 1 ? 's' : '') + '\n' +
+        '💵 Estimated Total: $' + total + '\n\n' +
+        '*The estimated price is subject to vehicle availability and may vary depending on the rental dates.*\n\n' +
+        'Our team will contact you shortly to confirm availability and provide you with all the necessary information.\n\n' +
+        'Thank you for choosing Rumbo Rent. We look forward to serving you! 😊'
       :
-        'Hola Rumbo Rent!\n\n' +
-        'Quisiera cotizar:\n' +
-        '- Vehiculo: ' + selectedVehicle.name + '\n' +
-        '- Dias: ' + days + ' día' + (days > 1 ? 's' : '') + '\n' +
-        '- Total estimado: $' + total + '\n\n' +
-        'Quedo atento a su respuesta.'
+        '🚗 Gracias por tu interés en Rumbo Rent.\n\n' +
+        'Hemos recibido tu solicitud de cotización con la siguiente información:\n' +
+        '🚘 Vehículo: ' + selectedVehicle.name + '\n' +
+        '📅 Duración: ' + days + ' día' + (days > 1 ? 's' : '') + '\n' +
+        '💵 Total estimado: $' + total + '\n\n' +
+        '*El precio está sujeto a disponibilidad y puede variar según las fechas de la reserva.*\n\n' +
+        'En breve uno de nuestros asesores se pondrá en contacto contigo para brindarte la información y confirmar la disponibilidad del vehículo.\n\n' +
+        '¡Gracias por elegir Rumbo Rent! 😊'
       );
       const phone = getPhone();
       window.open('https://wa.me/' + phone + '?text=' + msg, '_blank');
